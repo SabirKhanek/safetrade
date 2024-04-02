@@ -1,0 +1,37 @@
+{
+  "name": "safetrade",
+  "version": "1.0.0",
+  "description": "A fullstack digital buy and sell marketplace.",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sabirkhanek/safetrade.git"
+  },
+  "keywords": [
+    "NestJS",
+    "react",
+    "nextjs",
+    "javascript",
+    "marketplace",
+    "p2p"
+  ],
+  "author": "devsabir",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sabirkhanek/safetrade/issues"
+  },
+  "homepage": "https://github.com/sabirkhanek/safetrade#readme",
+  "devDependencies": {
+    "turbo": "^1.13.0"
+  },
+  "dependencies": {
+    "@nestjs/serve-static": "^4.0.2"
+  }
+}
