@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "turbo run dev",
+    "dev": "dotenv -- turbo run dev",
     "build": "turbo run build"
   },
   "repository": {
@@ -29,9 +29,17 @@
   },
   "homepage": "https://github.com/sabirkhanek/safetrade#readme",
   "devDependencies": {
+    "drizzle-kit": "^0.20.14",
+    "tsx": "^4.7.1",
     "turbo": "^1.13.0"
   },
   "dependencies": {
-    "@nestjs/serve-static": "^4.0.2"
+    "@nestjs/serve-static": "^4.0.2",
+    "@types/cli-color": "^2.0.6",
+    "@types/pg": "^8.11.4",
+    "cli-color": "^2.0.4",
+    "dotenv-cli": "^7.4.1",
+    "drizzle-orm": "^0.30.6",
+    "pg": "^8.11.4"
   }
 }

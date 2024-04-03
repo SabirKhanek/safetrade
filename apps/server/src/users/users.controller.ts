@@ -29,7 +29,9 @@ export class UsersController {
         }
       },
       getAll: async (args) => {
-        const obj = await this.usersService.getAll();
+        const obj = (await this.usersService.getAll()).map((o) => {
+          return { username: o.username, about: o.about };
+        });
         return { status: 200, body: obj };
       },
     });

@@ -1,0 +1,21 @@
+{
+  "name": "db-schema",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "version": "0.0.1",
+  "dependencies": {
+    "@anatine/zod-openapi": "^2.2.5",
+    "@ts-rest/core": "^3.40.0",
+    "@ts-rest/open-api": "^3.41.0",
+    "typescript": "latest",
+    "zod": "^3.22.4"
+  },
+  "scripts": {
+    "db:generate": "dotenv -- drizzle-kit generate:pg",
+    "db:migrate": "dotenv -- tsx src/migrate",
+    "dev": "tsc && drizzle-kit studio",
+    "build": "tsc"
+  }
+}
