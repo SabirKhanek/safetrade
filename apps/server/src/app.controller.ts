@@ -15,5 +15,6 @@ export class AppController implements OnApplicationBootstrap {
       `Admin panel at: ${clc.yellow('http://localhost:5173/')} [dev only]`,
     );
     Logger.log(`DB Explorer at: ${clc.yellow('https://local.drizzle.studio')}`);
+    Logger.log(`Client at ${clc.yellow('http://localhost:3001')}`);
   }
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { User } from 'api-contract';
 import { eq, sql } from 'drizzle-orm';
 import { DrizzleService } from 'src/drizzle.service';
-import { user } from '../db-schema';
+import { schema } from '../db-schema';
 @Injectable()
 export class UsersService {
   constructor(private drizzleService: DrizzleService) {}
@@ -12,13 +12,13 @@ export class UsersService {
     const userFromDb = (
       await this.drizzleService.db
         .select()
-        .from(user)
-        .where(eq(user.username, username))
+        .from(schema.user)
+        .where(eq(schema.user.username, username))
     ).at(0);
     return userFromDb;
   }
 
   async getAll() {
-    return this.drizzleService.db.select().from(user);
+    return this.drizzleService.db.select().from(schema.user);
   }
 }

@@ -16,6 +16,8 @@ export type User = z.infer<typeof userSchema>;
 export declare const contract: {
     user: {
         getAll: {
+            method: "GET";
+            path: "/api/user/getall";
             responses: {
                 200: z.ZodArray<z.ZodObject<Omit<{
                     username: z.ZodString;
@@ -29,8 +31,6 @@ export declare const contract: {
                     about: string;
                 }>, "many">;
             };
-            method: "GET";
-            path: "/api/user/getall";
             strictStatusCodes: true;
         };
         get: {
@@ -41,6 +41,8 @@ export declare const contract: {
             }, {
                 id: string;
             }>;
+            method: "GET";
+            path: "/api/user/:id";
             responses: {
                 200: z.ZodObject<Omit<{
                     username: z.ZodString;
@@ -61,8 +63,6 @@ export declare const contract: {
                     details: string;
                 }>;
             };
-            method: "GET";
-            path: "/api/user/:id";
             strictStatusCodes: true;
         };
     };

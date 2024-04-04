@@ -1,6 +1,6 @@
 import { drizzle } from "drizzle-orm/node-postgres";
 import { Client, Pool } from "pg";
-import * as schema from "./index";
+import * as schema from "./schema";
 import { Logger } from "drizzle-orm";
 let { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env;
 

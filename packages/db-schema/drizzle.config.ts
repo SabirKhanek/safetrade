@@ -2,7 +2,7 @@ import type { Config } from "drizzle-kit";
 let { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env;
 
 export default {
-  schema: "./src/index.ts",
+  schema: "./src/schema.ts",
   out: "./dist/drizzle",
   driver: "pg",
   dbCredentials: {

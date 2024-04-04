@@ -35,6 +35,9 @@
   },
   "dependencies": {
     "@nestjs/serve-static": "^4.0.2",
+    "@tanstack/react-query": "^5.28.14",
+    "@tanstack/react-query-devtools": "^5.28.14",
+    "@ts-rest/core": "^3.41.0",
     "@types/cli-color": "^2.0.6",
     "@types/pg": "^8.11.4",
     "cli-color": "^2.0.4",
