@@ -9,5 +9,5 @@ async function main() {
   await migrate(db, { migrationsFolder: dirPath });
   await connection.end();
 }
-
+// console.log(process.env.DB_STRING);
 main();

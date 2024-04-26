@@ -1,66 +1,158 @@
 import { z } from "zod";
-declare const userSchema: z.ZodObject<{
-    username: z.ZodString;
-    password: z.ZodString;
-    about: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    username: string;
-    password: string;
-    about: string;
-}, {
-    username: string;
-    password: string;
-    about: string;
-}>;
-export type User = z.infer<typeof userSchema>;
 export declare const contract: {
     user: {
-        getAll: {
-            method: "GET";
-            path: "/api/user/getall";
+        create: {
+            method: "POST";
+            body: z.ZodObject<{
+                first_name: z.ZodString;
+                email: z.ZodString;
+                last_name: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                email: string;
+                first_name: string;
+                last_name: string;
+            }, {
+                email: string;
+                first_name: string;
+                last_name: string;
+            }>;
+            headers: z.ZodObject<{
+                authorization: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                authorization: string;
+            }, {
+                authorization: string;
+            }>;
+            path: "/api/user/create";
             responses: {
-                200: z.ZodArray<z.ZodObject<Omit<{
-                    username: z.ZodString;
-                    password: z.ZodString;
-                    about: z.ZodString;
-                }, "password">, "strip", z.ZodTypeAny, {
-                    username: string;
-                    about: string;
+                404: import("@ts-rest/core").ContractPlainType<{
+                    success: false;
+                    message: "resource not found";
+                    reason: any;
+                }>;
+                500: import("@ts-rest/core").ContractPlainType<{
+                    success: false;
+                    message: "internal server error";
+                    reason: any;
+                }>;
+                400: import("@ts-rest/core").ContractPlainType<{
+                    success: false;
+                    message: "bad request";
+                    reason: "";
+                }>;
+                401: import("@ts-rest/core").ContractPlainType<{
+                    success: false;
+                    message: "unauthorized";
+                    resason: any;
+                }>;
+                403: import("@ts-rest/core").ContractPlainType<{
+                    success: false;
+                    message: "forbidden";
+                    reason: any;
+                }>;
+                200: z.ZodObject<{
+                    success: z.ZodBoolean;
+                }, "strip", z.ZodTypeAny, {
+                    success: boolean;
                 }, {
-                    username: string;
-                    about: string;
-                }>, "many">;
+                    success: boolean;
+                }>;
             };
             strictStatusCodes: true;
         };
-        get: {
-            pathParams: z.ZodObject<{
-                id: z.ZodString;
+    };
+    auth: {
+        login: {
+            method: "POST";
+            body: z.ZodObject<{
+                email: z.ZodString;
+                password: z.ZodString;
             }, "strip", z.ZodTypeAny, {
-                id: string;
+                email: string;
+                password: string;
             }, {
-                id: string;
+                email: string;
+                password: string;
             }>;
-            method: "GET";
-            path: "/api/user/:id";
+            path: "/api/auth/";
             responses: {
-                200: z.ZodObject<Omit<{
-                    username: z.ZodString;
-                    password: z.ZodString;
-                    about: z.ZodString;
-                }, "password">, "strip", z.ZodTypeAny, {
-                    username: string;
-                    about: string;
-                }, {
-                    username: string;
-                    about: string;
+                404: import("@ts-rest/core").ContractPlainType<{
+                    success: false;
+                    message: "resource not found";
+                    reason: any;
                 }>;
-                404: z.ZodObject<{
-                    details: z.ZodString;
+                500: import("@ts-rest/core").ContractPlainType<{
+                    success: false;
+                    message: "internal server error";
+                    reason: any;
+                }>;
+                400: import("@ts-rest/core").ContractPlainType<{
+                    success: false;
+                    message: "bad request";
+                    reason: "";
+                }>;
+                401: import("@ts-rest/core").ContractPlainType<{
+                    success: false;
+                    message: "unauthorized";
+                    resason: any;
+                }>;
+                403: import("@ts-rest/core").ContractPlainType<{
+                    success: false;
+                    message: "forbidden";
+                    reason: any;
+                }>;
+                200: z.ZodObject<{
+                    token: z.ZodString;
                 }, "strip", z.ZodTypeAny, {
-                    details: string;
+                    token: string;
                 }, {
-                    details: string;
+                    token: string;
+                }>;
+            };
+            strictStatusCodes: true;
+        };
+        validateToken: {
+            method: "GET";
+            headers: z.ZodObject<{
+                authorization: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                authorization: string;
+            }, {
+                authorization: string;
+            }>;
+            path: "/api/auth/validate";
+            responses: {
+                404: import("@ts-rest/core").ContractPlainType<{
+                    success: false;
+                    message: "resource not found";
+                    reason: any;
+                }>;
+                500: import("@ts-rest/core").ContractPlainType<{
+                    success: false;
+                    message: "internal server error";
+                    reason: any;
+                }>;
+                400: import("@ts-rest/core").ContractPlainType<{
+                    success: false;
+                    message: "bad request";
+                    reason: "";
+                }>;
+                401: import("@ts-rest/core").ContractPlainType<{
+                    success: false;
+                    message: "unauthorized";
+                    resason: any;
+                }>;
+                403: import("@ts-rest/core").ContractPlainType<{
+                    success: false;
+                    message: "forbidden";
+                    reason: any;
+                }>;
+                200: z.ZodObject<{
+                    success: z.ZodBoolean;
+                }, "strip", z.ZodTypeAny, {
+                    success: boolean;
+                }, {
+                    success: boolean;
                 }>;
             };
             strictStatusCodes: true;
@@ -68,4 +160,3 @@ export declare const contract: {
     };
 };
 export declare const openApiDocument: import("openapi3-ts").OpenAPIObject;
-export {};

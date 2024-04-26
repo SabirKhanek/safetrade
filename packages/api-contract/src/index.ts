@@ -2,45 +2,37 @@ import { extendZodWithOpenApi } from "@anatine/zod-openapi";
 import { initContract } from "@ts-rest/core";
 import { generateOpenApi } from "@ts-rest/open-api";
 import { coerce, z } from "zod";
+import { authRouter } from "./routes/auth";
+import { userRouter } from "./routes/user";
 
 extendZodWithOpenApi(z);
 
 const c = initContract();
 
-const userSchema = z.object({
-  username: z.string().min(1),
-  password: z.string().min(1),
-  about: z.string().min(1),
-});
-
-export type User = z.infer<typeof userSchema>;
-
 export const contract = c.router(
   {
-    user: {
-      getAll: {
-        path: "/user/getall",
-        method: "GET",
-        responses: {
-          200: userSchema.omit({ password: true }).array(),
-        },
-      },
-      get: {
-        path: "/user/:id",
-        pathParams: z.object({
-          id: z.coerce.string(),
-        }),
-        method: "GET",
-        responses: {
-          200: userSchema.omit({ password: true }),
-          404: z.object({
-            details: z.string().min(1),
-          }),
-        },
-      },
-    },
+    user: userRouter,
+    auth: authRouter,
   },
-  { pathPrefix: "/api", strictStatusCodes: true }
+  {
+    pathPrefix: "/api",
+    strictStatusCodes: true,
+    commonResponses: {
+      404: c.type<{
+        success: false;
+        message: "resource not found";
+        reason: any;
+      }>(),
+      500: c.type<{
+        success: false;
+        message: "internal server error";
+        reason: any;
+      }>(),
+      400: c.type<{ success: false; message: "bad request"; reason: "" }>(),
+      401: c.type<{ success: false; message: "unauthorized"; resason: any }>(),
+      403: c.type<{ success: false; message: "forbidden"; reason: any }>(),
+    },
+  }
 );
 
 export const openApiDocument = generateOpenApi(contract, {

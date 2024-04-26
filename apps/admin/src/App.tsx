@@ -1,13 +1,9 @@
+import { useRoutes } from "react-router-dom";
 import "./App.css";
-import { apiClient } from "./api-client";
+import { routesConfig } from "./app.routes";
 function App() {
-  const { data, isLoading } = apiClient.user.getAll.useQuery(["users"]);
-  if (isLoading) return <p>Loading...</p>;
-  return (
-    <ul>
-      {data?.body.map((u) => <div className="text-red-500">{u.username}</div>)}
-    </ul>
-  );
+  const routes = useRoutes(routesConfig);
+  return <>{routes}</>;
 }
 
 export default App;

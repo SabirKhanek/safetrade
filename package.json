@@ -1,18 +1,21 @@
 {
-  "name": "safetrade",
+  "name": "sourtechsystem",
   "version": "1.0.0",
-  "description": "A fullstack digital buy and sell marketplace.",
+  "description": "Customized central system for SourTech",
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
   "scripts": {
     "dev": "dotenv -- turbo run dev",
+    "start:server": "dotenv -- npm run start --workspace=server",
+    "db:migrate": "dotenv -- npm run db:migrate --workspace=packages/db-schema",
+    "db:generate": "dotenv -- npm run db:generate --workspace=packages/db-schema",
     "build": "turbo run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sabirkhanek/safetrade.git"
+    "url": "git+https://github.com/sabirkhanek/sourtechsystem.git"
   },
   "keywords": [
     "NestJS",
@@ -25,9 +28,9 @@
   "author": "devsabir",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sabirkhanek/safetrade/issues"
+    "url": "https://github.com/sabirkhanek/sourtechsystem/issues"
   },
-  "homepage": "https://github.com/sabirkhanek/safetrade#readme",
+  "homepage": "https://github.com/sabirkhanek/sourtechsystem#readme",
   "devDependencies": {
     "drizzle-kit": "^0.20.14",
     "tsx": "^4.7.1",
@@ -38,11 +41,15 @@
     "@tanstack/react-query": "^5.28.14",
     "@tanstack/react-query-devtools": "^5.28.14",
     "@ts-rest/core": "^3.41.0",
+    "@types/bcrypt": "^5.0.2",
     "@types/cli-color": "^2.0.6",
+    "@types/lodash": "^4.17.0",
     "@types/pg": "^8.11.4",
     "cli-color": "^2.0.4",
+    "dotenv": "^16.4.5",
     "dotenv-cli": "^7.4.1",
     "drizzle-orm": "^0.30.6",
+    "lodash": "^4.17.21",
     "pg": "^8.11.4"
   }
 }

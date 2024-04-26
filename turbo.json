@@ -5,14 +5,9 @@
     "build": { "dependsOn": ["^build"], "outputs": ["dist/**"], "cache": true },
     "dev": {
       "persistent": true,
-      "cache": false,
-      "passThroughEnv": [
-        "DB_STRING",
-        "PGHOST",
-        "PGDATABASE",
-        "PGUSER",
-        "PGPASSWORD"
-      ]
-    }
+      "cache": false
+    },
+    "db:migrate": {},
+    "db:generate": {}
   }
 }
