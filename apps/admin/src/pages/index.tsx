@@ -8,5 +8,5 @@ export function HomePage() {
   //     {data?.body.map((u) => <div className="text-red-500">{u.username}</div>)}
   //   </ul>
   // );
-  return <></>;
+  return <>THIS WILL BE THE ADMIN SIDE</>;
 }

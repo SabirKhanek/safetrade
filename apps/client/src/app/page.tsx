@@ -22,5 +22,5 @@ export default async function Home() {
   // } catch (err) {
   //   return <pre>{JSON.stringify(err, undefined, 3)}</pre>;
   // }
-  return <></>
+  return <>THIS WILL BE THE CLIENT SIDE</>;
 }
