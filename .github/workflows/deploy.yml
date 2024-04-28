@@ -22,4 +22,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
-          script: "cd ~/app && ./restart.sh"
+          script: "source .bashrc && cd ~/app && ./restart.sh && pm2 list"
