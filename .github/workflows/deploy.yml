@@ -22,9 +22,5 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
-          script: "|
-          export NVM_DIR=~/.nvm
-          source ~/.nvm/nvm.sh
-          cd ~/app
-          ./restart.sh && pm2 list"
+          script: "export NVM_DIR=~/.nvm && source ~/.nvm/nvm.sh && cd ~/app && ./restart.sh && pm2 list"
 #
