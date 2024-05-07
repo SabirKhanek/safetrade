@@ -1,5 +1,7 @@
-import { apiClientServer } from "./api-client";
-import { TestClient } from "./testClient";
+// import { apiClientServer } from "./api-client";
+// import { TestClient } from "./testClient";
+
+import Hero from "./components/home_sections/hero";
 
 export default async function Home() {
   // try {
@@ -22,5 +24,9 @@ export default async function Home() {
   // } catch (err) {
   //   return <pre>{JSON.stringify(err, undefined, 3)}</pre>;
   // }
-  return <>THIS WILL BE THE CLIENT SIDE</>;
+  return (
+    <div>
+      <Hero></Hero>
+    </div>
+  );
 }

@@ -1,0 +1,68 @@
+.main-header.header-attached {
+  --head-text-color: var(--white);
+  --head-text-color-light: rgba(255, 255, 255, 0.7);
+  --head-text-inversion: black;
+}
+.main-header {
+  --head-text-color: black;
+  --head-text-color-light: rgba(0, 0, 0, 0.7);
+  --head-text-inversion: var(--white);
+}
+
+.header-attached .header-logo #safetrade_logo_full_text {
+  fill: var(--head-text-color);
+  transition: fill;
+  transition-duration: 300ms;
+}
+
+.main-header.header-attached {
+  color: var(--head-text-color);
+  transition: color;
+  transition-duration: 300ms;
+}
+
+.header-link {
+  color: var(--head-text-color-light);
+  transition: all;
+  transition-duration: 300ms;
+}
+.header-link.header-link-active,
+.header-link:hover {
+  color: var(--head-text-color);
+}
+.header-link:hover {
+  font-weight: 500;
+}
+
+.header-cta {
+  padding: 0.5rem 1rem;
+  border: var(--head-text-color) 1px solid;
+  color: var(--head-text-color);
+  background-color: transparent;
+  transition: all;
+  transition-duration: 300ms;
+}
+
+.header-cta:hover {
+  color: var(--head-text-inversion);
+  background-color: var(--head-text-color);
+}
+
+/* flex main-header absolute
+ top-0 z-[1] left-0
+   bg-white w-full 
+   justify-between gap-5 p-4 */
+.main-header {
+  position: fixed;
+  display: flex;
+  padding: 15px 20px;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  inset: 0;
+  height: 80px;
+  align-items: center;
+  z-index: 2;
+}

@@ -1,0 +1,50 @@
+@media (min-width: 885px) {
+  .hero-illustration {
+    right: -25vw;
+  }
+}
+@media (min-width: 998px) {
+  .hero-illustration {
+    right: -10vw;
+  }
+}
+@media (min-width: 1062px) {
+  .hero-illustration {
+    right: -5vw;
+  }
+}
+@media (min-width: 1242px) {
+  .hero-illustration img {
+    width: 630px;
+  }
+  .hero-illustration {
+    right: -5vw;
+  }
+}
+
+/* @media (min-width: 1454px) {
+  .hero-illustration: {
+    inset: auto auto auto 1100px;
+  }
+} */
+
+@keyframes levitate-animation {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0); /* Start position */
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+
+  50% {
+    transform: translateY(-10px) translateX(-5px); /* Mid position */
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.hero-illustration-inner {
+  animation: levitate-animation 6s linear 0ms infinite normal forwards;
+}

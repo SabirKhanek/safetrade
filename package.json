@@ -37,6 +37,7 @@
     "turbo": "^1.13.0"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.1",
     "@nestjs/serve-static": "^4.0.2",
     "@tanstack/react-query": "^4.32.6",
     "@tanstack/react-query-devtools": "^4.32.6",
@@ -50,7 +51,9 @@
     "dotenv": "^16.4.5",
     "dotenv-cli": "^7.4.1",
     "drizzle-orm": "^0.30.6",
+    "gsap": "^3.12.5",
     "lodash": "^4.17.21",
-    "pg": "^8.11.4"
+    "pg": "^8.11.4",
+    "react-icons": "^5.2.1"
   }
 }

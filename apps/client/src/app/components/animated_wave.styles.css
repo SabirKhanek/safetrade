@@ -1,0 +1,25 @@
+.wave-shape-divider {
+  display: flex;
+  width: 100%;
+  color: white;
+  width: 100vw;
+}
+
+@keyframes animated-wave-divider {
+  0% {
+    transform: translateX(-151vw);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+.wave-shape-divider.animated-wave {
+  animation: animated-wave-divider;
+  animation-direction: normal;
+  animation-timing-function: linear;
+  animation-duration: 10000ms;
+  will-change: transform;
+  animation-iteration-count: infinite;
+}
