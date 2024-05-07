@@ -38,8 +38,8 @@
   },
   "dependencies": {
     "@nestjs/serve-static": "^4.0.2",
-    "@tanstack/react-query": "^5.35.1",
-    "@tanstack/react-query-devtools": "^5.35.1",
+    "@tanstack/react-query": "^4.32.6",
+    "@tanstack/react-query-devtools": "^4.32.6",
     "@ts-rest/core": "^3.41.0",
     "@ts-rest/react-query": "^3.45.2",
     "@types/bcrypt": "^5.0.2",
