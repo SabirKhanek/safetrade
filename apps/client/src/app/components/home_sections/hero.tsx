@@ -36,7 +36,7 @@ export default function Hero() {
               Already in touch with buyer or seller?
             </h3>
             <Link href="#" className="italic text-sm font-light underline ">
-              Use safetrade's escrow service to secure your transaction
+              Use safetrade&apos;s escrow service to secure your transaction
             </Link>
           </div>
         </div>
