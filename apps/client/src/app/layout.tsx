@@ -25,7 +25,7 @@ export default function RootLayout({
             <NoSSR>
               <ReactQueryDevtools
                 initialIsOpen={false}
-                position="right"
+                position="top-right"
               ></ReactQueryDevtools>
             </NoSSR>
           </>

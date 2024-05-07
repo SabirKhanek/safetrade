@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <BrowserRouter>
         <>
           <App />
-          <ReactQueryDevtools position="right" />
+          <ReactQueryDevtools position="top-right" />
         </>
       </BrowserRouter>
     </QueryClientProvider>
