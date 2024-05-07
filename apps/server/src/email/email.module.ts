@@ -10,7 +10,7 @@ import { join } from 'path';
     MailerModule.forRootAsync({
       useFactory: async (config: ConfigService) => ({
         transport: {
-          host: 'smtp.gmail.com',
+          host: 'smtp.zoho.com',
           auth: {
             user: config.getOrThrow('email.user'),
             pass: config.getOrThrow('email.pass'),

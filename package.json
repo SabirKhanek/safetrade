@@ -1,7 +1,7 @@
 {
-  "name": "sourtechsystem",
+  "name": "safetrade",
   "version": "1.0.0",
-  "description": "Customized central system for SourTech",
+  "description": "Safetrade",
   "workspaces": [
     "apps/*",
     "packages/*"
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sabirkhanek/sourtechsystem.git"
+    "url": "git+https://github.com/sabirkhanek/safetrade.git"
   },
   "keywords": [
     "NestJS",
@@ -28,9 +28,9 @@
   "author": "devsabir",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sabirkhanek/sourtechsystem/issues"
+    "url": "https://github.com/sabirkhanek/safetrade/issues"
   },
-  "homepage": "https://github.com/sabirkhanek/sourtechsystem#readme",
+  "homepage": "https://github.com/sabirkhanek/safetrade#readme",
   "devDependencies": {
     "drizzle-kit": "^0.20.14",
     "tsx": "^4.7.1",

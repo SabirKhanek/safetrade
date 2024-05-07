@@ -50,7 +50,7 @@ export class UsersService {
     try {
       await this.mailer.sendMail(userObj.email, {
         template: 'welcome',
-        subject: 'Account credentials for Sourtech',
+        subject: 'Account credentials for Safetrade',
         templateArgs: {
           first_name: userObj.first_name,
           password: randomPassword,

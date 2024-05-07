@@ -20,7 +20,7 @@ export class InitRootUser implements OnApplicationBootstrap {
       const userCreated = await this.userService.createUser({
         email: rootEmail,
         first_name: 'Admin',
-        last_name: 'SourTech',
+        last_name: 'Safetrade',
       });
       console.log('User created', userCreated);
     }

@@ -22,4 +22,5 @@ export default () => ({
   development: process.env.NODE_ENV === 'development',
   jwt: process.env.JWT_SECRET,
   root_user: process.env.ROOT_USER,
+  host: process.env.ROOT_DOMAIN || 'safetrade.cloud',
 });
