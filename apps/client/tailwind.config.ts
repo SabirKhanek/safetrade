@@ -20,10 +20,10 @@ const config: Config = {
         primary: "var(--secondary)",
         secondary: "var(--secondary)",
       },
-    },
-    screens: {
-      ml: "425px",
-      xsm: "375px",
+      screens: {
+        ml: "425px",
+        xsm: "375px",
+      },
     },
   },
   plugins: [],
