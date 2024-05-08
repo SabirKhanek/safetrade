@@ -14,7 +14,9 @@
     transform: translate(0);
   }
 }
-
+.animated-wave-container {
+  transform: translateY(10px);
+}
 .wave-shape-divider.animated-wave {
   animation: animated-wave-divider;
   animation-direction: normal;

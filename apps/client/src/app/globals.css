@@ -7,11 +7,8 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
   --white: #ffffff;
-}
-
-.hero-text {
-  text-size: 48px;
-  font-size: clamp(32px, 4vw, 48px);
+  --primary: #9a00bd;
+  --secondary: #660099;
 }
 
 @layer utilities {
@@ -77,4 +74,3 @@ body {
   background-color: var(--color);
   color: var(--inverse);
 }
-

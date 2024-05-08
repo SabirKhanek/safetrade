@@ -13,6 +13,17 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      fontFamily: {
+        montesserat: "var(--font-montesserat)",
+      },
+      colors: {
+        primary: "var(--secondary)",
+        secondary: "var(--secondary)",
+      },
+    },
+    screens: {
+      ml: "425px",
+      xsm: "375px",
     },
   },
   plugins: [],
