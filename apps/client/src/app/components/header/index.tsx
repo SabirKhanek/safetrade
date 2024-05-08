@@ -5,7 +5,6 @@ import { SafetradeLogoFull } from "../logoFull";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { navlinks } from "./data/navlinks";
-import { HamButton } from "./ham-menu";
 import { Turn as Hamburger } from "hamburger-react";
 import { NavMenuFull } from "./nav-menu";
 
@@ -19,8 +18,8 @@ export default function Header() {
   return (
     <>
       <nav className="main-header header-attached">
-        <div className="main-header-left">
-          <div className="scale-[0.6] nav-ham-button translate-x-[-10px] border-[1.5px] border-[--head-text-color] rounded-lg">
+        <div className="main-header-left isolate relative">
+          <div className="scale-[0.6] z-[1] nav-ham-button translate-x-[-10px] border-[1.5px] border-[--head-text-color] rounded-lg">
             <Hamburger
               color="var(--head-text-color)"
               size={26}
@@ -30,9 +29,9 @@ export default function Header() {
               onToggle={() => setIsNavMenuOpened(!isNavMenuOpened)}
             ></Hamburger>
           </div>
-          <Link className="relative" href="/">
+          <Link className="relative z-0" href="/">
             <SafetradeLogoFull
-              className="header-logo"
+              className="header-logo -translate-x-[10px] ml:translate-x-0"
               height={44}
             ></SafetradeLogoFull>
           </Link>
@@ -51,7 +50,9 @@ export default function Header() {
               </Link>
             );
           })}
-          <button className="header-cta rounded-lg">Get Started</button>
+          <button className="header-cta hidden xsm:block rounded-lg">
+            Get Started
+          </button>
         </div>
       </nav>
       <NavMenuFull

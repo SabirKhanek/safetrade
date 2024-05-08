@@ -20,7 +20,7 @@ export function NavMenuFull({
       const tl = gsap.timeline();
       if (isOpened) {
         tl.set(navRef.current, {
-          top: 0,
+          height: "100%",
         });
         tl.to(navRef.current, {
           delay: 0.5,
@@ -49,7 +49,7 @@ export function NavMenuFull({
           opacity: "0",
         });
         tl.set(navRef.current, {
-          top: "-100vh",
+          height: "0%",
         });
       }
     },
@@ -58,7 +58,7 @@ export function NavMenuFull({
   return (
     <div
       ref={navRef}
-      className="fixed -top-full  text-white left-0 w-screen z-10 blur-bg h-screen nav-full"
+      className="fixed text-white left-0 w-screen z-10 blur-bg h-0 overflow-hidden nav-full"
     >
       <DisableScroll disabled={isOpened}></DisableScroll>
 
