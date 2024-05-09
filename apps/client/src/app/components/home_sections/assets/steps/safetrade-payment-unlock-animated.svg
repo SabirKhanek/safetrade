@@ -1,0 +1,248 @@
+<svg width="150px" id="safetrade_unlock-3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    viewBox="0 0 194 185" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
+    <style>
+        <![CDATA[
+        #safetrade_unlock-3-s-g1_to {
+            animation: safetrade_unlock-3-s-g1_to__to 1500ms linear infinite normal forwards;
+        }
+
+        @keyframes safetrade_unlock-3-s-g1_to__to {
+            0% {
+                transform: translate(102.601453px, 64.107428px);
+            }
+
+            33.333333% {
+                transform: translate(102.601453px, 72.422052px);
+            }
+
+            66.666667% {
+                transform: translate(102.601453px, 72.422052px);
+            }
+
+            100% {
+                transform: translate(102.601453px, 64.107428px);
+            }
+        }
+
+        #safetrade_unlock-3-s-g1_tr {
+            animation: safetrade_unlock-3-s-g1_tr__tr 1500ms linear infinite normal forwards;
+        }
+
+        @keyframes safetrade_unlock-3-s-g1_tr__tr {
+            0% {
+                transform: rotate(-3.432889deg);
+            }
+
+            33.333333% {
+                transform: rotate(5.688678deg);
+            }
+
+            66.666667% {
+                transform: rotate(5.688678deg);
+            }
+
+            100% {
+                transform: rotate(-3.432889deg);
+            }
+        }
+
+        #safetrade_unlock-3-u-vector_2_to {
+            animation: safetrade_unlock-3-u-vector_2_to__to 1500ms linear infinite normal forwards;
+        }
+
+        @keyframes safetrade_unlock-3-u-vector_2_to__to {
+            0% {
+                transform: translate(107.793598px, 40.7948px);
+            }
+
+            33.333333% {
+                transform: translate(107.305559px, 43.122732px);
+            }
+
+            66.666667% {
+                transform: translate(107.305559px, 43.122732px);
+            }
+
+            100% {
+                transform: translate(107.793598px, 40.7948px);
+            }
+        }
+
+        #safetrade_unlock-3-u-vector_2_tr {
+            animation: safetrade_unlock-3-u-vector_2_tr__tr 1500ms linear infinite normal forwards;
+        }
+
+        @keyframes safetrade_unlock-3-u-vector_2_tr__tr {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            33.333333% {
+                transform: rotate(3deg);
+            }
+
+            66.666667% {
+                transform: rotate(5.688678deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        #safetrade_unlock-3-s-g2_tr {
+            animation: safetrade_unlock-3-s-g2_tr__tr 1500ms linear infinite normal forwards;
+        }
+
+        @keyframes safetrade_unlock-3-s-g2_tr__tr {
+            0% {
+                transform: translate(54.852524px, 62.750933px) rotate(-2.656242deg);
+            }
+
+            33.333333% {
+                transform: translate(54.852524px, 62.750933px) rotate(6.186921deg);
+            }
+
+            66.666667% {
+                transform: translate(54.852524px, 62.750933px) rotate(6.186921deg);
+            }
+
+            100% {
+                transform: translate(54.852524px, 62.750933px) rotate(-2.656242deg);
+            }
+        }
+
+        #safetrade_unlock-3-u-vector_5_to {
+            animation: safetrade_unlock-3-u-vector_5_to__to 1500ms linear infinite normal forwards;
+        }
+
+        @keyframes safetrade_unlock-3-u-vector_5_to__to {
+            0% {
+                transform: translate(131.598423px, 109.302917px);
+            }
+
+            33.333333% {
+                transform: translate(125.850712px, 107.439105px);
+            }
+
+            66.666667% {
+                transform: translate(125.850712px, 107.439105px);
+            }
+
+            100% {
+                transform: translate(131.598423px, 109.302917px);
+            }
+        }
+
+        #safetrade_unlock-3-u-vector_5_tr {
+            animation: safetrade_unlock-3-u-vector_5_tr__tr 1500ms linear infinite normal forwards;
+        }
+
+        @keyframes safetrade_unlock-3-u-vector_5_tr__tr {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            33.333333% {
+                transform: rotate(8.229295deg);
+            }
+
+            66.666667% {
+                transform: rotate(8.229295deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        @keyframes rotate_outline {
+            0% {}
+
+            100% {
+                stroke-dashoffset: 480;
+            }
+        }
+
+        @keyframes lock_unlid_and_lid {
+
+            0% {
+                stroke-dashoffset: 0;
+            }
+
+            66.667% {
+                stroke-dashoffset: -10;
+            }
+
+            100% {
+                stroke-dashoffset: -10;
+            }
+        }
+
+        #safetrade_unlock-3-u-safetrade_unlock_outline {
+            animation: rotate_outline 20s linear infinite normal forwards;
+        }
+
+        #safetrade_unlock-3-u-vector_8 {
+            animation: lock_unlid_and_lid 1500ms linear infinite normal forwards;
+        }
+        ]]>
+    </style>
+    <g id="safetrade_unlock-3-u-safetrade_unlock">
+        <g id="safetrade_unlock-3-s-g1_to" transform="translate(102.601453,64.107428)">
+            <g id="safetrade_unlock-3-s-g1_tr" transform="rotate(-3.432889)">
+                <g id="safetrade_unlock-3-s-g1" transform="translate(-106.2243,-68.782349)">
+                    <path id="safetrade_unlock-3-u-vector"
+                        d="M81.6892,59.4847l42.6038-23.718l17.783,32.2564L82.5451,101.798L70.3726,80.736h16.7372c0,0,7.5128-1.4231,6.8471-11.0052s-12.2677-10.2461-12.2677-10.2461Z"
+                        fill="#8e08af" />
+                    <path id="safetrade_unlock-3-s-path1"
+                        d="M116.145,79.4978L99.0701,49.1947l1.9439-1.0899l17.074,30.3031-1.943,1.0899Zm-5.411-24.8806c-.818-1.1197-1.919-1.7275-3.304-1.8233s-2.812.2684-4.282,1.0924c-1.074.6026-1.916,1.3034-2.527,2.1025-.602.7947-.957,1.6222-1.0649,2.4823-.1001.8558.0678,1.6703.5039,2.4437.364.6471.832,1.117,1.402,1.4099.574.2804,1.193.4372,1.856.4703.659.0252,1.312-.0142,1.961-.1182.644-.1119,1.224-.2349,1.741-.3691l2.839-.7194c.725-.1887,1.557-.3541,2.496-.4963.947-.1467,1.918-.1668,2.913-.0605.999.094,1.952.4009,2.858.9207.907.5199,1.68,1.348,2.32,2.4844.739,1.3099,1.062,2.6864.97,4.1293-.083,1.4385-.605,2.8371-1.565,4.196-.953,1.3544-2.361,2.5545-4.226,3.6-1.738.9747-3.401,1.5386-4.988,1.6916-1.58.1486-3.016-.0744-4.307-.669-1.284-.5991-2.347-1.5349-3.188-2.8075l3.033-1.7013c.595.8711,1.33,1.4559,2.205,1.7544.879.2861,1.815.3426,2.809.1694.998-.1855,1.979-.5486,2.942-1.0891c1.122-.6291,2.027-1.3755,2.715-2.2391.684-.8716,1.102-1.781,1.255-2.7284.148-.9553-.027-1.8749-.525-2.7587-.454-.8049-1.048-1.3337-1.783-1.5862s-1.559-.3306-2.471-.2342c-.913.0964-1.863.2654-2.849.5072l-3.467.8224c-2.203.5188-4.142.5833-5.817.1935-1.6752-.3899-2.9731-1.4016-3.8935-3.0351-.7648-1.3573-1.0644-2.747-.8988-4.1692.169-1.4344.7198-2.7818,1.6524-4.0421.936-1.2726,2.1779-2.3431,3.7269-3.2115c1.564-.8772,3.113-1.3768,4.645-1.4988c1.528-.1299,2.919.0871,4.172.6512c1.261.5595,2.257,1.4398,2.985,2.6409l-2.844,1.5949Z"
+                        fill="#fff" />
+                </g>
+            </g>
+        </g>
+        <g id="safetrade_unlock-3-u-vector_2_to" transform="translate(107.793598,40.7948)">
+            <g id="safetrade_unlock-3-u-vector_2_tr" transform="rotate(0)">
+                <path id="safetrade_unlock-3-u-vector_2"
+                    d="M71.8942,58.3461h6.6568l42.794-30.7385l17.974,24.0975-4.28,3.6051l1.712,3.0359l6.942-6.1667-21.492-28.9359L71.8942,58.3461Z"
+                    transform="translate(-107.793598,-40.7948)" fill="#8e08af" />
+            </g>
+        </g>
+        <g id="safetrade_unlock-3-s-g2_tr" transform="translate(54.852524,62.750933) rotate(-2.656242)">
+            <g id="safetrade_unlock-3-s-g2" transform="translate(-54.852524,-62.750932)">
+                <path id="safetrade_unlock-3-u-vector_3"
+                    d="M34.5205,39.182c0,0,4.755,1.7077,14.1697-.8538c9.4147-2.6565,19.7804-2.4667,19.7804-2.4667s13.2186.8538,19.5901,3.8897L75.0323,50.9461h-3.9941L60.3872,61.0974l22.3481.8538c0,0,8.1784,1.8975,6.0862,8.918-2.0921,6.9256-5.0402,6.641-5.0402,6.641l-49.2608-.8538c0,0-4.2794-.4744-13.9794-11.4795c0,0,6.8471-24.0975,13.9794-25.9949Z"
+                    fill="#d00091" />
+                <path id="safetrade_unlock-3-u-vector_4"
+                    d="M42.0333,81.3052h27.198c-1.4264,2.182-2.7578,4.459-4.1843,6.641-1.6167,1.518-3.9941,2.0872-5.9912,1.4231-2.4725-.759-4.2794-3.2257-4.1843-5.9769c0,0-6.5617,6.641-10.1755,3.7-3.7088-3.0359-2.6627-5.7872-2.6627-5.7872Z"
+                    fill="#d00091" />
+            </g>
+        </g>
+        <g id="safetrade_unlock-3-u-vector_5_to" transform="translate(131.598423,109.302917)">
+            <g id="safetrade_unlock-3-u-vector_5_tr" transform="rotate(0)">
+                <path id="safetrade_unlock-3-u-vector_5"
+                    d="M173.744,87.0923c0,0-12.267-.5692-14.169-1.6128s-11.317-1.4231-11.317-1.4231L111.36,97.7179c0,0-5.896,2.9411-2.473,9.5821c3.519,6.641,9.605,3.32,9.605,3.32s11.507-5.312,13.98-4.079c0,0-6.087,5.882-12.934,7.115-6.847,1.234-8.559,3.511-8.559,3.511s-7.893-.854-14.3593-8.729c0,0-4.3745-2.276-7.5128,2.467-3.1382,4.744-2.7578,7.116-2.7578,7.116l19.7799,14.42c0,0,6.182,4.744,15.597,0c0,0,20.921-6.831,34.045-15.179c0,0,11.602-5.313,14.93-3.795s.285-.759.285-.759s11.127-25.0465,2.758-25.6157Z"
+                    transform="translate(-131.598423,-109.302917)" fill="#f9ceaf" />
+            </g>
+        </g>
+        <path id="safetrade_unlock-3-u-safetrade_unlock_outline"
+            d="M96.049,161.187c43.172,0,78.171-34.915,78.171-77.9845c0-43.0697-34.999-77.9846-78.171-77.9846-43.1724,0-78.1706,34.9149-78.1706,77.9846c0,43.0695,34.9982,77.9845,78.1706,77.9845Z"
+            fill="none" stroke="#8e08af" stroke-width="7" stroke-linecap="round" stroke-miterlimit="10"
+            stroke-dasharray="14,14" />
+        <g id="safetrade_unlock-3-u-safetrade_unlock_icon">
+            <g id="safetrade_unlock-3-u-group-14">
+                <path id="safetrade_unlock-3-u-vector_6"
+                    d="M97.6657,182.913c12.6573,0,22.9183-10.237,22.9183-22.864c0-12.628-10.261-22.864-22.9183-22.864-12.6576,0-22.9186,10.236-22.9186,22.864c0,12.627,10.261,22.864,22.9186,22.864Z"
+                    fill="#8e08af" />
+                <g id="safetrade_unlock-3-u-lock" transform="translate(.709453 2.502995)">
+                    <path id="safetrade_unlock-3-u-vector_7"
+                        d="M106.27,159.495v4.085c0,2.042-1.677,3.712-3.726,3.712h-11.1763c-2.049,0-3.7255-1.67-3.7255-3.712v-4.085c0-2.042,1.6765-3.712,3.7255-3.712h11.1763c2.049,0,3.726,1.67,3.726,3.712Z"
+                        fill="none" stroke="#fff" stroke-width="3" stroke-miterlimit="10" />
+                    <path id="safetrade_unlock-3-u-vector_8"
+                        d="M101.892,155.783v-4.177c0-2.042-1.77-3.806-3.8185-3.806h-1.4902c-2.1422,0-3.8187,1.764-3.8187,3.806v4.269"
+                        fill="none" stroke="#fff" stroke-width="3" stroke-miterlimit="10" stroke-dasharray="21.83" />
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

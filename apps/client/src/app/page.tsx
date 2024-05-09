@@ -2,7 +2,9 @@
 // import { TestClient } from "./testClient";
 
 import Hero from "./components/home_sections/hero";
+import { HowWeWork } from "./components/home_sections/how_we_work";
 import { IntroSection } from "./components/home_sections/intro";
+import { NotLimited } from "./components/home_sections/not_limited";
 
 export default async function Home() {
   // try {
@@ -29,6 +31,8 @@ export default async function Home() {
     <div>
       <Hero></Hero>
       <IntroSection />
+      <HowWeWork />
+      <NotLimited/>
     </div>
   );
 }

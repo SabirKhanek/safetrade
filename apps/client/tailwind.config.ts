@@ -21,6 +21,7 @@ const config: Config = {
         secondary: "var(--secondary)",
         white: "var(--white)",
         black: "var(--black)",
+        grey: "var(--grey)",
       },
       screens: {
         ml: "425px",
