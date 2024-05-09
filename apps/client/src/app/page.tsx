@@ -2,6 +2,7 @@
 // import { TestClient } from "./testClient";
 
 import Hero from "./components/home_sections/hero";
+import { IntroSection } from "./components/home_sections/intro";
 
 export default async function Home() {
   // try {
@@ -27,6 +28,7 @@ export default async function Home() {
   return (
     <div>
       <Hero></Hero>
+      <IntroSection />
     </div>
   );
 }

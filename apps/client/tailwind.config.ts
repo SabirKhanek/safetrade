@@ -17,8 +17,10 @@ const config: Config = {
         montesserat: "var(--font-montesserat)",
       },
       colors: {
-        primary: "var(--secondary)",
+        primary: "var(--primary)",
         secondary: "var(--secondary)",
+        white: "var(--white)",
+        black: "var(--black)",
       },
       screens: {
         ml: "425px",

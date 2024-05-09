@@ -7,8 +7,10 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
   --white: #ffffff;
-  --primary: #9a00bd;
-  --secondary: #660099;
+  --black: #000000;
+  --primary: #660099;
+  --secondary: #9a00bd;
+  --text-color: var(var(--black));
 }
 
 @layer utilities {
@@ -20,6 +22,7 @@
 body {
   margin: 0;
   padding: 0;
+  color: var(--black);
 }
 #hero_gradient {
   --gradient-color-1: #9a00bd;
@@ -73,4 +76,20 @@ body {
 .chip:hover {
   background-color: var(--color);
   color: var(--inverse);
+}
+
+.heading {
+  line-height: normal;
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.btn {
+  padding: 0.25rem 1.25rem;
+  border-radius: 1.5rem;
+}
+.btn.btn-primary {
+  color: var(--white);
+  background-color: var(--primary);
 }
