@@ -51,12 +51,13 @@ export function Footer({ children, ...props }: FooterProps) {
                 </Link>
               </p>
             </div>
-            {footerLinks.map((l) => {
+            {footerLinks.map((l, i) => {
               return (
-                <div className="flex flex-col min-w-36 gap-1">
+                <div key={i} className="flex flex-col min-w-36 gap-1">
                   {l.map((link, i) => {
                     return (
                       <Link
+                        key={i}
                         className="text-black/60 transition-all duration-300 hover:underline hover:text-black"
                         href={link.target}
                       >
