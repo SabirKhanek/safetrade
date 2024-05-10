@@ -18,7 +18,7 @@ export function NotLimited({ children, ...props }: NotLimitedProps) {
     >
       <div className="">
         <h2 className="heading">
-          SafeTrade isn't limited to digital assets. We facilitate secure
+          <span className="gradient-text">SafeTrade</span> isn't limited to digital assets. We facilitate secure
           transactions for tangible goods too.
         </h2>
         <p className="body-text my-3">

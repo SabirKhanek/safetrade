@@ -25,8 +25,8 @@ export function IntroSection({ ...props }: HTMLProps<HTMLElement>) {
       </div>
       <div className="order-1 md:order-last">
         <h2 className="heading">
-          Safetrade is your trusted platform for safe and secure online
-          transaction
+          <span className="gradient-text">Safetrade</span> is your trusted
+          platform for safe and secure online transaction
         </h2>
         <p className="body-text my-3">
           Whether you're buying or selling digital assets or services, Safetrade

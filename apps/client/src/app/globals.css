@@ -118,3 +118,33 @@ body {
 }
 .link:hover {
 }
+
+.gradient-text {
+  background: -webkit-linear-gradient(#eee, #333);
+  background-clip: text;
+  background: linear-gradient(
+    45deg,
+    #9a00bd 25%,
+    #c4009b 50%,
+    #d00091 75%,
+    #ffad6a 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient {
+  background: linear-gradient(
+    45deg,
+    #9a00bd 25%,
+    #c4009b 50%,
+    #d00091 75%,
+    #ffad6a 100%
+  );
+}
+
+.grey-blur {
+  background: rgba(241, 241, 241, 0.4);
+  backdrop-filter: blur(20.3px);
+  -webkit-backdrop-filter: blur(20.3px);
+}

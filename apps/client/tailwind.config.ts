@@ -19,8 +19,8 @@ const config: Config = {
       colors: {
         primary: "var(--primary)",
         secondary: "var(--secondary)",
-        white: "var(--white)",
-        black: "var(--black)",
+        "app-white": "var(--white)",
+        "app-black": "var(--black)",
         grey: "var(--grey)",
       },
       screens: {

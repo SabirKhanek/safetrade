@@ -6,6 +6,7 @@ import NoSSR from "./components/NoSSR";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { GSAPRegistrations } from "./components/gsap_config";
 import Header from "./components/header";
+import { Footer } from "./components/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 const montesserat = Montserrat({
@@ -40,6 +41,7 @@ export default function RootLayout({
               <GSAPRegistrations></GSAPRegistrations>
               <Header></Header>
               {children}
+              <Footer></Footer>
             </main>
 
             <NoSSR>

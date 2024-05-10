@@ -13,12 +13,11 @@ import Link from "next/link";
 import { FadeInSection } from "../fadein_section";
 export function HowWeWork() {
   return (
-    <FadeInSection
-      className="py-28 bg-grey"
-    >
+    <FadeInSection className="py-28 bg-grey">
       <div className="container">
         <h2 className="heading-small mx-auto max-w-2xl text-center">
-          How safetrade enables hassle free secure transactions?
+          How <span className="gradient-text">safetrade</span> enables hassle
+          free secure transactions?
         </h2>
         <p className="text-center mx-auto my-5 mb-10 max-w-3xl">
           Safetrade.cloud is the world's most secure payment method from a
