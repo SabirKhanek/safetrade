@@ -67,7 +67,7 @@
             }
 
             75% {
-                stop-color: #d00091;
+                stop-color: #D00091;
                 animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955)
             }
 
@@ -106,7 +106,7 @@
 
         @keyframes animate-grad-fill-3 {
             0% {
-                stop-color: #d00091;
+                stop-color: #D00091;
                 animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955)
             }
 
@@ -126,7 +126,7 @@
             }
 
             100% {
-                stop-color: #d00091;
+                stop-color: #D00091;
                 animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955)
             }
         }
@@ -138,7 +138,7 @@
             }
 
             25% {
-                stop-color: #d00091;
+                stop-color: #D00091;
                 animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955)
             }
 
@@ -187,7 +187,7 @@
                 gradientTransform="matrix(1 0 0 -1 0 396)">
                 <stop id="start-grad-fill-0" offset="0%" stop-color="#9a00bd" />
                 <stop id="start-grad-fill-1" offset="39.7%" stop-color="#c4009b" />
-                <stop id="start-grad-fill-2" offset="50.41%" stop-color="#d00091" />
+                <stop id="start-grad-fill-2" offset="50.41%" stop-color="#D00091" />
                 <stop id="start-grad-fill-3" offset="100%" stop-color="#ffad6a" />
             </linearGradient>
             <path id="logo-background"

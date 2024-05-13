@@ -13,7 +13,7 @@ import Link from "next/link";
 import { FadeInSection } from "../fadein_section";
 export function HowWeWork() {
   return (
-    <FadeInSection className="py-28 bg-grey">
+    <section className="py-28 bg-grey">
       <div className="container">
         <h2 className="heading-small mx-auto max-w-2xl text-center">
           How <span className="gradient-text">safetrade</span> enables hassle
@@ -44,17 +44,17 @@ export function HowWeWork() {
           Learn more about safetrade
         </Link>
       </div>
-    </FadeInSection>
+    </section>
   );
 }
 
 const steps = [
   {
-    illustration: buyer_search,
+    illustration: view_profile,
     text: "Buyer looks for a product or service on safetrade ",
   },
   {
-    illustration: view_profile,
+    illustration: buyer_search,
     text: "Buyer views our KYC  verified seller profile and offered product",
   },
   { illustration: payment_locked, text: "Buyer submits payment to Safetrade" },

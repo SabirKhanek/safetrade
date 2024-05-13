@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { HTMLProps } from "react";
 
 export function SafetradeLogoFull({ ...props }: HTMLProps<HTMLOrSVGElement>) {
@@ -31,7 +31,7 @@ export function SafetradeLogoFull({ ...props }: HTMLProps<HTMLOrSVGElement>) {
         >
           <stop offset="0" stopColor="#9a00bd" />
           <stop offset=".4" stopColor="#c3009a" />
-          <stop offset=".5" stopColor="#d00091" />
+          <stop offset=".5" stopColor="#D00091" />
           <stop offset="1" stopColor="#ffad6a" />
         </linearGradient>
         <filter id="drop-shadow-1" filterUnits="userSpaceOnUse">

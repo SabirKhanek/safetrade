@@ -19,8 +19,40 @@ export function Footer({ children, ...props }: FooterProps) {
       {/* <div className="h-[75%] absolute bottom-0 right-0 translate-y-1/2  gradient aspect-square -z-[1] blur-3xl translate-x-1/2 "></div>
       <div className="h-[75%] absolute top-0 left-0 -translate-y-1/2  gradient aspect-square -z-[1] blur-3xl -translate-x-1/2 "></div> */}
 
-      <div className="h-[75%] absolute bottom-0 left-0 translate-y-1/2  gradient aspect-square -z-[1] blur-3xl -translate-x-1/2 "></div>
-      <div className="h-[75%] absolute top-0 right-0 -translate-y-1/2  gradient aspect-square -z-[1] blur-3xl translate-x-1/2 "></div>
+      {/* <div className="h-[75%] absolute bottom-0 left-0 translate-y-1/2  gradient aspect-square -z-[1] blur-3xl -translate-x-1/2 "></div>
+      <div className="h-[75%] absolute top-0 right-0 -translate-y-1/2  gradient aspect-square -z-[1] blur-3xl translate-x-1/2 "></div> */}
+      <div className="absolute inset-0 top-0 left-0 flex justify-center items-center">
+        <svg
+          className="h-[90%] animate-[spin_10s_linear_infinite] "
+          viewBox="0 0 200 200"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style={{ stopColor: "var(--primary)" }} />
+              <stop offset="35%" style={{ stopColor: "var(--secondary)" }} />
+              <stop offset="100%" style={{ stopColor: "var(--accent)" }} />
+            </linearGradient>
+          </defs>
+          <path
+            fill="url(#gradient)"
+            d="M29.4,-58.6C36.9,-46.6,41.1,-36.3,50,-26.9C58.9,-17.4,72.6,-8.7,74.4,1C76.1,10.7,65.9,21.4,58,32.7C50.2,44.1,44.7,56,35.4,63.4C26.1,70.8,13.1,73.7,-1.3,76C-15.7,78.3,-31.4,79.9,-41,72.7C-50.7,65.5,-54.4,49.5,-62.4,35.9C-70.4,22.4,-82.7,11.2,-85.9,-1.9C-89.1,-14.9,-83.3,-29.8,-71.8,-37.3C-60.3,-44.7,-43.1,-44.8,-30.2,-53.7C-17.2,-62.6,-8.6,-80.3,1.2,-82.3C10.9,-84.3,21.9,-70.6,29.4,-58.6Z"
+            transform="matrix(1, 0, 0, 1, 100, 100)"
+          >
+            <animateTransform
+              type="rotate"
+              additive="sum"
+              attributeName="transform"
+              values="0;360"
+              begin="-0.1s"
+              dur="11.98s"
+              fill="freeze"
+              keyTimes="0; 1"
+              repeatCount="indefinite"
+            />
+          </path>
+        </svg>
+      </div>
 
       <div
         {...(props as any)}
@@ -36,7 +68,7 @@ export function Footer({ children, ...props }: FooterProps) {
               </p>
               <p className=" ">
                 <Link
-                  className="hover:text-black text-black/60 hover:underline"
+                  className="hover:text-black text-black/60"
                   href={"mailto:support@safetrade.cloud"}
                 >
                   support@safetrade.cloud
@@ -44,7 +76,7 @@ export function Footer({ children, ...props }: FooterProps) {
               </p>
               <p className=" ">
                 <Link
-                  className="hover:text-black text-black/60 hover:underline"
+                  className="hover:text-black text-black/60 "
                   href={"mailto:support@safetrade.cloud"}
                 >
                   DCS, Government College University
@@ -58,7 +90,7 @@ export function Footer({ children, ...props }: FooterProps) {
                     return (
                       <Link
                         key={i}
-                        className="text-black/60 transition-all duration-300 hover:underline hover:text-black"
+                        className="text-black/60 transition-all duration-300 hover:text-black"
                         href={link.target}
                       >
                         {link.name}

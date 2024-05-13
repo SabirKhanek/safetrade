@@ -10,7 +10,7 @@ export interface NotLimitedProps extends HTMLProps<HTMLElement> {
 
 export function NotLimited({ children, ...props }: NotLimitedProps) {
   return (
-    <FadeInSection
+    <section
       {...props}
       className={
         "py-24 container container-small grid gap-10 md:grid-cols-[6fr_4fr]"
@@ -45,6 +45,6 @@ export function NotLimited({ children, ...props }: NotLimitedProps) {
           ></Image>
         </div>
       </div>
-    </FadeInSection>
+    </section>
   );
 }

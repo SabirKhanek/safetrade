@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Montserrat } from "next/font/google";
+import { Inter, Montserrat, Poppins } from "next/font/google";
 import "./globals.css";
 import { ReactQueryClientProvider } from "./react-query-client";
 import NoSSR from "./components/NoSSR";
@@ -8,10 +8,16 @@ import { GSAPRegistrations } from "./components/gsap_config";
 import Header from "./components/header";
 import { Footer } from "./components/footer";
 
-const inter = Inter({ subsets: ["latin"] });
-const montesserat = Montserrat({
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const poppins = Poppins({
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-poppins",
   subsets: ["latin"],
-  variable: "--font-montesserat",
+});
+const montesserat = Montserrat({
+  weight: ["300", "700"],
+  subsets: ["latin"],
+  variable: "--font-montserrat",
 });
 
 export const metadata: Metadata = {
@@ -35,7 +41,9 @@ export default function RootLayout({
   return (
     <ReactQueryClientProvider>
       <html lang="en">
-        <body className={`${inter.className} ${montesserat.variable}`}>
+        <body
+          className={`${inter.variable} ${poppins.variable} ${montesserat.variable}`}
+        >
           <>
             <main>
               <GSAPRegistrations></GSAPRegistrations>

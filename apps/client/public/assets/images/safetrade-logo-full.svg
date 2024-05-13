@@ -21,7 +21,7 @@
       gradientTransform="translate(-.13 .89)" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#9a00bd" />
       <stop offset=".4" stop-color="#c3009a" />
-      <stop offset=".5" stop-color="#d00091" />
+      <stop offset=".5" stop-color="#D00091" />
       <stop offset="1" stop-color="#ffad6a" />
     </linearGradient>
     <filter id="drop-shadow-1" filterUnits="userSpaceOnUse">

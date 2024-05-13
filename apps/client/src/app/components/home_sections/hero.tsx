@@ -13,7 +13,7 @@ export default function Hero() {
         <Suspense fallback={<>loading...</>}>
           <GradientBg></GradientBg>
         </Suspense>
-        <div className="pt-48 pb-20 container relative font-montesserat z-2">
+        <div className="pt-48 pb-20 container relative font-montserrat z-2">
           <p className="hero-text leading-none text-5xl font-bold">
             <span>Get what you need,</span>
             <br />
@@ -32,9 +32,9 @@ export default function Hero() {
             ))}
           </ul>
           <div>
-            <h3 className="text font-semibold">
+            <p className="text font-semibold">
               Already in touch with buyer or seller?
-            </h3>
+            </p>
             <Link href="#" className="italic text-sm font-light underline ">
               Use safetrade&apos;s escrow service to secure your transaction
             </Link>

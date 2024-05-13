@@ -5,10 +5,9 @@ import { Button } from "../button";
 import intro_illustration from "./assets/safetrade-intro-illustration.png";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { FadeInSection } from "../fadein_section";
 export function IntroSection({ ...props }: HTMLProps<HTMLElement>) {
   return (
-    <FadeInSection
+    <section
       className={`${props.className || ""} intro-section pt-24 p-16 gap-10  container container-small  grid grid-cols-1 md:grid-cols-[40fr_60fr] `}
     >
       <div className="flex justify-center items-center order-2">
@@ -48,6 +47,6 @@ export function IntroSection({ ...props }: HTMLProps<HTMLElement>) {
 
         <Button className="mt-2">Join Now</Button>
       </div>
-    </FadeInSection>
+    </section>
   );
 }
