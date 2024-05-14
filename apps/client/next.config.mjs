@@ -11,6 +11,11 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    serverActions: {
+      allowedOrigins: ["safetrade.cloud"],
+    },
+  },
 };
 
 export default nextConfig;
