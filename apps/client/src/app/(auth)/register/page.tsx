@@ -31,7 +31,7 @@ export default function Register({
 
 function ChooseRegisterFlow() {
   return (
-    <div className="flex flex-col justify-between">
+    <div className="flex flex-col h-full gap-20 justify-between">
       <div>
         {/* Head */}
         <div>

@@ -47,13 +47,7 @@ export default function RootLayout({
           <>
             <main>
               <NextTopLoader
-                template={`
-                <div class="bar" role="bar">
-                  <div class="peg"></div>
-                </div> 
-                <div class="spinner" role="spinner">
-                  <div class="spinner-icon"></div>
-                </div>`}
+                height={4}
                 color="var(--accent)"
                 showSpinner
               ></NextTopLoader>

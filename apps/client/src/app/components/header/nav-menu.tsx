@@ -77,6 +77,7 @@ export function NavMenuFull({
               <li key={i} className="inline-block overflow-hidden py-1">
                 <NavlinkActive
                   href={link.route}
+                  onClick={() => setIsOpened(false)}
                   className={(isActive) =>
                     `${
                       isActive ? "text-white" : "text-white/65"

@@ -316,3 +316,7 @@ input[type="date"].muted-placeholder.date-input--has-value::-webkit-datetime-edi
 .trigger-element:focus + .hidden-element {
   display: block;
 }
+
+input[type="date"] {
+  -webkit-min-logical-width: calc(100% - 16px);
+}

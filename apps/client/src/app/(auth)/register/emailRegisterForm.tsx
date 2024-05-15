@@ -10,8 +10,8 @@ import { FaRegCircleXmark } from "react-icons/fa6";
 function getCurrentDateString() {
   const today = new Date();
   const year = today.getFullYear();
-  const month = today.getMonth() + 1;
-  const day = today.getDate();
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
   return [year, month, day].join("-");
 }
 
@@ -176,11 +176,15 @@ export function PasswordChecker({
             (result[check.desc]
               ? "text-green-400"
               : `${isError ? "text-red-400" : "text-text-300"}`) +
-            " text-sm transition-colors duration-300 flex gap-2 items-center "
+            " text-sm  transition-colors duration-300 flex gap-2 items-center "
           }
         >
-          {!result[check.desc] ? <FaRegCircleXmark /> : <FaRegCheckCircle />}
-          {check.desc}
+          {!result[check.desc] ? (
+            <FaRegCircleXmark className="shrink-0" />
+          ) : (
+            <FaRegCheckCircle />
+          )}
+          <span className="min-w-fit">{check.desc}</span>
         </li>
       ))}
     </ul>

@@ -5,6 +5,7 @@ import OffersSearch from "../components/offers_search";
 import Link from "next/link";
 import { Chip } from "../components/chip";
 import Image from "next/image";
+import hero_illustration from "./assets/hero-illustration.svg";
 import "./hero_styles.css";
 export default function Hero() {
   return (
@@ -46,9 +47,10 @@ export default function Hero() {
         <div className="absolute  hidden md:block md:-right-[30vw] top-1/2 -translate-y-[55%] right-[-5vw] 2xl:right-[5vw] hero-illustration">
           <div className="hero-illustration-inner">
             <Image
-              width={500}
-              src="/assets/images/hero-illustration.svg"
-              className=" responsive-hero-illustration !w-[500px] !h-auto"
+              src={hero_illustration.src}
+              width={hero_illustration.width}
+              height={hero_illustration.height}
+              className=" responsive-hero-illustration w-[500px] h-auto"
               alt=""
             />
           </div>
