@@ -1,9 +1,9 @@
 import { Suspense, useRef } from "react";
 import GradientBg from "./components/gradient_bg";
-import AnimatedWave from "../animated_wave";
-import OffersSearch from "../offers_search";
+import AnimatedWave from "../components/animated_wave";
+import OffersSearch from "../components/offers_search";
 import Link from "next/link";
-import { Chip } from "../chip";
+import { Chip } from "../components/chip";
 import Image from "next/image";
 import "./hero_styles.css";
 export default function Hero() {
@@ -45,9 +45,10 @@ export default function Hero() {
         </div>
         <div className="absolute  hidden md:block md:-right-[30vw] top-1/2 -translate-y-[55%] right-[-5vw] 2xl:right-[5vw] hero-illustration">
           <div className="hero-illustration-inner">
-            <img
+            <Image
+              width={500}
               src="/assets/images/hero-illustration.svg"
-              className=" responsive-hero-illustration w-[500px] h-auto"
+              className=" responsive-hero-illustration !w-[500px] !h-auto"
               alt=""
             />
           </div>

@@ -1,7 +1,7 @@
 "use client";
 import { HTMLProps, useRef } from "react";
 import "./categories_styles.css";
-import { FadeInSection } from "../fadein_section";
+import { FadeInSection } from "../components/fadein_section";
 import Link from "next/link";
 
 export interface CategoriesProps extends HTMLProps<HTMLElement> {
@@ -10,7 +10,7 @@ export interface CategoriesProps extends HTMLProps<HTMLElement> {
 
 export function Categories({ children, ...props }: CategoriesProps) {
   return (
-    <section className="bg-grey py-24">
+    <section className="bg-contrast py-24">
       <div className="container">
         {/* <div className="flex justify-between items-center mb-5"> */}
         <h2 className="heading text-center">
@@ -46,7 +46,9 @@ export function Categories({ children, ...props }: CategoriesProps) {
             </Link>
           ))}
         </div>
-        <div className="flex justify-center"><Button className=" mt-5">Discover More</Button></div>
+        <div className="flex justify-center">
+          <Button className=" mt-5">Discover More</Button>
+        </div>
       </div>
     </section>
   );
@@ -57,7 +59,7 @@ import freelance_illustration from "./assets/categories/freelance.png";
 import games_illustration from "./assets/categories/games.png";
 import domains_illustration from "./assets/categories/domains.png";
 import Image from "next/image";
-import { Button } from "../button";
+import { Button } from "../components/button";
 
 const categories = [
   {

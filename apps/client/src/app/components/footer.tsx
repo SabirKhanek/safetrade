@@ -68,7 +68,7 @@ export function Footer({ children, ...props }: FooterProps) {
               </p>
               <p className=" ">
                 <Link
-                  className="hover:text-black text-black/60"
+                  className="hover:text-black underline-effect text-black/60"
                   href={"mailto:support@safetrade.cloud"}
                 >
                   support@safetrade.cloud
@@ -76,7 +76,7 @@ export function Footer({ children, ...props }: FooterProps) {
               </p>
               <p className=" ">
                 <Link
-                  className="hover:text-black text-black/60 "
+                  className="hover:text-black underline-effect text-black/60 "
                   href={"mailto:support@safetrade.cloud"}
                 >
                   DCS, Government College University
@@ -104,13 +104,13 @@ export function Footer({ children, ...props }: FooterProps) {
           <div className="flex items-center  justify-between gap-10 flex-wrap">
             <ul className="flex gap-5 flex-wrap max-xsm:text-sm text-black/60">
               <li>&copy; 2024 Safetrade Market. All rights reserved.</li>
-              <li className="hover:text-black">
+              <li className="hover:text-black underline-effect">
                 <Link href="#">Terms of Service</Link>
               </li>
-              <li className="hover:text-black">
+              <li className="hover:text-black underline-effect">
                 <Link href="#">Privacy Policy</Link>
               </li>
-              <li className="hover:text-black">
+              <li className="hover:text-black underline-effect">
                 <Link href="#">DCMA</Link>
               </li>
             </ul>

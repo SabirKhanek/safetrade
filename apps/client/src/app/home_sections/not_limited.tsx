@@ -1,9 +1,9 @@
 import { HTMLProps } from "react";
-import { FadeInSection } from "../fadein_section";
+import { FadeInSection } from "../components/fadein_section";
 import not_limited_illustration from "./assets/not-limited-illustration.png";
 import Image from "next/image";
-import { Button } from "../button";
-import { AnimatedList } from "../animatedList";
+import { Button } from "../components/button";
+import { AnimatedList } from "../components/animatedList";
 export interface NotLimitedProps extends HTMLProps<HTMLElement> {
   children?: React.ReactNode;
 }
@@ -18,8 +18,9 @@ export function NotLimited({ children, ...props }: NotLimitedProps) {
     >
       <div className="">
         <h2 className="heading">
-          <span className="gradient-text">SafeTrade</span> isn't limited to digital assets. We facilitate secure
-          transactions for tangible goods too.
+          <span className="gradient-text">SafeTrade</span> isn't limited to
+          digital assets. We facilitate secure transactions for tangible goods
+          too.
         </h2>
         <p className="body-text my-3">
           Whether you're buying or selling digital assets or services, Safetrade

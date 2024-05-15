@@ -1,7 +1,7 @@
 "use client";
 import { OfferData } from "@/app/shared/types/offer";
 import "./css/offer_slide.css";
-import { OfferCard } from "../offer_card";
+import { OfferCard } from "../components/offer_card";
 import useEmblaCarousel from "embla-carousel-react";
 import { EmblaOptionsType, EmblaCarouselType } from "embla-carousel";
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";

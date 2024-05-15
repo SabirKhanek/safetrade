@@ -1,6 +1,6 @@
 import { black } from "cli-color";
 import type { Config } from "tailwindcss";
-
+import realtimeColors from "tailwind-plugin-realtime-colors";
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -19,97 +19,23 @@ const config: Config = {
         inter: "var(--font-inter)",
         montserrat: "var(--font-montserrat)",
       },
-      colors: {
-        primary: {
-          "50": "#fbf0fc",
-          "100": "#f5dff7",
-          "200": "#e9b4f0",
-          "300": "#d98ae6",
-          "400": "#bb3fd1",
-          "500": "#9a00bd",
-          DEFAULT: "#9a00bd",
-          "600": "#8600ab",
-          "700": "#65008c",
-          "800": "#490070",
-          "900": "#320054",
-          "950": "#1d0036",
-        },
-        secondary: {
-          "50": "#fffcff",
-          "100": "#fff7fe",
-          "200": "#ffedfd",
-          "300": "#fce1fa",
-          "400": "#fcccf6",
-          DEFAULT: "#fab7f0",
-          "600": "#e094d1",
-          "700": "#ba66a5",
-          "800": "#96427c",
-          "900": "#702553",
-          "950": "#470f2e",
-        },
-        accent: {
-          "50": "#fffdf2",
-          "100": "#fffae6",
-          "200": "#fff1bf",
-          "300": "#ffe699",
-          "400": "#ffc94d",
-          "500": "#ffa600",
-          DEFAULT: "#ffa600",
-          "600": "#e68e00",
-          "700": "#bf6c00",
-          "800": "#994f00",
-          "900": "#733600",
-          "950": "#4a1f00",
-        },
-        white: {
-          "50": "#ffffff",
-          "100": "#ffffff",
-          "200": "#ffffff",
-          "300": "#ffffff",
-          "400": "#fffdfc",
-          "500": "#fefbfb",
-          DEFAULT: "#fefbfb",
-          "600": "#e6cccc",
-          "700": "#bf8e8e",
-          "800": "#995a5a",
-          "900": "#733434",
-          "950": "#4a1515",
-        },
-        black: {
-          "50": "#f2e9ee",
-          "100": "#e8d8e0",
-          "200": "#c49fb0",
-          "300": "#a17084",
-          "400": "#5c2c39",
-          "500": "#140507",
-          DEFAULT: "#140507",
-          "600": "#120406",
-          "700": "#0f0304",
-          "800": "#0d0203",
-          "900": "#0a0102",
-          "950": "#050001",
-        },
-        grey: {
-          "50": "#ffffff",
-          "100": "#ffffff",
-          "200": "#fcfcfc",
-          "300": "#fafafa",
-          "400": "#f7f7f7",
-          "500": "#f5f5f5",
-          DEFAULT: "#f5f5f5",
-          "600": "#dbc5c5",
-          "700": "#b88a8a",
-          "800": "#945959",
-          "900": "#6e3131",
-          "950": "#471515",
-        },
-      },
+
       screens: {
         ml: "425px",
         xsm: "375px",
       },
     },
   },
-  plugins: [],
+  safelist: ["dark"],
+  darkMode: "class",
+  plugins: [
+    realtimeColors(
+      "https://www.realtimecolors.com/?colors=140507-fefbfb-9a00bd-fab7f0-ffa600&fonts=Inter-Poppins",
+      {
+        theme: true,
+        shades: ["text", "accent", "background", "primary", "secondary"],
+      }
+    ),
+  ],
 };
 export default config;

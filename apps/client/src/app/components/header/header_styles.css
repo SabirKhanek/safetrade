@@ -33,8 +33,6 @@
 .header-link.header-link-active,
 .header-link:hover {
   color: var(--head-text-color);
-}
-.header-link:hover {
   font-weight: 500;
 }
 

@@ -8,12 +8,12 @@ import buyer_approves from "./assets/steps/buyer-approved-animated.svg";
 import payment_released from "./assets/steps/safetrade-payment-unlock-animated.svg";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Button } from "../button";
+import { Button } from "../components/button";
 import Link from "next/link";
-import { FadeInSection } from "../fadein_section";
+import { FadeInSection } from "../components/fadein_section";
 export function HowWeWork() {
   return (
-    <section className="py-28 bg-grey">
+    <section className="py-28 bg-contrast">
       <div className="container">
         <h2 className="heading-small mx-auto max-w-2xl text-center">
           How <span className="gradient-text">safetrade</span> enables hassle
@@ -38,7 +38,7 @@ export function HowWeWork() {
           <Button className="mx-auto">Get Started</Button>
         </div>
         <Link
-          className="font-semibold text-primary uppercase text-sm hover:underline text-center block"
+          className="font-semibold w-fit mx-auto underline-effect text-primary uppercase text-sm #D00091 text-center block"
           href="/learn"
         >
           Learn more about safetrade

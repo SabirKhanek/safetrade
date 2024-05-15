@@ -71,7 +71,8 @@ export function OfferCard({
           {/* transparent gradient */}
           <div
             style={{
-              background: "linear-gradient(180deg, transparent, var(--white))",
+              background:
+                "linear-gradient(180deg, transparent, var(--background))",
             }}
             className="absolute bottom-0 w-full h-5 z-[2]"
           ></div>
@@ -121,7 +122,7 @@ export function OfferCard({
             <ChainedLinks
               limit={2}
               chain={categoryArray}
-              linkClass="text-black-300 hover:underline hover:text-black transition-colors duration-150"
+              linkClass="text-black-300 underline-effect hover:text-black transition-colors duration-150"
             />
           </div>
           <p className="text-sm min-h-20 line-clamp-4 px-3">

@@ -1,7 +1,7 @@
 .wave-shape-divider {
   display: flex;
   width: 100%;
-  color: white;
+  color: var(--background);
   width: 100vw;
 }
 

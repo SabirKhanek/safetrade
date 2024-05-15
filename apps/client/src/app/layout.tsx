@@ -7,7 +7,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { GSAPRegistrations } from "./components/gsap_config";
 import Header from "./components/header";
 import { Footer } from "./components/footer";
-
+import NextTopLoader from "nextjs-toploader";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700"],
@@ -46,6 +46,17 @@ export default function RootLayout({
         >
           <>
             <main>
+              <NextTopLoader
+                template={`
+                <div class="bar" role="bar">
+                  <div class="peg"></div>
+                </div> 
+                <div class="spinner" role="spinner">
+                  <div class="spinner-icon"></div>
+                </div>`}
+                color="var(--accent)"
+                showSpinner
+              ></NextTopLoader>
               <GSAPRegistrations></GSAPRegistrations>
               <Header></Header>
               {children}

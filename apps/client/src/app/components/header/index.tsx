@@ -7,17 +7,19 @@ import { useEffect, useState } from "react";
 import { navlinks } from "./data/navlinks";
 import { Turn as Hamburger } from "hamburger-react";
 import { NavMenuFull } from "./nav-menu";
-
+import { motion } from "framer-motion";
 export default function Header() {
   const pathname = usePathname();
   const [activeRoute, setActiveRoute] = useState("");
   const [isNavMenuOpened, setIsNavMenuOpened] = useState(false);
+  const needAttachRoutes = ["/"];
+  const needAttachment = needAttachRoutes.includes(pathname);
   useEffect(() => {
-    setActiveRoute(window.location.href);
+    setActiveRoute(window.location.pathname);
   }, [pathname]);
   return (
     <>
-      <nav className="main-header header-attached">
+      <nav className={`main-header ${needAttachment ? "header-attached" : ""}`}>
         <div className="main-header-left isolate relative">
           <div className="scale-[0.6] z-[1] nav-ham-button translate-x-[-10px] border-[1.5px] border-[--head-text-color] rounded-lg">
             <Hamburger
@@ -38,7 +40,7 @@ export default function Header() {
         </div>
         <div className="flex gap-5 items-center h-full header-links">
           {navlinks.map((link, index) => {
-            let isActive = activeRoute === pathname;
+            let isActive = activeRoute === link.route;
             const activeClass = isActive ? "header-link-active" : "";
             return (
               <Link
@@ -50,9 +52,12 @@ export default function Header() {
               </Link>
             );
           })}
-          <button className="header-cta hidden xsm:block rounded-lg">
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            className="header-cta hidden xsm:block rounded-lg"
+          >
             Get Started
-          </button>
+          </motion.button>
         </div>
       </nav>
       <NavMenuFull
