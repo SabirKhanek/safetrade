@@ -9,16 +9,15 @@
     "@anatine/zod-openapi": "^2.2.5",
     "@ts-rest/core": "^3.40.0",
     "@ts-rest/open-api": "^3.41.0",
+    "drizzle-orm": "^0.31.1",
     "typescript": "latest",
     "zod": "^3.22.4"
   },
   "scripts": {
-    "db:generate": "dotenv -- drizzle-kit generate:pg",
+    "db:generate": "dotenv -- drizzle-kit generate",
     "db:migrate": "dotenv -- tsx src/migrate",
     "dev": "tsc && drizzle-kit studio",
-    "build": "tsc"
-  },
-  "devDependencies": {
-    "drizzle-kit": "^0.20.17"
+    "build": "tsc",
+    "drizzle:studio": "drizzle-kit studio"
   }
 }

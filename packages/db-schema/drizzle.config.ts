@@ -6,7 +6,7 @@ let { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env;
 export default {
   schema: "./src/schema.ts",
   out: "./drizzle",
-  driver: "pg",
+  dialect: "postgresql",
   dbCredentials: {
     host: PGHOST!,
     database: PGDATABASE!,

@@ -5,23 +5,20 @@ export declare const userRouter: {
         body: z.ZodObject<{
             first_name: z.ZodString;
             email: z.ZodString;
+            role_group: z.ZodString;
             last_name: z.ZodString;
         }, "strip", z.ZodTypeAny, {
             email: string;
             first_name: string;
+            role_group: string;
             last_name: string;
         }, {
             email: string;
             first_name: string;
+            role_group: string;
             last_name: string;
         }>;
-        headers: z.ZodObject<{
-            authorization: z.ZodString;
-        }, "strip", z.ZodTypeAny, {
-            authorization: string;
-        }, {
-            authorization: string;
-        }>;
+        headers: z.ZodObject<{}, "strip", z.ZodTypeAny, {}, {}>;
         path: "/user/create";
         responses: {
             200: z.ZodObject<{

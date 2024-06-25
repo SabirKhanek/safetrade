@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>Login Alert</title>
+  </head>
+  <body>
+    <h1>Login Alert</h1>
+    <p>Dear user,</p>{{#isUndefined country_flag}}
+      <li><strong>Country Flag:</strong>
+        <img src='{{country_flag}}' alt='Country Flag' /></li>
+    {{/isUndefined}}
+    <p>A login attempt was made to your account with the following details:</p>
+    <ul>
+      <li><strong>IP Address:</strong> {{default ip 'Unknown IP'}}</li>
+      <li><strong>Country:</strong> {{default country 'Unknown Country'}}</li>
+      {{#if country_flag}}
+        <li><strong>Country Flag:</strong>
+          <img
+            width='16'
+            height='16'
+            src='{{country_flag}}'
+            alt='Country Flag'
+          /></li>
+      {{/if}}
+      <li><strong>Location:</strong>
+        {{default location 'Unknown Location'}}</li>
+      <li><strong>Time:</strong> {{default time 'Unknown Time'}}</li>
+      <li><strong>Timezone:</strong>
+        {{default timezone 'Unknown Timezone'}}</li>
+      <li><strong>Browser:</strong> {{default browser 'Unknown Browser'}}</li>
+      <li><strong>Operating System:</strong> {{default os 'Unknown OS'}}</li>
+    </ul>
+    <p>If this was not you, please contact our support team immediately.</p>
+    <p>Best regards,<br />Safetrade Systems</p>
+  </body>
+</html>

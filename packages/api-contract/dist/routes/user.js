@@ -13,6 +13,7 @@ exports.userRouter = c.router({
         body: zod_1.z.object({
             first_name: zod_1.z.string().min(1),
             email: zod_1.z.string().email("Must be a valid email").min(1),
+            role_group: zod_1.z.string(),
             last_name: zod_1.z.string().min(1),
         }),
         responses: {
@@ -22,6 +23,6 @@ exports.userRouter = c.router({
 }, {
     pathPrefix: "/user",
     baseHeaders: zod_1.z.object({
-        authorization: zod_1.z.string().min(1, "Authentication token is required"),
+    // authorization: z.string().min(1, "Authentication token is required"),
     }),
 });

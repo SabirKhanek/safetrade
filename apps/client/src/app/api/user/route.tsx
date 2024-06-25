@@ -1,6 +1,5 @@
 import { schema, getPoolConnection } from "db-schema";
 import { NextResponse } from "next/server";
-
 export async function GET() {
   const { db } = await getPoolConnection({ logging: true });
   const res = await db.query.user.findFirst();

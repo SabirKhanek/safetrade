@@ -1,0 +1,1 @@
+ALTER TABLE "system_user" ADD COLUMN "deleted_at" timestamp DEFAULT now();

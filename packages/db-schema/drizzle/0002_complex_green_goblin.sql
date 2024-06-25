@@ -1,0 +1,1 @@
+ALTER TABLE "system_user" ALTER COLUMN "deleted_at" SET DEFAULT NULL;

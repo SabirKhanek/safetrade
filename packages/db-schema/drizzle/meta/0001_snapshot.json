@@ -1,0 +1,462 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.audit_trail": {
+      "name": "audit_trail",
+      "schema": "",
+      "columns": {
+        "log_id": {
+          "name": "log_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "performed_by": {
+          "name": "performed_by",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "performer_deletion_snapshot": {
+          "name": "performer_deletion_snapshot",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "activity_data": {
+          "name": "activity_data",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "activity_name": {
+          "name": "activity_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp (3)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.role_group": {
+      "name": "role_group",
+      "schema": "",
+      "columns": {
+        "group_id": {
+          "name": "group_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "audit_trail_log_id": {
+          "name": "audit_trail_log_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "role_group_audit_trail_log_id_audit_trail_log_id_fk": {
+          "name": "role_group_audit_trail_log_id_audit_trail_log_id_fk",
+          "tableFrom": "role_group",
+          "columnsFrom": [
+            "audit_trail_log_id"
+          ],
+          "tableTo": "audit_trail",
+          "columnsTo": [
+            "log_id"
+          ],
+          "onUpdate": "no action",
+          "onDelete": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.system_permission": {
+      "name": "system_permission",
+      "schema": "",
+      "columns": {
+        "permission": {
+          "name": "permission",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "audit_trail_log_id": {
+          "name": "audit_trail_log_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "system_permission_audit_trail_log_id_audit_trail_log_id_fk": {
+          "name": "system_permission_audit_trail_log_id_audit_trail_log_id_fk",
+          "tableFrom": "system_permission",
+          "columnsFrom": [
+            "audit_trail_log_id"
+          ],
+          "tableTo": "audit_trail",
+          "columnsTo": [
+            "log_id"
+          ],
+          "onUpdate": "no action",
+          "onDelete": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.system_permission_control": {
+      "name": "system_permission_control",
+      "schema": "",
+      "columns": {
+        "permission": {
+          "name": "permission",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "uid": {
+          "name": "uid",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "group_id": {
+          "name": "group_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp (3)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "audit_trail_log_id": {
+          "name": "audit_trail_log_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "system_permission_control_permission_system_permission_permission_fk": {
+          "name": "system_permission_control_permission_system_permission_permission_fk",
+          "tableFrom": "system_permission_control",
+          "columnsFrom": [
+            "permission"
+          ],
+          "tableTo": "system_permission",
+          "columnsTo": [
+            "permission"
+          ],
+          "onUpdate": "no action",
+          "onDelete": "cascade"
+        },
+        "system_permission_control_uid_system_user_uid_fk": {
+          "name": "system_permission_control_uid_system_user_uid_fk",
+          "tableFrom": "system_permission_control",
+          "columnsFrom": [
+            "uid"
+          ],
+          "tableTo": "system_user",
+          "columnsTo": [
+            "uid"
+          ],
+          "onUpdate": "no action",
+          "onDelete": "cascade"
+        },
+        "system_permission_control_group_id_role_group_group_id_fk": {
+          "name": "system_permission_control_group_id_role_group_group_id_fk",
+          "tableFrom": "system_permission_control",
+          "columnsFrom": [
+            "group_id"
+          ],
+          "tableTo": "role_group",
+          "columnsTo": [
+            "group_id"
+          ],
+          "onUpdate": "no action",
+          "onDelete": "cascade"
+        },
+        "system_permission_control_audit_trail_log_id_audit_trail_log_id_fk": {
+          "name": "system_permission_control_audit_trail_log_id_audit_trail_log_id_fk",
+          "tableFrom": "system_permission_control",
+          "columnsFrom": [
+            "audit_trail_log_id"
+          ],
+          "tableTo": "audit_trail",
+          "columnsTo": [
+            "log_id"
+          ],
+          "onUpdate": "no action",
+          "onDelete": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "system_permission_control_permission_uid_group_id_pk": {
+          "name": "system_permission_control_permission_uid_group_id_pk",
+          "columns": [
+            "permission",
+            "uid",
+            "group_id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "public.system_user": {
+      "name": "system_user",
+      "schema": "",
+      "columns": {
+        "uid": {
+          "name": "uid",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "first_name": {
+          "name": "first_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "password_hash": {
+          "name": "password_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "last_name": {
+          "name": "last_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "role_group": {
+          "name": "role_group",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "access_tokens": {
+          "name": "access_tokens",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp (3)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "audit_trail_log_id": {
+          "name": "audit_trail_log_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "system_user_role_group_role_group_group_id_fk": {
+          "name": "system_user_role_group_role_group_group_id_fk",
+          "tableFrom": "system_user",
+          "columnsFrom": [
+            "role_group"
+          ],
+          "tableTo": "role_group",
+          "columnsTo": [
+            "group_id"
+          ],
+          "onUpdate": "no action",
+          "onDelete": "set null"
+        },
+        "system_user_audit_trail_log_id_audit_trail_log_id_fk": {
+          "name": "system_user_audit_trail_log_id_audit_trail_log_id_fk",
+          "tableFrom": "system_user",
+          "columnsFrom": [
+            "audit_trail_log_id"
+          ],
+          "tableTo": "audit_trail",
+          "columnsTo": [
+            "log_id"
+          ],
+          "onUpdate": "no action",
+          "onDelete": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "system_user_email_unique": {
+          "name": "system_user_email_unique",
+          "columns": [
+            "email"
+          ],
+          "nullsNotDistinct": false
+        }
+      }
+    },
+    "public.system_user_session": {
+      "name": "system_user_session",
+      "schema": "",
+      "columns": {
+        "session_id": {
+          "name": "session_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "system_uid": {
+          "name": "system_uid",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ip_address": {
+          "name": "ip_address",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "expire_at": {
+          "name": "expire_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "last_active": {
+          "name": "last_active",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "system_user_status",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp (3)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "system_user_session_system_uid_system_user_uid_fk": {
+          "name": "system_user_session_system_uid_system_user_uid_fk",
+          "tableFrom": "system_user_session",
+          "columnsFrom": [
+            "system_uid"
+          ],
+          "tableTo": "system_user",
+          "columnsTo": [
+            "uid"
+          ],
+          "onUpdate": "no action",
+          "onDelete": "cascade"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {
+    "public.system_user_status": {
+      "name": "system_user_status",
+      "schema": "public",
+      "values": [
+        "active",
+        "expired",
+        "logged_out"
+      ]
+    }
+  },
+  "schemas": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "id": "a1a577bd-6696-488b-9d88-3cdb8ff67882",
+  "prevId": "28f1ba92-e6d8-4bb0-8ca7-ff5ef0232681"
+}

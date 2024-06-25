@@ -18,7 +18,18 @@ import { join } from 'path';
         },
         template: {
           dir: join(__dirname, './templates'),
-          adapter: new HandlebarsAdapter(),
+          adapter: new HandlebarsAdapter({
+            default: function (value, defaultValue) {
+              return value != null ? value : defaultValue;
+            },
+            isUndefined: function (value, options) {
+              if (typeof value === 'undefined' || value === null) {
+                return options.fn(this); // Render the block if value is undefined or null
+              } else {
+                return options.inverse(this); // Render the inverse block if value is defined
+              }
+            },
+          }),
           options: { strict: true },
         },
         defaults: { from: config.getOrThrow('email.user') },

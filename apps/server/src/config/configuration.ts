@@ -21,6 +21,17 @@ export default () => ({
   },
   development: process.env.NODE_ENV === 'development',
   jwt: process.env.JWT_SECRET,
+  root_uid: process.env.ROOT_USER_UID,
+  root_user_group: process.env.ROOT_USER_GROUP,
   root_user: process.env.ROOT_USER,
-  host: process.env.ROOT_DOMAIN || 'safetrade.cloud',
+  root_domain: process.env.ROOT_DOMAIN,
+  host:
+    process.env.ROOT_DOMAIN || process.env.NODE_ENV === 'development'
+      ? 'localhost:3000'
+      : 'safetrade.cloud',
+  domain:
+    process.env.ROOT_DOMAIN || process.env.NODE_ENV === 'development'
+      ? 'localhost'
+      : 'safetrade.cloud',
+  api_ipgeo: process.env.API_IPGEO,
 });

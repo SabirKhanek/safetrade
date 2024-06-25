@@ -1,4 +1,6 @@
 // import { apiClient } from "../api-client";
+import { ScrollArea } from "@/components/ui/scroll-area";
+
 
 export function HomePage() {
   // const { data, isLoading } = apiClient.user.getAll.useQuery(["users"]);
@@ -8,5 +10,15 @@ export function HomePage() {
   //     {data?.body.map((u) => <div className="text-red-500">{u.username}</div>)}
   //   </ul>
   // );
-  return <>THIS WILL BE THE ADMIN SIDE</>;
+  return (
+    <ScrollArea className="h-full">
+      <div className="flex-1 space-y-4 p-4 pt-6 md:p-8">
+        <div className="flex items-center justify-between space-y-2">
+          <h2 className="text-3xl font-bold tracking-tight">
+            Hi, Welcome back 👋
+          </h2>
+        </div>
+      </div>
+    </ScrollArea>
+  );
 }

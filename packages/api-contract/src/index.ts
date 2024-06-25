@@ -2,21 +2,25 @@ import { extendZodWithOpenApi } from "@anatine/zod-openapi";
 import { initContract } from "@ts-rest/core";
 import { generateOpenApi } from "@ts-rest/open-api";
 import { coerce, z } from "zod";
-import { authRouter } from "./routes/auth";
-import { userRouter } from "./routes/user";
-
+import { systemAuthRouter } from "./routes/system_auth";
+import { systemUserRouter } from "./routes/system_user";
+import { userAuth } from "./routes/auth";
+import { otp } from "./routes/otp";
 extendZodWithOpenApi(z);
 
 const c = initContract();
 
 export const contract = c.router(
   {
-    user: userRouter,
-    auth: authRouter,
+    system_user: systemUserRouter,
+    system_auth: systemAuthRouter,
+    // accessctrl: undefined,
+    auth: userAuth,
+    otp: otp,
   },
   {
     pathPrefix: "/api",
-    strictStatusCodes: true,
+    strictStatusCodes: false,
     commonResponses: {
       404: c.type<{
         success: false;
@@ -35,6 +39,10 @@ export const contract = c.router(
   }
 );
 
-export const openApiDocument = generateOpenApi(contract, {
-  info: { title: "SafeTrade API", version: "0.0.0" },
-});
+export const openApiDocument = generateOpenApi(
+  contract,
+  {
+    info: { title: "SafeTrade API", version: "0.0.0" },
+  },
+  {}
+);
