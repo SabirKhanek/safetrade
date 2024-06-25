@@ -17,7 +17,7 @@ export class LocalStrategy extends PassportStrategy(Strategy, 'system-local') {
   async validate(req, username: string, password: string): Promise<any> {
     const ip = configuration().development
       ? '182.181.136.138'
-      : req.headers['x-forwarded-for'] || req.ip;
+      : req.ip || req.headers['x-real-ip'] || req.headers['x-forwarded-for'];
     const userAgent = req.headers['user-agent'];
     const user = await this.authService.authenticate(username, password, {
       ip_address: ip,
