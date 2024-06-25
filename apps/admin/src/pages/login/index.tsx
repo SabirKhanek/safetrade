@@ -31,7 +31,7 @@ export function Login() {
         <CardHeader>
           <Logo />
           <CardDescription className="text-2xl text-card-foreground font-medium">
-            Welcome to Sour System
+            Welcome to Safetrade Systems
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -134,7 +134,7 @@ function SmokeBlobsBackground() {
         <div className="bg-primary/40 blur-[120px] w-[80vw] rounded-full aspect-square "></div>
       </div>
       <div className="flex justify-center items-center">
-        <div className="bg-[hsla(216,45%,51%,0.44)] aspect-square w-[80vw] rounded-full blur-[120px] "></div>
+        <div className="bg-secondary/90 aspect-square w-[80vw] rounded-full blur-[120px] "></div>
       </div>
     </div>
   );

@@ -29,6 +29,7 @@ export const system_user = pgTable(
         email: text("email").notNull().unique(undefined),
         first_name: text("first_name").notNull(),
         password_hash: text("password_hash").notNull(),
+        avatar: text("avatar"),
         last_name: text("last_name").notNull(),
         role_group: text("role_group").references(() => role_group.group_id, {
           onDelete: "set null",

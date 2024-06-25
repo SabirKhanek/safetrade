@@ -33,7 +33,13 @@ exports.systemAuthRouter = c.router({
     getAuthUser: {
         path: "/me",
         method: "GET",
-        responses: { 200: zod_1.z.object({ success: zod_1.z.boolean() }) },
+        responses: {
+            200: zod_1.z.object({
+                success: zod_1.z.boolean(),
+                token: zod_1.z.string(),
+                user: zod_1.z.custom().openapi({ type: "object" }),
+            }),
+        },
     },
 }, {
     pathPrefix: "/system/auth",

@@ -20,7 +20,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { ColumnDef } from "@tanstack/react-table";
 import { ClientInferResponseBody } from "@ts-rest/core";
 import { contract } from "api-contract";
-import { DateFormat, GetPublicUrl} from "common";
+import { DateFormat, GetPublicUrl } from "common";
 import { format } from "date-fns";
 import { MoreHorizontal } from "lucide-react";
 import { useState } from "react";
@@ -91,10 +91,7 @@ export const columns: ColumnDef<UserTableData>[] = [
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="relative h-8 w-8 rounded-full">
               <Avatar className="h-8 w-8">
-                <AvatarImage
-                  src={creator.avatar}
-                  alt={creator.name}
-                />
+                <AvatarImage src={creator.avatar} alt={creator.name} />
                 <AvatarFallback>{creator.name[0]}</AvatarFallback>
               </Avatar>
             </Button>
@@ -184,7 +181,7 @@ export const columns: ColumnDef<UserTableData>[] = [
                           onClick={() => {
                             navigate(
                               Routes.AuditLogs +
-                                `/?log_id=${res.body.audit_log}`
+                                `?audit_ids=${res.body.audit_log}`
                             );
                           }}
                           altText="View in audit logs"

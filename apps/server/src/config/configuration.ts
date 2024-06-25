@@ -23,6 +23,7 @@ export default () => ({
   jwt: process.env.JWT_SECRET,
   root_uid: process.env.ROOT_USER_UID,
   root_user_group: process.env.ROOT_USER_GROUP,
+  root_user_pass: process.env.ROOT_USER_PASSWORD,
   root_user: process.env.ROOT_USER,
   root_domain: process.env.ROOT_DOMAIN,
   host:
@@ -34,4 +35,6 @@ export default () => ({
       ? 'localhost'
       : 'safetrade.cloud',
   api_ipgeo: process.env.API_IPGEO,
+  storage_bucket: process.env.STORAGE_BUCKET,
+  public_asset_prefix: process.env.PUBLIC_ASSET_PREFIX,
 });

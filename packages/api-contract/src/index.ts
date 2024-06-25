@@ -6,6 +6,8 @@ import { systemAuthRouter } from "./routes/system_auth";
 import { systemUserRouter } from "./routes/system_user";
 import { userAuth } from "./routes/auth";
 import { otp } from "./routes/otp";
+import { audit } from "./routes/audit";
+import { accessCtrl } from "./routes/accessctrl";
 extendZodWithOpenApi(z);
 
 const c = initContract();
@@ -14,6 +16,8 @@ export const contract = c.router(
   {
     system_user: systemUserRouter,
     system_auth: systemAuthRouter,
+    audit: audit,
+    accessctrl: accessCtrl,
     // accessctrl: undefined,
     auth: userAuth,
     otp: otp,

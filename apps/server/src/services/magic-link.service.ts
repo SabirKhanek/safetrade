@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { schema } from 'db-schema';
 import { and, eq } from 'drizzle-orm';
 import { DrizzleService } from 'src/drizzle.service';
-import { EmailService } from 'src/email/email.service';
-import { generateRandomMagicString } from 'src/utils';
+import { EmailService } from 'src/modules/email/email.service';
+import { generateRandomMagicString } from 'src/shared/utils';
 
 @Injectable()
 export class MagiclinkService {

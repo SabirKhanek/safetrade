@@ -8,7 +8,12 @@ export const Groups = {
 export const Permissions = {
   ReadUserPermissions: "read_user_permissions",
   UpdateUserPermissions: "update_user_permissions",
+  ReadGroupPermissions: "read_group_permissions",
+  UpdateGroupPermissions: "update_group_permissions",
   AddUsers: "add_user",
+  RemoveUser: "remove_user",
+  ListUsers: "list_users",
+  ReadAuditTrails: "read_audit_trails",
 } as const;
 
 export type GroupsType = (typeof Groups)[keyof typeof Groups];

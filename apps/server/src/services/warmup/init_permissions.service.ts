@@ -1,8 +1,7 @@
 import { Injectable, OnApplicationBootstrap } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { Groups, Permissions } from 'src/access-control/accessctrl.type';
+import { Groups, Permissions, areSetsEqual } from 'common';
 import { AccessCtrlService } from 'src/access-control/accessctrl.service';
-import { SystemUsersService } from 'src/system-users/users.service';
 
 @Injectable()
 export class InitPermissions implements OnApplicationBootstrap {
@@ -16,12 +15,19 @@ export class InitPermissions implements OnApplicationBootstrap {
     const permissions = new Set(Object.values(Permissions));
     const groups = new Set(Object.values(Groups));
 
-    await this.permissionService.addGroups(actor, groups);
-    await this.permissionService.addPermissions(actor, permissions);
-    await this.permissionService.addPermissionsInGroup(
-      actor,
-      root_user_group,
-      permissions,
-    );
+    const available =
+      await this.permissionService.getGroupPermissions(root_user_group);
+    let shouldCreate = false;
+    const root_permissions = available.get(root_user_group);
+    if (!areSetsEqual(root_permissions, permissions)) shouldCreate = true;
+    if (shouldCreate) {
+      await this.permissionService.addGroups(actor, groups);
+      await this.permissionService.addPermissions(actor, permissions);
+      await this.permissionService.addPermissionsInGroup(
+        actor,
+        root_user_group,
+        permissions,
+      );
+    }
   }
 }

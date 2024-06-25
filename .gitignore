@@ -5,3 +5,6 @@ node_modules
 package-lock.json
 .env.prod
 Diagrams\*
+*-key.json
+./uploads
+./cache

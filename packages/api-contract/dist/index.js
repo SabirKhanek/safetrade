@@ -9,11 +9,15 @@ var system_auth_1 = require("./routes/system_auth");
 var system_user_1 = require("./routes/system_user");
 var auth_1 = require("./routes/auth");
 var otp_1 = require("./routes/otp");
+var audit_1 = require("./routes/audit");
+var accessctrl_1 = require("./routes/accessctrl");
 (0, zod_openapi_1.extendZodWithOpenApi)(zod_1.z);
 var c = (0, core_1.initContract)();
 exports.contract = c.router({
     system_user: system_user_1.systemUserRouter,
     system_auth: system_auth_1.systemAuthRouter,
+    audit: audit_1.audit,
+    accessctrl: accessctrl_1.accessCtrl,
     // accessctrl: undefined,
     auth: auth_1.userAuth,
     otp: otp_1.otp,

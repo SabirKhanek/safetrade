@@ -15,9 +15,16 @@ export function Logo({
   }, [variant]);
   return (
     <div className="flex gap-2 items-center">
-      <img className={sizeClass} alt="Sourtech Logo" src="/sourtech_logo.png" />
-      <span className="min-w-fit whitespace-nowrap font-medium">
-        Sour System
+      <img
+        className={sizeClass}
+        alt="Safetrade Logo"
+        src="/safetrade-logo.svg"
+      />
+      <span
+        style={{ fontFamily: "Montserrat" }}
+        className="min-w-fit text-xl whitespace-nowrap font-medium"
+      >
+        Safetrade Systems
       </span>
     </div>
   );

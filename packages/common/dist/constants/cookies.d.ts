@@ -3,3 +3,8 @@ export declare enum Cookies {
     UserAuthCookie = "stu_at",
     UserState = "stu_st"
 }
+export declare enum LocalStorage {
+    UserState = "itu_st",
+    SystemUserState = "itu_st",
+    ThemeVar = "itsour-theme"
+}

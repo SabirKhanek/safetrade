@@ -1,3 +1,4 @@
+import { UserPayload } from "common";
 import { z } from "zod";
 export declare const systemAuthRouter: {
     login: {
@@ -42,10 +43,16 @@ export declare const systemAuthRouter: {
         responses: {
             200: z.ZodObject<{
                 success: z.ZodBoolean;
+                token: z.ZodString;
+                user: z.ZodType<UserPayload, z.ZodTypeDef, UserPayload>;
             }, "strip", z.ZodTypeAny, {
+                token: string;
                 success: boolean;
+                user: UserPayload;
             }, {
+                token: string;
                 success: boolean;
+                user: UserPayload;
             }>;
         };
     };

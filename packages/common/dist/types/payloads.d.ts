@@ -40,3 +40,16 @@ export interface SystemAuthPayload extends AuthPayload {
     };
     permissions?: PermissionsType[];
 }
+export interface UserPayload {
+    uid: string;
+    email: string;
+    first_name: string;
+    avatar: string | null;
+    last_name: string;
+    role_group: string;
+    created_at: string;
+    updated_at: string;
+    audit_trail_logs: string;
+    permissions: PermissionsType[];
+    authState: SystemAuthPayload;
+}

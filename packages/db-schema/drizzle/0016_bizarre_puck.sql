@@ -9,9 +9,9 @@ VALUES (1, 'Official ID', 1, '["National ID / Driving License"]')
 ON CONFLICT ("level") DO NOTHING; -- statement-endpoint
 
 INSERT INTO "kyc_level" ("level", "level_name", "order", "requirements") 
-VALUES (2, 'Face Verification', 1, '["Selfie Portrait with submission date"]') 
+VALUES (2, 'Face Verification', 2, '["Selfie Portrait with submission date"]') 
 ON CONFLICT ("level") DO NOTHING; -- statement-endpoint
 
 INSERT INTO "kyc_level" ("level", "level_name", "order", "requirements") 
-VALUES (3, 'Address Verification', 1, '["Any proof of residence verification (utility bills)"]') 
+VALUES (3, 'Address Verification', 3, '["Any proof of residence verification (utility bills)"]') 
 ON CONFLICT ("level") DO NOTHING; -- statement-endpoint

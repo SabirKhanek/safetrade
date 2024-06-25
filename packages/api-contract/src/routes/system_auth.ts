@@ -1,5 +1,6 @@
 import { extendZodWithOpenApi } from "@anatine/zod-openapi";
 import { initContract } from "@ts-rest/core";
+import { UserPayload } from "common";
 import { boolean } from "drizzle-orm/mysql-core";
 import { z } from "zod";
 extendZodWithOpenApi(z);
@@ -34,7 +35,13 @@ export const systemAuthRouter = c.router(
     getAuthUser: {
       path: "/me",
       method: "GET",
-      responses: { 200: z.object({ success: z.boolean() }) },
+      responses: {
+        200: z.object({
+          success: z.boolean(),
+          token: z.string(),
+          user: z.custom<UserPayload>().openapi({ type: "object" }),
+        }),
+      },
     },
   },
   {

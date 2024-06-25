@@ -3,10 +3,10 @@ import { schema } from 'db-schema';
 import { InferInsertModel, and, eq } from 'drizzle-orm';
 import configuration from 'src/config/configuration';
 import { DrizzleService } from 'src/drizzle.service';
-import { IpGeoResponse } from 'src/types/apis';
+import { IpGeoResponse } from 'src/shared/types/apis';
 import * as useragent from 'express-useragent';
 import { SessionAdditional, UserAuthChallenge } from 'common';
-import { EmailService } from 'src/email/email.service';
+import { EmailService } from 'src/modules/email/email.service';
 export interface SessionInfo {
   ip_address: string;
   useragent: string;

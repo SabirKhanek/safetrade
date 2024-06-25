@@ -32,3 +32,10 @@ export interface UserPreferences {
         }[];
     };
 }
+export type UserShortInfoType = {
+    email: string;
+    first_name: string;
+    last_name: string;
+    avatar: string;
+    user_uid: string;
+};

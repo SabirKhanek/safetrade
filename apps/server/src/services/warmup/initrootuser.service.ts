@@ -1,10 +1,7 @@
 import { Injectable, OnApplicationBootstrap } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { schema } from 'db-schema';
-import { eq, or, sql } from 'drizzle-orm';
-import { Groups } from 'src/access-control/accessctrl.type';
-import { DrizzleService } from 'src/drizzle.service';
-import { SystemUsersService } from 'src/system-users/users.service';
+import { Groups } from 'common';
+import { SystemUsersService } from 'src/modules/system-users/users.service';
 
 @Injectable()
 export class InitRootUser implements OnApplicationBootstrap {
@@ -32,6 +29,7 @@ export class InitRootUser implements OnApplicationBootstrap {
     } catch (err) {
       try {
         console.log("Admin user wasn't created");
+        console.log(this.configService.get('root_user_pass'));
       } catch (err) {}
       const userCreated = await this.userService.createUser(
         {
@@ -39,6 +37,8 @@ export class InitRootUser implements OnApplicationBootstrap {
           role_group: root_user_group,
           first_name: 'Admin',
           last_name: 'Safetrade',
+          password: this.configService.get('root_user_pass'),
+
           uid: root_uid,
         },
         root_uid,
