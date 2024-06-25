@@ -102,15 +102,16 @@ export const DropdownMenuAuditLogNav = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> & {
     inset?: boolean;
+    user_mail: string;
   }
->(({ className, inset, ...props }, ref) => {
-  const authState = useAuthState()
-  const navigate = useNavigate()
+>(({ className, user_mail, inset, ...props }, ref) => {
+  const authState = useAuthState();
+  const navigate = useNavigate();
   return (
     <DropdownMenuPrimitive.Item
       ref={ref}
       disabled={!authState.hasPermission(Permissions.ReadAuditTrails)}
-      onClick={() => navigate(Routes.AuditLogs + `?user=${authState?.user?.email}`)}
+      onClick={() => navigate(Routes.AuditLogs + `?user=${user_mail}`)}
       className={cn(
         "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         inset && "pl-8",

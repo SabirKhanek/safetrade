@@ -152,7 +152,9 @@ export const columns: ColumnDef<UserTableData>[] = [
                 Copy Email
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuAuditLogNav>View Audit Logs</DropdownMenuAuditLogNav>
+              <DropdownMenuAuditLogNav user_mail={user.email}>
+                View Audit Logs
+              </DropdownMenuAuditLogNav>
               <DropdownMenuItem onClick={() => setIsOpen(true)} className="">
                 Delete User
               </DropdownMenuItem>
