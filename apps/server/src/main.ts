@@ -13,6 +13,10 @@ async function bootstrap() {
     },
   });
   app.use(cookie_parser());
+  app.use((req, res, next) => {
+    req['x-forwarded-for'] = (req['x-forwarded-for'] || '').split(',').at(0);
+    next();
+  });
   // @ts-ignore
   app.set('trust proxy', 1);
   // app.enableCors();

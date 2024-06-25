@@ -30,7 +30,6 @@ export class SystemAuthController {
   ) {
     return tsRestHandler(contract.system_auth.login, async ({ body }) => {
       const token = await this.authService.signAuthPayload(req.systemUser);
-      console.log(process.env.ROOT_DOMAIN);
       res.cookie(Cookies.SystemAuthCookie, token, {
         httpOnly: true,
         domain: process.env.ROOT_DOMAIN,
@@ -47,7 +46,9 @@ export class SystemAuthController {
     @Req() req: Request,
   ) {
     return tsRestHandler(contract.system_auth.logout, async () => {
-      res.clearCookie(Cookies.SystemAuthCookie);
+      res.clearCookie(Cookies.SystemAuthCookie, {
+        domain: process.env.ROOT_DOMAIN,
+      });
       await this.sessionService.signOutSession(req.systemUser.session_id);
       return { status: HttpStatus.OK, body: { success: true } };
     });
