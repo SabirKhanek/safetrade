@@ -37,6 +37,7 @@ export const columns: ColumnDef<UserTableData>[] = [
       const url =
         row.getValue<UserTableData["avatar"]>("avatar") &&
         GetPublicUrl(row.getValue("avatar"));
+      console.log(url);
       return (
         <Avatar className="h-8 w-8">
           {url && <AvatarImage src={url} alt={row.getValue("first_name")} />}
