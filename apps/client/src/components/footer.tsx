@@ -29,9 +29,9 @@ export function Footer({ children, ...props }: FooterProps) {
         >
           <defs>
             <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style={{ stopColor: "var(--primary)" }} />
-              <stop offset="35%" style={{ stopColor: "var(--secondary)" }} />
-              <stop offset="100%" style={{ stopColor: "var(--accent)" }} />
+              <stop offset="0%" style={{ stopColor: "#ffa600" }} />
+              <stop offset="35%" style={{ stopColor: "#fab7f0" }} />
+              <stop offset="100%" style={{ stopColor: "accent: #ffa600" }} />
             </linearGradient>
           </defs>
           <path

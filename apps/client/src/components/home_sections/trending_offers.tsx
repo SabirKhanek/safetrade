@@ -1,16 +1,16 @@
-import { MockOffer } from "@/app/shared/constants/mock/offers";
-import { FadeInSection } from "../components/fadein_section";
-import { OfferCard, OfferCardProps } from "../components/offer_card";
+import { MockOffer } from "@/shared/constants/mock/offers";
+import { FadeInSection } from "../fadein_section";
+import { OfferCard, OfferCardProps } from "../offer_card";
 import { OfferSlide } from "./OfferSlide";
 import { fetchTrendingOffers } from "@/app/actions/fetchOffers";
 
-export async function InterestBasedOffers() {
+export async function TrendingOffers() {
   const offers = await fetchTrendingOffers({});
 
   return (
-    <section className=" py-24">
+    <section className="bg-contrast py-24">
       <h2 className="container heading mb-3">
-        Offers you may be <span className="gradient-text">interested</span> in
+        Trending <span className="gradient-text">offers</span> from our sellers
       </h2>
       <OfferSlide
         fetchOfferAction={fetchTrendingOffers}

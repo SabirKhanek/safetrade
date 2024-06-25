@@ -1,7 +1,7 @@
 "use client";
 import { HTMLProps } from "react";
-import { AnimatedList } from "../components/animatedList";
-import { Button } from "../components/button";
+import { AnimatedList } from "../animatedList";
+import { Button } from "../button";
 import intro_illustration from "./assets/safetrade-intro-illustration.png";
 import Image from "next/image";
 import { motion } from "framer-motion";

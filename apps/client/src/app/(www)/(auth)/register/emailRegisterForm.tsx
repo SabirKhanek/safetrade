@@ -2,8 +2,8 @@
 import { HTMLProps, useMemo } from "react";
 import * as Yup from "yup";
 import { Formik, Field } from "formik";
-import { Input } from "../../components/input";
-import { Button } from "@/app/components/button";
+import { Input } from "../../../../components/input";
+import { Button } from "@/components/button";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { FaRegCircleXmark } from "react-icons/fa6";
 

@@ -1,8 +1,8 @@
 "use server";
 
-import { MockOffer } from "../shared/constants/mock/offers";
-import { OfferData } from "../shared/types/offer";
-import { sleep } from "../shared/utils/misc";
+import { MockOffer } from "../../shared/constants/mock/offers";
+import { OfferData } from "../../shared/types/offer";
+import { sleep } from "../../shared/utils/misc";
 
 export interface FetchTrendingOffersParams {
   take?: number;

@@ -1,9 +1,9 @@
 import { HTMLProps } from "react";
-import { FadeInSection } from "../components/fadein_section";
+import { FadeInSection } from "../fadein_section";
 import not_limited_illustration from "./assets/not-limited-illustration.png";
 import Image from "next/image";
-import { Button } from "../components/button";
-import { AnimatedList } from "../components/animatedList";
+import { Button } from "../button";
+import { AnimatedList } from "../animatedList";
 export interface NotLimitedProps extends HTMLProps<HTMLElement> {
   children?: React.ReactNode;
 }

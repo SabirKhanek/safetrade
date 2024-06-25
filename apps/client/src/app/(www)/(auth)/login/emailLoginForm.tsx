@@ -2,10 +2,10 @@
 import { HTMLProps } from "react";
 import * as Yup from "yup";
 import { Formik, Field } from "formik";
-import { Input } from "../../components/input";
+import { Input } from "../../../../components/input";
 import Link from "next/link";
-import { Button } from "@/app/components/button";
-import { sleep } from "@/app/shared/utils/misc";
+import { Button } from "@/components/button";
+import { sleep } from "@/shared/utils/misc";
 const loginSchema = Yup.object({
   email: Yup.string().required().label("Email").email(),
   password: Yup.string().required().label("Password"),

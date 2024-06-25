@@ -1,4 +1,4 @@
-import { SearchParamsNames } from "@/app/shared/constants/param";
+import { SearchParamsNames } from "@/shared/constants/param";
 import Link from "next/link";
 import { IconButton } from "../components/icon_button";
 import {
@@ -8,13 +8,13 @@ import {
   FaFacebook,
   FaGoogle,
 } from "react-icons/fa6";
-import { Input } from "../../components/input";
+import { Input } from "../../../../components/input";
 import { EmailLogin } from "./emailLoginForm";
 import {
   LoginFlows,
   extractStrategyFromSearchParam,
-} from "@/app/shared/utils/authstrategies";
-import { SearchParamType } from "@/app/shared/types/misc";
+} from "@/shared/utils/authstrategies";
+import { SearchParamType } from "@/shared/types/misc";
 import { BackButton } from "../components/backbutton";
 
 export default function Login({

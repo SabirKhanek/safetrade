@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { Inter, Montserrat, Poppins } from "next/font/google";
-import "./globals.css";
-import { ReactQueryClientProvider } from "./react-query-client";
-import NoSSR from "./components/NoSSR";
+import "../styles/globals.css";
+import { ReactQueryClientProvider } from "../react-query-client";
+import NoSSR from "../components/NoSSR";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { GSAPRegistrations } from "./components/gsap_config";
-import Header from "./components/header";
-import { Footer } from "./components/footer";
+import { GSAPRegistrations } from "../components/gsap_config";
+import Header from "../components/header";
+import { Footer } from "../components/footer";
 import NextTopLoader from "nextjs-toploader";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const poppins = Poppins({
@@ -52,9 +52,7 @@ export default function RootLayout({
                 showSpinner
               ></NextTopLoader>
               <GSAPRegistrations></GSAPRegistrations>
-              <Header></Header>
               {children}
-              <Footer></Footer>
             </main>
 
             <NoSSR>

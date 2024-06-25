@@ -8,9 +8,9 @@ import buyer_approves from "./assets/steps/buyer-approved-animated.svg";
 import payment_released from "./assets/steps/safetrade-payment-unlock-animated.svg";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Button } from "../components/button";
+import { Button } from "../button";
 import Link from "next/link";
-import { FadeInSection } from "../components/fadein_section";
+import { FadeInSection } from "../fadein_section";
 export function HowWeWork() {
   return (
     <section className="py-28 bg-contrast">

@@ -26,13 +26,11 @@ const config: Config = {
       },
     },
   },
-  safelist: ["dark"],
-  darkMode: "class",
+
   plugins: [
     realtimeColors(
       "https://www.realtimecolors.com/?colors=140507-fefbfb-9a00bd-fab7f0-ffa600&fonts=Inter-Poppins",
       {
-        theme: true,
         shades: ["text", "accent", "background", "primary", "secondary"],
       }
     ),

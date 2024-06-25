@@ -11,6 +11,7 @@ import { SystemUserSessionService } from 'src/services/session.service';
 import { Cookies, PermissionsType, SystemAuthPayload } from 'common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectSystemUser } from './auth.decorator';
+import configuration from 'src/config/configuration';
 // TODO: Interceptor to clear cookies in 401
 @Controller()
 export class SystemAuthController {
@@ -29,10 +30,10 @@ export class SystemAuthController {
   ) {
     return tsRestHandler(contract.system_auth.login, async ({ body }) => {
       const token = await this.authService.signAuthPayload(req.systemUser);
-
+      console.log(process.env.ROOT_DOMAIN);
       res.cookie(Cookies.SystemAuthCookie, token, {
         httpOnly: true,
-        domain: this.configService.getOrThrow('domain'),
+        domain: process.env.ROOT_DOMAIN,
         expires: new Date(req.systemUser.exp),
       });
       return { status: HttpStatus.OK, body: { token: token } };
@@ -59,8 +60,6 @@ export class SystemAuthController {
     @InjectSystemUser() _user: SystemAuthPayload,
   ) {
     return tsRestHandler(contract.system_auth.getAuthUser, async () => {
-      // const token = headers.authorization;
-      // await this.authService.validateAuthToken(token);
       const user = await this.userService.getUser(req.systemUser.email);
 
       const obj = {

@@ -1,13 +1,13 @@
-import { SearchParamType } from "@/app/shared/types/misc";
+import { SearchParamType } from "@/shared/types/misc";
 import {
   LoginFlows,
   extractStrategyFromSearchParam,
-} from "@/app/shared/utils/authstrategies";
+} from "@/shared/utils/authstrategies";
 import { HTMLProps } from "react";
 import { BackButton } from "../components/backbutton";
 import Link from "next/link";
 import { IconButton } from "../components/icon_button";
-import { SearchParamsNames } from "@/app/shared/constants/param";
+import { SearchParamsNames } from "@/shared/constants/param";
 import { FaApple, FaEnvelope, FaFacebook, FaGoogle } from "react-icons/fa6";
 import { EmailRegister } from "./emailRegisterForm";
 

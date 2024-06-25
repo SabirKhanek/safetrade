@@ -15,7 +15,7 @@ export default function AuthLayout({
         <div
           style={{
             background:
-              "linear-gradient(180deg, var(--primary) 0%, #D00091 50%, #FFAD6A 100%)",
+              "linear-gradient(180deg, #9a00bd 0%, #D00091 50%, #FFAD6A 100%)",
           }}
           className="rounded-tl-xl  max-md:hidden rounded-bl-xl px-10 flex flex-col justify-between gap-6 relative pt-12"
         >

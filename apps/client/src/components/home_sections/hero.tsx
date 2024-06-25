@@ -1,9 +1,9 @@
 import { Suspense, useRef } from "react";
 import GradientBg from "./components/gradient_bg";
-import AnimatedWave from "../components/animated_wave";
-import OffersSearch from "../components/offers_search";
+import AnimatedWave from "../animated_wave";
+import OffersSearch from "../offers_search";
 import Link from "next/link";
-import { Chip } from "../components/chip";
+import { Chip } from "../chip";
 import Image from "next/image";
 import hero_illustration from "./assets/hero-illustration.svg";
 import "./hero_styles.css";
