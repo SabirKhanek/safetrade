@@ -18,7 +18,7 @@ exports.isValidUUID = isValidUUID;
 function GetPublicUrl(uri) {
     if (!uri)
         return "";
-    var asset_prefix = process.env.PUBLIC_ASSET_PREFIX;
+    var asset_prefix = process.env.PUBLIC_ASSET_PREFIX || "https://cdn.safetrade.cloud";
     return "".concat(asset_prefix, "/").concat(uri);
 }
 exports.GetPublicUrl = GetPublicUrl;

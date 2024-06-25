@@ -18,7 +18,8 @@ export function isValidUUID(uuid: string): boolean {
 
 export function GetPublicUrl(uri: string) {
   if (!uri) return "";
-  const asset_prefix = process.env.PUBLIC_ASSET_PREFIX;
+  const asset_prefix =
+    process.env.PUBLIC_ASSET_PREFIX || "https://cdn.safetrade.cloud";
   return `${asset_prefix}/${uri}`;
 }
 
