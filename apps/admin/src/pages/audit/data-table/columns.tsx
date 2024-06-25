@@ -3,7 +3,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { ClientInferResponseBody } from "@ts-rest/core";
 import { contract } from "api-contract";
 import { format } from "date-fns";
-import { DateFormat, GetPublicUrl, Permissions } from "common";
+import { DateFormat, Permissions } from "common";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 
@@ -25,6 +25,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useAuthState } from "@/components/providers/authstate-provider";
+import { GetPublicUrl } from "@/shared/utils";
 
 export type AuditTableData = ClientInferResponseBody<
   typeof contract.audit.getTrailDetails,

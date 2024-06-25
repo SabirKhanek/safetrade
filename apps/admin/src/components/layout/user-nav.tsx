@@ -14,7 +14,7 @@ import {
 import { useAuthState } from "../providers/authstate-provider";
 import { apiClient } from "@/api-client";
 import { useToast } from "../ui/use-toast";
-import { GetPublicUrl } from "common";
+import { GetPublicUrl } from "@/shared/utils";
 export function UserNav() {
   const session = useAuthState();
   const { toast } = useToast();
@@ -48,10 +48,6 @@ export function UserNav() {
             <DropdownMenuItem>
               Profile
               <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              Billing
-              <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
             </DropdownMenuItem>
             <DropdownMenuItem>
               Settings

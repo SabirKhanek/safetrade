@@ -16,11 +16,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/components/ui/use-toast";
+import { GetPublicUrl } from "@/shared/utils";
 import { useQueryClient } from "@tanstack/react-query";
 import { ColumnDef } from "@tanstack/react-table";
 import { ClientInferResponseBody } from "@ts-rest/core";
 import { contract } from "api-contract";
-import { DateFormat, GetPublicUrl } from "common";
+import { DateFormat } from "common";
 import { format } from "date-fns";
 import { MoreHorizontal } from "lucide-react";
 import { useState } from "react";
