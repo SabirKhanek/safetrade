@@ -1,7 +1,7 @@
 "use client";
 import { HTMLProps, useRef } from "react";
 import "./categories_styles.css";
-import { FadeInSection } from "../fadein_section";
+import { FadeInSection } from "../../components/fadein_section";
 import Link from "next/link";
 
 export interface CategoriesProps extends HTMLProps<HTMLElement> {
@@ -59,7 +59,7 @@ import freelance_illustration from "./assets/categories/freelance.png";
 import games_illustration from "./assets/categories/games.png";
 import domains_illustration from "./assets/categories/domains.png";
 import Image from "next/image";
-import { Button } from "../button";
+import { Button } from "../../components/button";
 
 const categories = [
   {

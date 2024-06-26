@@ -25,7 +25,9 @@ export class UserJwtAuthGuard extends AuthGuard('jwt') {
     }
     if (err) {
       const res: Response = context.switchToHttp().getResponse();
-      res.clearCookie(Cookies.UserAuthCookie);
+      res.clearCookie(Cookies.UserAuthCookie, {
+        domain: process.env.ROOT_DOMAIN,
+      });
       throw new UnauthorizedException();
     }
     return user;

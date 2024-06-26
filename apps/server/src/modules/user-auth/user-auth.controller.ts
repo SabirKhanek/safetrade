@@ -4,6 +4,7 @@ import {
   Logger,
   Req,
   Res,
+  UnauthorizedException,
   UseGuards,
 } from '@nestjs/common';
 import { TsRestHandler, tsRestHandler } from '@ts-rest/nest';
@@ -58,7 +59,7 @@ export class UserAuthController {
       const signedAuthPayload = this.authService.signPayload(authPayload);
       res.cookie(Cookies.UserAuthCookie, signedAuthPayload, {
         httpOnly: true,
-        domain: this.configService.getOrThrow('domain'),
+        domain: process.env.ROOT_DOMAIN,
         expires: new Date(authPayload.exp),
       });
       return {
@@ -72,6 +73,21 @@ export class UserAuthController {
     });
   }
 
+  @UseGuards(UserJwtAuthGuard)
+  @TsRestHandler(contract.auth.logout)
+  async logoutHandler(
+    @Res({ passthrough: true }) res: Response,
+    @Req() req: Request,
+  ) {
+    return tsRestHandler(contract.auth.logout, async () => {
+      res.clearCookie(Cookies.UserAuthCookie, {
+        domain: process.env.ROOT_DOMAIN,
+      });
+      await this.sessionService.signOutSession(req.user.session_id);
+      return { status: HttpStatus.OK, body: { success: true } };
+    });
+  }
+
   @TsRestHandler(contract.auth.login)
   @UseGuards(UserLocalAuthGuard)
   async handler(
@@ -82,10 +98,33 @@ export class UserAuthController {
       const token = this.authService.signPayload(req.user);
       res.cookie(Cookies.UserAuthCookie, token, {
         httpOnly: true,
-        domain: this.configService.getOrThrow('domain'),
+        domain: process.env.ROOT_DOMAIN,
         expires: new Date(req.user.exp),
       });
       return { status: HttpStatus.OK, body: { token: token } };
+    });
+  }
+
+  @TsRestHandler(contract.auth.me)
+  @UseGuards(UserLocalAuthGuard)
+  async MeHandler(@Req() req: Request) {
+    return tsRestHandler(contract.auth.me, async () => {
+      const user = req.user;
+      if (!user.email) throw new UnauthorizedException();
+      const userInfo = await this.userService.getUser(user.email);
+      return {
+        status: 200,
+        body: {
+          authState: user,
+          avatar: userInfo.avatar,
+          created_at: userInfo.joined_at.toISOString(),
+          email: userInfo.email,
+          first_name: userInfo.first_name,
+          last_name: userInfo.last_name,
+          uid: userInfo.uid,
+          updated_at: new Date().toISOString(),
+        },
+      };
     });
   }
 
@@ -115,7 +154,7 @@ export class UserAuthController {
       this.logger.debug('setting auth cookie');
       res.cookie(Cookies.UserAuthCookie, token, {
         httpOnly: true,
-        domain: this.configService.getOrThrow('domain'),
+        domain: process.env.ROOT_DOMAIN,
         expires: new Date(req.user.exp),
       });
 

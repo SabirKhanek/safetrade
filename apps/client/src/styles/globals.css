@@ -47,7 +47,6 @@
 
     --radius: 0.5rem;
   }
-  
 }
 
 @layer utilities {
@@ -221,10 +220,10 @@ h5 {
 }
 .btn.btn-primary {
   color: var(--white);
-  background-color: var(--primary);
+  background-color: hsl(var(--primary));
 }
 .btn.btn-primary:hover:not([disabled]) {
-  box-shadow: 0 20px 80px -10px var(--primary);
+  box-shadow: 0 20px 80px -10px hsl(var(--primary));
 }
 .btn:hover:not([disabled]) {
   transform: translateY(-3px);

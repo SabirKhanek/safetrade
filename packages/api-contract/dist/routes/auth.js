@@ -37,6 +37,13 @@ exports.userAuth = c.router({
             200: zod_1.z.object({ success: zod_1.z.boolean(), message: zod_1.z.string() }),
         },
     },
+    logout: {
+        path: "/logout",
+        method: "GET",
+        responses: {
+            200: zod_1.z.object({ success: zod_1.z.boolean() }),
+        },
+    },
     login: {
         path: "/basic",
         method: "POST",
@@ -53,7 +60,7 @@ exports.userAuth = c.router({
     me: {
         method: "GET",
         path: "/me",
-        responses: { 200: zod_1.z.object(__assign({}, common_1.commonZodResponse)) },
+        responses: { 200: zod_1.z.custom().openapi({ type: "object" }) },
     },
     completeChallenge: {
         path: "/challenge",

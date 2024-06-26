@@ -1,12 +1,23 @@
 "use client";
-import { HTMLProps, useMemo } from "react";
+import {
+  Dispatch,
+  HTMLProps,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import * as Yup from "yup";
 import { Formik, Field } from "formik";
 import { Input } from "../../../../components/input";
 import { Button } from "@/components/button";
+import { Button as ShadCnButton } from "@/components/ui/button";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { FaRegCircleXmark } from "react-icons/fa6";
 
+import OtpDialog from "@/components/otp-dialog";
 function getCurrentDateString() {
   const today = new Date();
   const year = today.getFullYear();
@@ -33,6 +44,14 @@ const RegisterSchema = Yup.object({
     .label("Date of Birth"),
 });
 
+interface FormValues {
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  dob?: string;
+}
+
 export interface EmailRegisterProps extends HTMLProps<HTMLElement> {}
 
 export function EmailRegister() {
@@ -40,115 +59,145 @@ export function EmailRegister() {
     return getCurrentDateString();
   }, []);
   const minDay = "1800-01-01";
+  const [open, setOpen] = useState<boolean>(false);
+  const [verifiedToken, setVerifiedToken] = useState<string | null>(null);
+  const [formValues, setFormValues] = useState<FormValues | null>(null);
+
+  const handleOtpVerified = useCallback(
+    (token: string) => {
+      setVerifiedToken(token);
+      // Submit the form with the stored values
+      if (formValues) {
+        submitForm(formValues);
+      }
+    },
+    [formValues]
+  );
+
+  const submitForm = async (values: FormValues) => {
+    // Replace with your form submission logic
+    console.log("Form submitted with values:", values);
+    console.log("Verified token:", verifiedToken);
+  };
   return (
-    <Formik
-      initialValues={{
-        email: "",
-        password: "",
-        firstName: "",
-        lastName: "",
-        dob: undefined,
-      }}
-      onSubmit={(values, { setSubmitting }) => {
-        console.log(values);
-        setTimeout(() => {
+    <>
+      <Formik
+        initialValues={{
+          email: "",
+          password: "",
+          firstName: "",
+          lastName: "",
+          dob: undefined,
+        }}
+        onSubmit={(values, { setSubmitting }) => {
+          setFormValues(values); // Store form values in state
+          setOpen(true); // Open the OTP dialog
           setSubmitting(false);
-        }, 3000);
-      }}
-      validationSchema={RegisterSchema}
-    >
-      {(props) => {
-        const {
-          values,
-          isSubmitting,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          errors,
-          dirty,
-          touched,
-        } = props;
-        return (
-          <form onSubmit={handleSubmit}>
-            <Field
-              label="First Name"
-              name="firstName"
-              component={Input}
-              placeholder="Enter your name"
-              value={values.firstName}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              disabled={isSubmitting}
-            />
+        }}
+        validationSchema={RegisterSchema}
+      >
+        {(props) => {
+          const {
+            values,
+            isSubmitting,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            errors,
+            dirty,
+            touched,
+          } = props;
+          return (
+            <form onSubmit={handleSubmit}>
+              {!dirty && (
+                <OtpDialog
+                  email={values.email}
+                  open={open}
+                  onVerified={handleOtpVerified}
+                  setOpen={setOpen}
+                ></OtpDialog>
+              )}
 
-            <Field
-              label="Last Name"
-              name="lastName"
-              component={Input}
-              placeholder="Enter your last name"
-              value={values.lastName}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              disabled={isSubmitting}
-            />
+              <Field
+                label="First Name"
+                name="firstName"
+                component={Input}
+                placeholder="Enter your name"
+                value={values.firstName}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                disabled={isSubmitting}
+              />
 
-            <Field
-              label="Email"
-              name="email"
-              component={Input}
-              placeholder="Enter your email"
-              value={values.email}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              disabled={isSubmitting}
-            />
+              <Field
+                label="Last Name"
+                name="lastName"
+                component={Input}
+                placeholder="Enter your last name"
+                value={values.lastName}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                disabled={isSubmitting}
+              />
 
-            <Field
-              label="Date of Birth"
-              name="dob"
-              type="date"
-              disabled={isSubmitting}
-              min={minDay}
-              max={today}
-              placeholder="mm/dd/yyyy"
-              component={Input}
-              className="muted-placeholder date-input--has-value"
-              value={values.dob}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
+              <Field
+                label="Email"
+                name="email"
+                component={Input}
+                placeholder="Enter your email"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                disabled={isSubmitting}
+              />
 
-            <Field
-              label="Password"
-              name="password"
-              type="password"
-              disabled={isSubmitting}
-              isGood={errors.password ? false : touched.password && true}
-              placeholder="Enter your password"
-              component={Input}
-              value={values.password}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
+              <Field
+                label="Date of Birth"
+                name="dob"
+                type="date"
+                disabled={isSubmitting}
+                min={minDay}
+                max={today}
+                placeholder="mm/dd/yyyy"
+                component={Input}
+                className="muted-placeholder date-input--has-value"
+                value={values.dob}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
 
-            <PasswordChecker
-              isError={errors.password ? true : false}
-              password={values.password}
-            />
+              <Field
+                label="Password"
+                name="password"
+                type="password"
+                disabled={isSubmitting}
+                isGood={errors.password ? false : touched.password && true}
+                placeholder="Enter your password"
+                component={Input}
+                value={values.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
 
-            <Button
-              isLoading={isSubmitting}
-              disabled={Object.keys(errors).length > 1}
-              disableOnLoading
-              className="w-full my-3"
-              type="submit"
-            >
-              Register
-            </Button>
-          </form>
-        );
-      }}
-    </Formik>
+              <PasswordChecker
+                isError={errors.password ? true : false}
+                password={values.password}
+              />
+
+              <Button
+                isLoading={isSubmitting}
+                disabled={Object.keys(errors).length > 1}
+                disableOnLoading
+                className="w-full my-3 bg-primary"
+                type="submit"
+              >
+                Register
+              </Button>
+            </form>
+          );
+        }}
+      </Formik>
+    </>
   );
 }
 

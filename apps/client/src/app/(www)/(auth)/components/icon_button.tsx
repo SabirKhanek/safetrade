@@ -13,7 +13,7 @@ export function IconButton({ icon, children, ...props }: IconButtonProps) {
     <motion.button
       whileTap={{ scale: 0.95 }}
       {...(props as any)}
-      className={`${props.className || ""} flex items-center w-full border font-medium rounded-lg transition-colors duration-300  justify-center padded-button border-text-500 text-text-500 hover:text-background-500 hover:bg-text-500 bg-transparent `}
+      className={`${props.className || ""} flex items-center w-full border font-medium rounded-lg transition-colors duration-300  justify-center padded-button border-text-500 text-text-500 hover:text-background hover:bg-foreground bg-transparent `}
     >
       <div className="min-w-16 flex whitespace-nowrap justify-start items-center gap-2">
         {icon}

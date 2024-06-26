@@ -20,7 +20,7 @@ export class SystemJwtAuthGuard extends AuthGuard('system-jwt') {
     }
     if (err || !req.systemUser) {
       const res: Response = context.switchToHttp().getResponse();
-      res.clearCookie(Cookies.SystemAuthCookie);
+      res.clearCookie(Cookies.SystemAuthCookie, {domain: process.env.ROOT_DOMAIN});
       this.logger.debug('Authentication failed');
 
       throw new UnauthorizedException();

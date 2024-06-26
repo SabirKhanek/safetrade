@@ -5,9 +5,11 @@ import { ReactQueryClientProvider } from "../react-query-client";
 import NoSSR from "../components/NoSSR";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { GSAPRegistrations } from "../components/gsap_config";
-import Header from "../components/header";
-import { Footer } from "../components/footer";
+
 import NextTopLoader from "nextjs-toploader";
+import { AuthStateProvider } from "@/components/providers/authstate-provider";
+import { ThemeProvider } from "@/components/providers/theme-provider";
+import { Toaster } from "@/components/ui/toaster";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700"],
@@ -39,31 +41,35 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ReactQueryClientProvider>
-      <html lang="en">
-        <body
-          className={`${inter.variable} ${poppins.variable} ${montesserat.variable}`}
-        >
-          <>
-            <main>
-              <NextTopLoader
-                height={4}
-                color="var(--accent)"
-                showSpinner
-              ></NextTopLoader>
-              <GSAPRegistrations></GSAPRegistrations>
-              {children}
-            </main>
-
-            <NoSSR>
-              <ReactQueryDevtools
-                initialIsOpen={false}
-                position="bottom-left"
-              ></ReactQueryDevtools>
-            </NoSSR>
-          </>
-        </body>
-      </html>
-    </ReactQueryClientProvider>
+    <ThemeProvider>
+      <ReactQueryClientProvider>
+        <AuthStateProvider>
+          <html lang="en">
+            <body
+              className={`${inter.variable} ${poppins.variable} ${montesserat.variable}`}
+            >
+              <>
+                <main>
+                  <NextTopLoader
+                    height={4}
+                    color="hsl(var(--primary))"
+                    showSpinner
+                  ></NextTopLoader>
+                  <GSAPRegistrations></GSAPRegistrations>
+                  {children}
+                </main>
+                <Toaster></Toaster>
+                <NoSSR>
+                  <ReactQueryDevtools
+                    initialIsOpen={false}
+                    position="bottom-left"
+                  ></ReactQueryDevtools>
+                </NoSSR>
+              </>
+            </body>
+          </html>
+        </AuthStateProvider>
+      </ReactQueryClientProvider>
+    </ThemeProvider>
   );
 }

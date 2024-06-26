@@ -2,6 +2,7 @@ import { extendZodWithOpenApi } from "@anatine/zod-openapi";
 import { initContract } from "@ts-rest/core";
 import { z } from "zod";
 import { commonZodResponse, otpHeader } from "../utils/common";
+import { PublicUserPayload } from "common";
 extendZodWithOpenApi(z);
 
 const c = initContract();
@@ -29,6 +30,13 @@ export const userAuth = c.router(
         200: z.object({ success: z.boolean(), message: z.string() }),
       },
     },
+    logout: {
+      path: "/logout",
+      method: "GET",
+      responses: {
+        200: z.object({ success: z.boolean() }),
+      },
+    },
     login: {
       path: "/basic",
       method: "POST",
@@ -45,7 +53,7 @@ export const userAuth = c.router(
     me: {
       method: "GET",
       path: "/me",
-      responses: { 200: z.object({ ...commonZodResponse }) },
+      responses: { 200: z.custom<PublicUserPayload>().openapi({ type: "object" }) },
     },
     completeChallenge: {
       path: "/challenge",

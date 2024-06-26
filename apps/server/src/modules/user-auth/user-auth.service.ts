@@ -76,7 +76,7 @@ export class UserAuthService {
     this.logger.debug('credentials were verified');
     const is2FAEnabled = user.user_preferences?.twofactor?.enabled;
     if (is2FAEnabled) this.logger.debug('deferred because 2FA was enabled');
-    const defaultDeferred = true;
+    const defaultDeferred = false;
     if (defaultDeferred)
       this.logger.debug('deferred because default deferred enabled');
     const deferred = is2FAEnabled || defaultDeferred;

@@ -9,7 +9,7 @@ var Cookies;
 })(Cookies || (exports.Cookies = Cookies = {}));
 var LocalStorage;
 (function (LocalStorage) {
-    LocalStorage["UserState"] = "itu_st";
-    LocalStorage["SystemUserState"] = "itu_st";
-    LocalStorage["ThemeVar"] = "itsour-theme";
+    LocalStorage["UserState"] = "stu_st";
+    LocalStorage["SystemUserState"] = "stsu_st";
+    LocalStorage["ThemeVar"] = "safetrade-theme";
 })(LocalStorage || (exports.LocalStorage = LocalStorage = {}));

@@ -1,6 +1,7 @@
 import welcome_to_safetrade from "./assets/welcome_to_safetrade.svg";
 import Image from "next/image";
 import login_desk_girl from "./assets/login_desk_girl.png";
+import { RouteOnLogin } from "@/components/providers/authstate-provider";
 
 export default function AuthLayout({
   children,
@@ -11,6 +12,7 @@ export default function AuthLayout({
     <div
       className={`min-h-screen pt-28 py-24 overflow-hidden box-border bg-contrast flex justify-center items-center`}
     >
+      <RouteOnLogin></RouteOnLogin>
       <div className="max-w-4xl mx-4  w-full grid md:grid-cols-2 rounded-xl bg-background-50 overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
         <div
           style={{

@@ -5,7 +5,9 @@ import { Formik, Field } from "formik";
 import { Input } from "../../../../components/input";
 import Link from "next/link";
 import { Button } from "@/components/button";
-import { sleep } from "@/shared/utils/misc";
+import { apiClient } from "@/api-client";
+import { useToast } from "@/components/ui/use-toast";
+import { useAuthState } from "@/components/providers/authstate-provider";
 const loginSchema = Yup.object({
   email: Yup.string().required().label("Email").email(),
   password: Yup.string().required().label("Password"),
@@ -14,12 +16,35 @@ const loginSchema = Yup.object({
 export interface EmailLoginProps extends HTMLProps<HTMLElement> {}
 
 export function EmailLogin({ children, ...props }: EmailLoginProps) {
+  const { toast } = useToast();
+  const authState = useAuthState();
   return (
     <Formik
       initialValues={{ email: "", password: "" }}
-      onSubmit={(values, { setSubmitting }) => {
-        console.log(values);
-        setSubmitting(false);
+      onSubmit={async (values, { setSubmitting }) => {
+        try {
+          const authRes = await apiClient.auth.login({
+            body: { email: values.email, password: values.password },
+          });
+          if (authRes.status === 200) {
+            const freshState = await authState.refreshState();
+            if (freshState?.uid) {
+              toast({
+                title: "Authenticated",
+                description: "Welcome Back",
+              });
+            }
+          } else {
+            throw new Error((authRes.body as any).message);
+          }
+        } catch (err: any) {
+          toast({
+            title: "Authentication failed!",
+            description: err.message || "unknown error",
+          });
+        } finally {
+          setSubmitting(false);
+        }
       }}
       validationSchema={loginSchema}
     >

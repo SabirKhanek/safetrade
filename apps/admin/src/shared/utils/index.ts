@@ -3,6 +3,7 @@ export function GetPublicUrl(uri: string) {
   const asset_prefix = "https://cdn.safetrade.cloud";
   return `${asset_prefix}/${uri}`;
 }
+
 export function isEqual<T>(arr1: T[], arr2: T[]): boolean {
   // Check if the arrays have the same length
   if (arr1.length !== arr2.length) {

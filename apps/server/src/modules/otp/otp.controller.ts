@@ -30,7 +30,10 @@ export class OtpController {
     });
   }
 
-  @TsRestHandler(contract.otp.verify)
+  @TsRestHandler(contract.otp.verify, {
+    validateRequestBody: false,
+    validateRequestQuery: false,
+  })
   async verifyOtp() {
     return tsRestHandler(contract.otp.verify, async ({ query: params }) => {
       const tokenValidationResult = await this.otpService.verifyOtp(

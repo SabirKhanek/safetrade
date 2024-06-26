@@ -4,7 +4,7 @@ export enum Cookies {
   UserState = "stu_st",
 }
 export enum LocalStorage {
-  UserState = "itu_st",
-  SystemUserState = "itu_st",
-  ThemeVar = "itsour-theme",
+  UserState = "stu_st",
+  SystemUserState = "stsu_st",
+  ThemeVar = "safetrade-theme",
 }

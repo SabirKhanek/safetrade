@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { PublicUserPayload } from "common";
 export declare const userAuth: {
     signup: {
         method: "POST";
@@ -42,6 +43,19 @@ export declare const userAuth: {
             }>;
         };
     };
+    logout: {
+        method: "GET";
+        path: "/auth/logout";
+        responses: {
+            200: z.ZodObject<{
+                success: z.ZodBoolean;
+            }, "strip", z.ZodTypeAny, {
+                success: boolean;
+            }, {
+                success: boolean;
+            }>;
+        };
+    };
     login: {
         method: "POST";
         body: z.ZodObject<{
@@ -69,16 +83,7 @@ export declare const userAuth: {
         method: "GET";
         path: "/auth/me";
         responses: {
-            200: z.ZodObject<{
-                success: z.ZodBoolean;
-                message: z.ZodString;
-            }, "strip", z.ZodTypeAny, {
-                message: string;
-                success: boolean;
-            }, {
-                message: string;
-                success: boolean;
-            }>;
+            200: z.ZodType<PublicUserPayload, z.ZodTypeDef, PublicUserPayload>;
         };
     };
     completeChallenge: {

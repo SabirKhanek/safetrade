@@ -34,9 +34,9 @@
   "homepage": "https://github.com/sabirkhanek/safetrade#readme",
   "devDependencies": {
     "@types/cookie-parser": "^1.4.7",
+    "@types/multer": "^1.4.11",
     "drizzle-kit": "^0.22.4",
     "tsx": "^4.7.1",
-    "@types/multer": "^1.4.11",
     "turbo": "^1.13.0"
   },
   "dependencies": {
@@ -80,7 +80,6 @@
     "react-redux": "^9.1.2",
     "redux": "^5.0.1",
     "sharp": "^0.33.3",
-    "tailwind-plugin-realtime-colors": "^1.2.0",
     "yup": "^1.4.0",
     "zustand": "^4.5.2"
   },

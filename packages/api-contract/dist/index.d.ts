@@ -897,6 +897,45 @@ export declare const contract: {
             };
             strictStatusCodes: false;
         };
+        logout: {
+            method: "GET";
+            path: "/api/auth/logout";
+            responses: {
+                404: import("@ts-rest/core").ContractPlainType<{
+                    success: false;
+                    message: "resource not found";
+                    reason: any;
+                }>;
+                500: import("@ts-rest/core").ContractPlainType<{
+                    success: false;
+                    message: "internal server error";
+                    reason: any;
+                }>;
+                400: import("@ts-rest/core").ContractPlainType<{
+                    success: false;
+                    message: "bad request";
+                    reason: "";
+                }>;
+                401: import("@ts-rest/core").ContractPlainType<{
+                    success: false;
+                    message: "unauthorized";
+                    resason: any;
+                }>;
+                403: import("@ts-rest/core").ContractPlainType<{
+                    success: false;
+                    message: "forbidden";
+                    reason: any;
+                }>;
+                200: z.ZodObject<{
+                    success: z.ZodBoolean;
+                }, "strip", z.ZodTypeAny, {
+                    success: boolean;
+                }, {
+                    success: boolean;
+                }>;
+            };
+            strictStatusCodes: false;
+        };
         login: {
             method: "POST";
             body: z.ZodObject<{
@@ -975,16 +1014,7 @@ export declare const contract: {
                     message: "forbidden";
                     reason: any;
                 }>;
-                200: z.ZodObject<{
-                    success: z.ZodBoolean;
-                    message: z.ZodString;
-                }, "strip", z.ZodTypeAny, {
-                    message: string;
-                    success: boolean;
-                }, {
-                    message: string;
-                    success: boolean;
-                }>;
+                200: z.ZodType<import("common").PublicUserPayload, z.ZodTypeDef, import("common").PublicUserPayload>;
             };
             strictStatusCodes: false;
         };

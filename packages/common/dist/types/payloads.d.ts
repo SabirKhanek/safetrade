@@ -53,3 +53,13 @@ export interface UserPayload {
     permissions: PermissionsType[];
     authState: SystemAuthPayload;
 }
+export interface PublicUserPayload {
+    uid: string;
+    email: string;
+    first_name: string;
+    avatar: string | null;
+    last_name: string;
+    created_at: string;
+    updated_at: string;
+    authState: UserAuthPayload;
+}

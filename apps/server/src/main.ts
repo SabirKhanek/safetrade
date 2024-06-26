@@ -9,7 +9,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     cors: {
       credentials: true,
-      origin: [configuration().domain, 'api.safetrade.cloud'],
+      origin: '*',
     },
   });
   app.use(cookie_parser());
