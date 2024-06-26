@@ -55,6 +55,7 @@ export class UsersService {
               email: obj.email,
               is_verified,
               kyc_level: 0,
+              is_onboarded: true,
               dob: obj.dob,
             })
             .returning()
@@ -74,6 +75,13 @@ export class UsersService {
         .values({ user_id: user.uid });
       this.logger.debug("user's wallet created");
       this.logger.debug(wallet);
+      this.logger.debug('onboarding user');
+      const user_profile = await txn.insert(schema.user_profile).values({
+        display_name: `${user.first_name.toLowerCase()}_${user.last_name.toLowerCase()}_${user.uid.slice(0, 5)}`,
+        slug: `${user.first_name.toLowerCase()}_${user.last_name.toLowerCase()}_${user.uid.slice(0, 5)}`,
+        user_id: user.uid,
+      });
+      this.logger.debug('created user profile');
       if (!obj.is_verified) {
         try {
           this.magicLinkService.sendMagicLink(

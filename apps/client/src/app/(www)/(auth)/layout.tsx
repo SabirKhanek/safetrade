@@ -2,12 +2,19 @@ import welcome_to_safetrade from "./assets/welcome_to_safetrade.svg";
 import Image from "next/image";
 import login_desk_girl from "./assets/login_desk_girl.png";
 import { RouteOnLogin } from "@/components/providers/authstate-provider";
+import { cookies } from "next/headers";
+import { Cookies } from "common";
+import { redirect } from "next/navigation";
 
 export default function AuthLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const cookie = cookies();
+  if (cookie.get(Cookies.UserAuthCookie)) {
+    redirect("/dashboard");
+  }
   return (
     <div
       className={`min-h-screen pt-28 py-24 overflow-hidden box-border bg-contrast flex justify-center items-center`}

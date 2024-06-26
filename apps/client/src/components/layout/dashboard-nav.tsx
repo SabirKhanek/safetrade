@@ -39,6 +39,7 @@ export function DashboardNavItem({
 }: DashboardNavItemProps) {
   const Icon = Icons[item.icon || "arrowRight"];
   const [isSubmenuOpen, setSubmenuOpen] = useState(false);
+  console.log({ path, item: item.href });
   return (
     <div>
       <Tooltip key={item.href}>
@@ -98,7 +99,7 @@ export function DashboardNav({
   isMobileNav = false,
 }: DashboardNavProps) {
   const { isMinimized } = useSidebar();
-
+  const path = usePathname();
   if (!items?.length) {
     return null;
   }
@@ -117,7 +118,7 @@ export function DashboardNav({
                 setOpen={setOpen}
                 isMobileNav={isMobileNav}
                 isMinimized={isMinimized}
-                path={item.href}
+                path={path}
               />
             )
         )}

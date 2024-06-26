@@ -16,8 +16,9 @@ export class UserJwtAuthGuard extends AuthGuard('jwt') {
     if (user) {
       req.user = user;
     }
+    console.log('User auth', user);
     this.logger.debug('checking if auth is deferred');
-    if (req.user.deferred) {
+    if (req.user?.deferred) {
       this.logger.debug(`Authentication rejected because of auth is deferred`);
       throw new UnauthorizedException(
         `User session is deferred! hint: complete auth challenges before proceeding`,

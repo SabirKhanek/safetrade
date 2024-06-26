@@ -1,6 +1,6 @@
 import { Footer } from "@/components/footer";
 import Header from "@/components/header";
-
+import "./market.styles.css";
 export default function WWWLayout({
   children,
 }: Readonly<{

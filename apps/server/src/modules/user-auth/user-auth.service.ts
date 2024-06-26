@@ -55,7 +55,7 @@ export class UserAuthService {
         joined_at: user.joined_at,
         kyc_level: user.kyc_level,
       },
-      user_uid: session.system_uid,
+      user_uid: session.user_uid,
       challenge: additiona_meta.challenge
         ? {
             type: additiona_meta.challenge?.type,
@@ -64,6 +64,9 @@ export class UserAuthService {
         : undefined,
       display_name: user.display_name,
     };
+
+    this.logger.debug(payload);
+
     return payload;
   }
 

@@ -6,3 +6,4 @@ export * from "./models/enums";
 export * from "./models/finances";
 export * from "./models/utils";
 export * from "./models/misc";
+export * from "./models/chat";

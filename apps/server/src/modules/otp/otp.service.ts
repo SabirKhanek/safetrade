@@ -38,6 +38,7 @@ export class OtpService {
         });
         return { otp_session_id: otp_verification.id, emailSent: true };
       } catch (err) {
+        console.log(err.message);
         txn.rollback();
         throw new InternalServerErrorException("couldn't send otp");
       }

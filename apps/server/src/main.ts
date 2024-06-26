@@ -4,12 +4,15 @@ import { SwaggerModule } from '@nestjs/swagger';
 import { openApiDocument } from 'api-contract';
 import cookie_parser from 'cookie-parser';
 import configuration from './config/configuration';
-import { AppLogger } from './services/logger.service';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     cors: {
       credentials: true,
-      origin: '*',
+      origin: [
+        `http://${configuration().domain}`,
+        'http://localhost:3001',
+        'https://api.safetrade.cloud',
+      ],
     },
   });
   app.use(cookie_parser());

@@ -54,6 +54,9 @@ export interface PublicUserPayload {
   first_name: string;
   avatar: string | null;
   last_name: string;
+  display_name?: string;
+  slug?: string;
+  total_ratings?: string;
   created_at: string;
   updated_at: string;
   authState: UserAuthPayload;

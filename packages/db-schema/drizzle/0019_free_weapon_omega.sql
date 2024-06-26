@@ -1,0 +1,1 @@
+ALTER TABLE "chat_message" ADD COLUMN "message_id" uuid DEFAULT gen_random_uuid() NOT NULL;

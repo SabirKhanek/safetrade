@@ -4,6 +4,7 @@ import { contract } from "api-contract";
 export const apiClientConfig: InitClientArgs = {
   baseHeaders: {},
   baseUrl: process.env.NODE_ENV ==="development" ? "http://localhost:3000": "https://api.safetrade.cloud",
+  credentials: "include"
 };
 
 export const apiClient = initClient(contract, apiClientConfig);

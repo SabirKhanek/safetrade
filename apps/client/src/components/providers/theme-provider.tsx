@@ -1,4 +1,5 @@
 "use client";
+import { usePathname } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
 
 type Theme = "dark" | "light" | "system";
@@ -33,6 +34,7 @@ export function ThemeProvider({
         (localStorage.getItem(storageKey) as Theme)) ||
       defaultTheme
   );
+  const pathname = usePathname();
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -48,9 +50,12 @@ export function ThemeProvider({
       root.classList.add(systemTheme);
       return;
     }
-
-    root.classList.add(theme);
-  }, [theme]);
+    if (pathname.startsWith("/dashboard")) {
+      root.classList.add(theme);
+    } else {
+      root.classList.add("light");
+    }
+  }, [theme, pathname]);
 
   const value = {
     theme,

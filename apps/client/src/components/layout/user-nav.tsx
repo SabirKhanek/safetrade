@@ -15,9 +15,11 @@ import { useAuthState } from "../providers/authstate-provider";
 import { apiClient } from "@/api-client";
 import { useToast } from "../ui/use-toast";
 import { GetPublicUrl } from "@/shared/utils";
+import { useRouter } from "next/navigation";
 export function UserNav() {
   const session = useAuthState();
   const { toast } = useToast();
+  const router = useRouter();
   if (session) {
     return (
       <DropdownMenu>
@@ -46,25 +48,21 @@ export function UserNav() {
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
             <DropdownMenuItem>
-              Profile
-              <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
               Settings
               <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
             </DropdownMenuItem>
-            <DropdownMenuItem>New Team</DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuItem
             onClick={async () => {
-              const res = await apiClient.system_auth.logout();
+              const res = await apiClient.auth.logout();
               if (res.status === 200) {
                 toast({
                   title: "Logout",
                   description: "Hope to see you again!",
                 });
                 await session.refreshState();
+                router.refresh();
               }
             }}
           >

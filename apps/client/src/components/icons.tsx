@@ -34,6 +34,10 @@ import {
   X,
   Ticket,
   PlusIcon,
+  Wallet,
+  HandCoins,
+  MessagesSquare,
+  TicketX,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
@@ -62,11 +66,15 @@ export const Icons = {
   billing: CreditCard,
   ellipsis: MoreVertical,
   add: Plus,
+  ticketx: TicketX,
   warning: AlertTriangle,
   user: User,
   ticket: Ticket,
   arrowRight: ArrowRight,
   help: HelpCircle,
+  wallet: Wallet,
+  messages: MessagesSquare,
+  offers: HandCoins,
   pizza: Pizza,
   sun: SunMedium,
   moon: Moon,

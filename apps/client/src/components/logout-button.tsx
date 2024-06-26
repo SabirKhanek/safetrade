@@ -26,7 +26,7 @@ export function LogoutButton() {
 }
 
 export async function Logout() {
-  const res = await apiClient.system_auth.logout();
+  const res = await apiClient.auth.logout();
   if (res.status === 200) {
     toast({ title: "Logout", description: "Hope to see you again!" });
     window.location.reload();

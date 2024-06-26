@@ -8,10 +8,14 @@ import { navlinks } from "./data/navlinks";
 import { Turn as Hamburger } from "hamburger-react";
 import { NavMenuFull } from "./nav-menu";
 import { motion } from "framer-motion";
+import { useAuthState } from "../providers/authstate-provider";
+import { useRouter } from "next/navigation";
 export default function Header() {
   const pathname = usePathname();
   const [activeRoute, setActiveRoute] = useState("");
   const [isNavMenuOpened, setIsNavMenuOpened] = useState(false);
+  const authState = useAuthState();
+  const router = useRouter();
   const needAttachRoutes = ["/"];
   const needAttachment = needAttachRoutes.includes(pathname);
   useEffect(() => {
@@ -52,12 +56,17 @@ export default function Header() {
               </Link>
             );
           })}
-          <motion.button
-            whileTap={{ scale: 0.95 }}
-            className="header-cta hidden xsm:block rounded-lg"
-          >
-            Get Started
-          </motion.button>
+          {
+            <motion.button
+              onClick={() =>
+                router.push(authState.isLoggedIn ? "/dashboard" : "/register")
+              }
+              whileTap={{ scale: 0.95 }}
+              className="header-cta hidden xsm:block rounded-lg"
+            >
+              {authState.isLoggedIn ? "Dashboard" : "Get Started"}
+            </motion.button>
+          }
         </div>
       </nav>
       <NavMenuFull

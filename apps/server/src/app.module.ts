@@ -22,6 +22,8 @@ import { AccessCtrlModule } from './access-control/accessctrl.module';
 import { OtpModule } from './modules/otp/otp.module';
 import { TsRestModule } from '@ts-rest/nest';
 import { CommonModule } from './modules/common/common.module';
+import { MarketPlaceModule } from './modules/marketplace/marketplace.module';
+import { ChatModule } from './modules/chat/chat.module';
 @Module({
   imports: [
     ServeStaticModule.forRoot({
@@ -33,6 +35,8 @@ import { CommonModule } from './modules/common/common.module';
     EmailModule,
     DBModule,
     CommonModule,
+    MarketPlaceModule,
+    ChatModule,
     ConfigModule.forRoot({
       load: [configuration],
       isGlobal: true,

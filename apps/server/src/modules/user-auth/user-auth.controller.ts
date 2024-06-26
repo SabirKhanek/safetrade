@@ -106,10 +106,11 @@ export class UserAuthController {
   }
 
   @TsRestHandler(contract.auth.me)
-  @UseGuards(UserLocalAuthGuard)
+  @UseGuards(UserJwtAuthGuard)
   async MeHandler(@Req() req: Request) {
     return tsRestHandler(contract.auth.me, async () => {
       const user = req.user;
+      console.log('user_is', user);
       if (!user.email) throw new UnauthorizedException();
       const userInfo = await this.userService.getUser(user.email);
       return {
@@ -117,6 +118,9 @@ export class UserAuthController {
         body: {
           authState: user,
           avatar: userInfo.avatar,
+          display_name: userInfo.display_name,
+          slug: userInfo.slug,
+          total_ratings: userInfo.total_ratings,
           created_at: userInfo.joined_at.toISOString(),
           email: userInfo.email,
           first_name: userInfo.first_name,

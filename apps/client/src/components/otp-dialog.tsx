@@ -5,6 +5,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogDescription,
+  DialogTrigger,
 } from "@/components/ui/dialog";
 import {
   InputOTP,
@@ -14,7 +15,7 @@ import {
 } from "@/components/ui/input-otp";
 import { useToast } from "@/components/ui/use-toast";
 
-import { Button as ShadCnButton } from "@/components/ui/button";
+import { Button, Button as ShadCnButton } from "@/components/ui/button";
 import { apiClient } from "@/api-client";
 import { Loading } from "./loading";
 import { ReloadingIcon } from "./reloading-icon";
@@ -37,6 +38,11 @@ function OtpDialog({
   const [value, setValue] = useState("");
   const [isVerifying, setIsVerifying] = useState(false);
   const [isResending, setIsResending] = useState(false);
+
+  useEffect(() => {
+    setOtpId(null);
+    setValue("");
+  }, [email]);
 
   useEffect(() => {
     async function generateOtp() {
@@ -133,28 +139,35 @@ function OtpDialog({
           {isLoading && <Loading />}
           {!isLoading && otp_id && (
             <>
-              <InputOTP
-                value={value}
-                onChange={setValue}
-                maxLength={6}
-                disabled={isLoading || isVerifying}
-                pattern={REGEXP_ONLY_DIGITS}
-              >
-                <InputOTPGroup>
-                  <InputOTPSlot index={0} />
-                  <InputOTPSlot index={1} />
-                  <InputOTPSlot index={2} />
-                </InputOTPGroup>
-                <InputOTPSeparator />
-                <InputOTPGroup>
-                  <InputOTPSlot index={3} />
-                  <InputOTPSlot index={4} />
-                  <InputOTPSlot index={5} />
-                </InputOTPGroup>
-              </InputOTP>
-              <p>
+              <div className="flex justify-center">
+                <InputOTP
+                  value={value}
+                  onChange={setValue}
+                  className=""
+                  maxLength={6}
+                  disabled={isLoading || isVerifying}
+                  pattern={REGEXP_ONLY_DIGITS}
+                >
+                  <InputOTPGroup>
+                    <InputOTPSlot index={0} />
+                    <InputOTPSlot index={1} />
+                    <InputOTPSlot index={2} />
+                  </InputOTPGroup>
+                  <InputOTPSeparator />
+                  <InputOTPGroup>
+                    <InputOTPSlot index={3} />
+                    <InputOTPSlot index={4} />
+                    <InputOTPSlot index={5} />
+                  </InputOTPGroup>
+                </InputOTP>
+              </div>
+              <p className="text-sm">
                 Didn't get it?{" "}
-                <ShadCnButton onClick={resendOtp} variant={"linkHover1"}>
+                <ShadCnButton
+                  className="text-sm gap-2 px-0"
+                  onClick={resendOtp}
+                  variant={"linkHover1"}
+                >
                   Resend OTP
                   {isResending && <ReloadingIcon></ReloadingIcon>}
                 </ShadCnButton>

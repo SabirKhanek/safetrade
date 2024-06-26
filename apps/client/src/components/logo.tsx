@@ -25,7 +25,7 @@ export function Logo({
         style={{ fontFamily: "Montserrat" }}
         className="min-w-fit text-xl whitespace-nowrap font-medium"
       >
-        Safetrade Systems
+        Safetrade User Dashboard
       </span>
     </div>
   );

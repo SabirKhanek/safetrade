@@ -18,6 +18,10 @@ import { FaRegCheckCircle } from "react-icons/fa";
 import { FaRegCircleXmark } from "react-icons/fa6";
 
 import OtpDialog from "@/components/otp-dialog";
+import { toast } from "@/components/ui/use-toast";
+import { apiClient } from "@/api-client";
+import { useAuthState } from "@/components/providers/authstate-provider";
+import { useRouter } from "next/navigation";
 function getCurrentDateString() {
   const today = new Date();
   const year = today.getFullYear();
@@ -37,11 +41,6 @@ const RegisterSchema = Yup.object({
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/,
       "Password is not secure enough"
     ),
-  dob: Yup.date()
-    .max(getCurrentDateString())
-    .min("1800-01-01")
-    .required()
-    .label("Date of Birth"),
 });
 
 interface FormValues {
@@ -49,7 +48,6 @@ interface FormValues {
   password: string;
   firstName: string;
   lastName: string;
-  dob?: string;
 }
 
 export interface EmailRegisterProps extends HTMLProps<HTMLElement> {}
@@ -62,22 +60,50 @@ export function EmailRegister() {
   const [open, setOpen] = useState<boolean>(false);
   const [verifiedToken, setVerifiedToken] = useState<string | null>(null);
   const [formValues, setFormValues] = useState<FormValues | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+  const authState = useAuthState();
+  const handleOtpVerified = (token: string) => {
+    setVerifiedToken(token);
+  };
 
-  const handleOtpVerified = useCallback(
-    (token: string) => {
-      setVerifiedToken(token);
-      // Submit the form with the stored values
-      if (formValues) {
-        submitForm(formValues);
-      }
-    },
-    [formValues]
-  );
+  useEffect(() => {
+    if (formValues) {
+      submitForm(formValues);
+    }
+  }, [verifiedToken]);
 
   const submitForm = async (values: FormValues) => {
+    if (!formValues) return;
+    if (!verifiedToken) return;
+    setIsLoading(true);
+    try {
+      console.log("Form submitted with values:", values);
+      console.log("Verified token:", verifiedToken);
+      const res = await apiClient.auth.signup({
+        headers: { "x-verified-otp-token": verifiedToken },
+        body: {
+          dob: "2002-11-20",
+          email: formValues.email,
+          f_name: formValues.firstName,
+          l_name: formValues.lastName,
+          password: formValues.password,
+        },
+      });
+      if (res.status === 200) {
+        toast({ title: "Welcome to Safetrade!" });
+        await authState.refreshState();
+        router.push("/dashboard");
+      }
+    } catch (err: any) {
+      toast({
+        title: "Couldn't register",
+        description: err.message || "Unknown Error",
+      });
+    } finally {
+      setIsLoading(false);
+    }
     // Replace with your form submission logic
-    console.log("Form submitted with values:", values);
-    console.log("Verified token:", verifiedToken);
   };
   return (
     <>
@@ -87,11 +113,13 @@ export function EmailRegister() {
           password: "",
           firstName: "",
           lastName: "",
-          dob: undefined,
         }}
         onSubmit={(values, { setSubmitting }) => {
+          console.log(values);
           setFormValues(values); // Store form values in state
+          console.log("form values are set");
           setOpen(true); // Open the OTP dialog
+          console.log("opening dialog");
           setSubmitting(false);
         }}
         validationSchema={RegisterSchema}
@@ -109,14 +137,14 @@ export function EmailRegister() {
           } = props;
           return (
             <form onSubmit={handleSubmit}>
-              {!dirty && (
+              {
                 <OtpDialog
                   email={values.email}
                   open={open}
                   onVerified={handleOtpVerified}
                   setOpen={setOpen}
                 ></OtpDialog>
-              )}
+              }
 
               <Field
                 label="First Name"
@@ -152,21 +180,6 @@ export function EmailRegister() {
               />
 
               <Field
-                label="Date of Birth"
-                name="dob"
-                type="date"
-                disabled={isSubmitting}
-                min={minDay}
-                max={today}
-                placeholder="mm/dd/yyyy"
-                component={Input}
-                className="muted-placeholder date-input--has-value"
-                value={values.dob}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-
-              <Field
                 label="Password"
                 name="password"
                 type="password"
@@ -185,7 +198,7 @@ export function EmailRegister() {
               />
 
               <Button
-                isLoading={isSubmitting}
+                isLoading={isSubmitting || isLoading}
                 disabled={Object.keys(errors).length > 1}
                 disableOnLoading
                 className="w-full my-3 bg-primary"

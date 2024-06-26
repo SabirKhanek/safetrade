@@ -122,7 +122,7 @@ export function RouteOnLogout() {
   const router = useRouter();
   useEffect(() => {
     if (authState.isLoggedIn === false) {
-      router.replace("/login");
+      // router.replace("/login");
     }
   }, [authState.isLoggedIn]);
   return <></>;
@@ -134,7 +134,7 @@ export function RouteOnLogin() {
   const router = useRouter();
   useEffect(() => {
     if (authState.isLoggedIn === true) {
-      router.replace("/dashboard");
+      // router.replace("/dashboard");
     }
   }, [authState.isLoggedIn]);
   return <></>;

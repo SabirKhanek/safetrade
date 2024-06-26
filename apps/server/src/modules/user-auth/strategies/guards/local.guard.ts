@@ -15,10 +15,9 @@ export class UserLocalAuthGuard extends AuthGuard('local') {
   handleRequest(err, user, info, context: ExecutionContext) {
     const req = context.switchToHttp().getRequest();
     if (user) {
-      req.systemUser = user;
+      req.user = user;
     }
     if (err) {
-
       const res: Response = context.switchToHttp().getResponse();
       res.clearCookie(Cookies.SystemAuthCookie);
       if (err instanceof BadRequestException)

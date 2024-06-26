@@ -8,6 +8,8 @@ import { userAuth } from "./routes/auth";
 import { otp } from "./routes/otp";
 import { audit } from "./routes/audit";
 import { accessCtrl } from "./routes/accessctrl";
+import { marketplace } from "./routes/marketplace";
+import { chat } from "./routes/chat";
 extendZodWithOpenApi(z);
 
 const c = initContract();
@@ -17,6 +19,8 @@ export const contract = c.router(
     system_user: systemUserRouter,
     system_auth: systemAuthRouter,
     audit: audit,
+    chat: chat,
+    marketplace: marketplace,
     accessctrl: accessCtrl,
     // accessctrl: undefined,
     auth: userAuth,

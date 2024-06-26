@@ -33,7 +33,7 @@ export default function Sidebar({ className }: SidebarProps) {
   const { isMinimized, toggle } = useSidebar();
   const [status, setStatus] = useState(false);
   const path = usePathname();
-  const router = useRouter()
+  const router = useRouter();
   const handleToggle = () => {
     setStatus(true);
     toggle();
@@ -68,16 +68,6 @@ export default function Sidebar({ className }: SidebarProps) {
 
           <div className="py-2 px-3  border-t-2 border-dashed flex flex-col gap-2">
             <TooltipProvider>
-              <DashboardNavItem
-                isMobileNav={false}
-                isMinimized={isMinimized}
-                path={path}
-                item={{
-                  title: "Settings",
-                  icon: "settings",
-                  href: "/settings",
-                }}
-              ></DashboardNavItem>
               <DashboardNavItem
                 isMobileNav={false}
                 isMinimized={isMinimized}

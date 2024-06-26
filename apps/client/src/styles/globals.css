@@ -47,6 +47,32 @@
 
     --radius: 0.5rem;
   }
+
+  .dark {
+    /* Realtime Pallette */
+    --background-contrast: #07070e;
+    --text: #fefbfb;
+
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 20% 98%;
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 20% 98%;
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 210 20% 98%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --primary: 263.4 70% 50.4%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+    --ring: 263.4 70% 50.4%;
+  }
 }
 
 @layer utilities {
@@ -100,11 +126,20 @@
   margin-left: 1em;
 }
 
+*,
+::before,
+::after {
+  box-sizing: border-box; /* 1 */
+  border-width: 0; /* 2 */
+  border-style: solid; /* 2 */
+  border-color: hsl(var(--border)); /* 2 */
+}
+
 body {
   margin: 0;
   padding: 0;
-  background: var(--background);
-  color: var(--text);
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
   font-size: var(--p);
   --heading-font: var(--font-inter);
   --body-font: var(--font-poppins);
@@ -115,36 +150,6 @@ body {
   --gradient-color-2: #c4009b;
   --gradient-color-3: #d00091;
   --gradient-color-4: #ffa600;
-}
-h1 {
-  font-size: var(--h1);
-  font-weight: 700;
-  font-family: var(--heading-font);
-}
-h2 {
-  font-size: var(--h2);
-  font-weight: 700;
-  font-family: var(--heading-font);
-}
-h3 {
-  font-size: var(--h3);
-  font-weight: 700;
-  font-family: var(--heading-font);
-}
-h4 {
-  font-size: var(--h4);
-  font-weight: 700;
-  font-family: var(--heading-font);
-}
-h1 {
-  font-size: var(--h5);
-  font-weight: 700;
-  font-family: var(--heading-font);
-}
-h5 {
-  font-size: 1.25rem;
-  font-family: var(--heading-font);
-  font-weight: 700;
 }
 
 .container,
