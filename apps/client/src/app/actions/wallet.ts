@@ -35,6 +35,7 @@ export async function createDeposit(amount: number) {
     const update = await txn
       .update(schema.wallet)
       .set({ balance: wallet.balance + amount })
+      .where(eq(schema.wallet.wallet_id, wallet.wallet_id))
       .returning();
     return { success: true, deposit_id: dep.deposit_id };
   });
