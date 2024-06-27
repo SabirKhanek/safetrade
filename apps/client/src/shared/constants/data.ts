@@ -32,10 +32,10 @@ export const navItems: NavItemWithOptionalChildren[] = [
     icon: "messages",
     href: "/dashboard/messages",
   },
-  {
-    title: "Disputes",
-    href: "/dashboard/tickets",
-    icon: "ticketx",
-    label: "tickets",
-  },
+  // {
+  //   title: "Disputes",
+  //   href: "/dashboard/tickets",
+  //   icon: "ticketx",
+  //   label: "tickets",
+  // },
 ];

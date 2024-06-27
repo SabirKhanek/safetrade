@@ -91,6 +91,8 @@ export const sell_offer = pgTable(
       seller_profile: uuid("seller_profile").references(
         () => user_profile.user_id
       ),
+      price: integer("price").default(0).notNull(),
+      slug: text("slug"),
       title: text("title").notNull(),
       category: text("category")
         .references(() => product_category.category_name)

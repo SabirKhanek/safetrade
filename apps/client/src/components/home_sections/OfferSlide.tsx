@@ -29,9 +29,9 @@ export function OfferSlide({
   const [page, setPage] = useState(1);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [loadingMore, setLoadingMore] = useState(false);
-  const [hasMoreToLoad, setHasMoreToLoad] = useState(true);
+  const [hasMoreToLoad, setHasMoreToLoad] = useState(false);
   const listenForScrollRef = useRef(true);
-  const hasMoreToLoadRef = useRef(true);
+  const hasMoreToLoadRef = useRef(false);
   const scrollListenerRef = useRef<() => void>(() => undefined);
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {

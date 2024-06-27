@@ -25,8 +25,10 @@ export default function MessageThreadPage() {
       [`chat_thread_${message_thread}`],
       {
         query: { thread_id: message_thread as unknown as string },
-      }
+      },
+      { staleTime: 1000, refetchInterval: 1000 }
     );
+
   const queryClient = useQueryClient();
   if (isLoading && !data) {
     return (
@@ -47,15 +49,16 @@ export default function MessageThreadPage() {
     );
   }
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      queryClient.invalidateQueries([`chat_thread_${message_thread}`]);
-    }, 1000);
+  // useEffect(() => {
 
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
+  //   const interval = setInterval(() => {
+  //     queryClient.invalidateQueries([`chat_thread_${message_thread}`]);
+  //   }, 1000);
+
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // }, []);
 
   const d = data.body;
   const authState = useAuthState();

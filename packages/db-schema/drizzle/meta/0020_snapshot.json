@@ -1,0 +1,2889 @@
+{
+  "id": "d709f830-0dad-4825-a31b-1455a0524b6a",
+  "prevId": "34fd7fe3-a0a9-4137-a34b-86b5f992c340",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.role_group": {
+      "name": "role_group",
+      "schema": "",
+      "columns": {
+        "group_id": {
+          "name": "group_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "audit_trail_log_id": {
+          "name": "audit_trail_log_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "role_group_audit_trail_log_id_audit_trail_log_id_fk": {
+          "name": "role_group_audit_trail_log_id_audit_trail_log_id_fk",
+          "tableFrom": "role_group",
+          "tableTo": "audit_trail",
+          "columnsFrom": [
+            "audit_trail_log_id"
+          ],
+          "columnsTo": [
+            "log_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.system_permission": {
+      "name": "system_permission",
+      "schema": "",
+      "columns": {
+        "permission": {
+          "name": "permission",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "audit_trail_log_id": {
+          "name": "audit_trail_log_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "system_permission_audit_trail_log_id_audit_trail_log_id_fk": {
+          "name": "system_permission_audit_trail_log_id_audit_trail_log_id_fk",
+          "tableFrom": "system_permission",
+          "tableTo": "audit_trail",
+          "columnsFrom": [
+            "audit_trail_log_id"
+          ],
+          "columnsTo": [
+            "log_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.system_permission_control": {
+      "name": "system_permission_control",
+      "schema": "",
+      "columns": {
+        "control_id": {
+          "name": "control_id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "permission": {
+          "name": "permission",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "uid": {
+          "name": "uid",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "group_id": {
+          "name": "group_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp (3)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "audit_trail_log_id": {
+          "name": "audit_trail_log_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "system_permission_control_permission_system_permission_permission_fk": {
+          "name": "system_permission_control_permission_system_permission_permission_fk",
+          "tableFrom": "system_permission_control",
+          "tableTo": "system_permission",
+          "columnsFrom": [
+            "permission"
+          ],
+          "columnsTo": [
+            "permission"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "system_permission_control_uid_system_user_uid_fk": {
+          "name": "system_permission_control_uid_system_user_uid_fk",
+          "tableFrom": "system_permission_control",
+          "tableTo": "system_user",
+          "columnsFrom": [
+            "uid"
+          ],
+          "columnsTo": [
+            "uid"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "system_permission_control_group_id_role_group_group_id_fk": {
+          "name": "system_permission_control_group_id_role_group_group_id_fk",
+          "tableFrom": "system_permission_control",
+          "tableTo": "role_group",
+          "columnsFrom": [
+            "group_id"
+          ],
+          "columnsTo": [
+            "group_id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "system_permission_control_audit_trail_log_id_audit_trail_log_id_fk": {
+          "name": "system_permission_control_audit_trail_log_id_audit_trail_log_id_fk",
+          "tableFrom": "system_permission_control",
+          "tableTo": "audit_trail",
+          "columnsFrom": [
+            "audit_trail_log_id"
+          ],
+          "columnsTo": [
+            "log_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "user_permission_uk": {
+          "name": "user_permission_uk",
+          "nullsNotDistinct": false,
+          "columns": [
+            "uid",
+            "permission"
+          ]
+        },
+        "group_permission_uk": {
+          "name": "group_permission_uk",
+          "nullsNotDistinct": false,
+          "columns": [
+            "group_id",
+            "permission"
+          ]
+        }
+      }
+    },
+    "public.system_user": {
+      "name": "system_user",
+      "schema": "",
+      "columns": {
+        "uid": {
+          "name": "uid",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "first_name": {
+          "name": "first_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "password_hash": {
+          "name": "password_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "avatar": {
+          "name": "avatar",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "last_name": {
+          "name": "last_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "role_group": {
+          "name": "role_group",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp (3)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "NULL"
+        },
+        "audit_trail_log_id": {
+          "name": "audit_trail_log_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "system_user_role_group_role_group_group_id_fk": {
+          "name": "system_user_role_group_role_group_group_id_fk",
+          "tableFrom": "system_user",
+          "tableTo": "role_group",
+          "columnsFrom": [
+            "role_group"
+          ],
+          "columnsTo": [
+            "group_id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        },
+        "system_user_audit_trail_log_id_audit_trail_log_id_fk": {
+          "name": "system_user_audit_trail_log_id_audit_trail_log_id_fk",
+          "tableFrom": "system_user",
+          "tableTo": "audit_trail",
+          "columnsFrom": [
+            "audit_trail_log_id"
+          ],
+          "columnsTo": [
+            "log_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "system_user_email_unique": {
+          "name": "system_user_email_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "email"
+          ]
+        }
+      }
+    },
+    "public.system_user_session": {
+      "name": "system_user_session",
+      "schema": "",
+      "columns": {
+        "session_id": {
+          "name": "session_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "system_uid": {
+          "name": "system_uid",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ip_address": {
+          "name": "ip_address",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "expire_at": {
+          "name": "expire_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "last_active": {
+          "name": "last_active",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "status": {
+          "name": "status",
+          "type": "system_user_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "access_tokens": {
+          "name": "access_tokens",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "additional_meta": {
+          "name": "additional_meta",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp (3)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "system_user_session_system_uid_system_user_uid_fk": {
+          "name": "system_user_session_system_uid_system_user_uid_fk",
+          "tableFrom": "system_user_session",
+          "tableTo": "system_user",
+          "columnsFrom": [
+            "system_uid"
+          ],
+          "columnsTo": [
+            "uid"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.kyc_level": {
+      "name": "kyc_level",
+      "schema": "",
+      "columns": {
+        "level": {
+          "name": "level",
+          "type": "smallserial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "level_name": {
+          "name": "level_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "order": {
+          "name": "order",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": false,
+          "default": 0
+        },
+        "requirements": {
+          "name": "requirements",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "kyc_level_order_unique": {
+          "name": "kyc_level_order_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "order"
+          ]
+        }
+      }
+    },
+    "public.kyc_submissions": {
+      "name": "kyc_submissions",
+      "schema": "",
+      "columns": {
+        "submission_id": {
+          "name": "submission_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "user": {
+          "name": "user",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "kyc_level": {
+          "name": "kyc_level",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "attachments": {
+          "name": "attachments",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "remarks": {
+          "name": "remarks",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "kyc_submission_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "audit_trail_log_id": {
+          "name": "audit_trail_log_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tracking_activity_id": {
+          "name": "tracking_activity_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "kyc_submissions_user_user_uid_fk": {
+          "name": "kyc_submissions_user_user_uid_fk",
+          "tableFrom": "kyc_submissions",
+          "tableTo": "user",
+          "columnsFrom": [
+            "user"
+          ],
+          "columnsTo": [
+            "uid"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "kyc_submissions_kyc_level_kyc_level_level_fk": {
+          "name": "kyc_submissions_kyc_level_kyc_level_level_fk",
+          "tableFrom": "kyc_submissions",
+          "tableTo": "kyc_level",
+          "columnsFrom": [
+            "kyc_level"
+          ],
+          "columnsTo": [
+            "level"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "kyc_submissions_audit_trail_log_id_audit_trail_log_id_fk": {
+          "name": "kyc_submissions_audit_trail_log_id_audit_trail_log_id_fk",
+          "tableFrom": "kyc_submissions",
+          "tableTo": "audit_trail",
+          "columnsFrom": [
+            "audit_trail_log_id"
+          ],
+          "columnsTo": [
+            "log_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "kyc_submissions_tracking_activity_id_tracking_activity_activity_id_fk": {
+          "name": "kyc_submissions_tracking_activity_id_tracking_activity_activity_id_fk",
+          "tableFrom": "kyc_submissions",
+          "tableTo": "tracking_activity",
+          "columnsFrom": [
+            "tracking_activity_id"
+          ],
+          "columnsTo": [
+            "activity_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.user": {
+      "name": "user",
+      "schema": "",
+      "columns": {
+        "uid": {
+          "name": "uid",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "first_name": {
+          "name": "first_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "last_name": {
+          "name": "last_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "password_hash": {
+          "name": "password_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "phone_no": {
+          "name": "phone_no",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "dob": {
+          "name": "dob",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_verified": {
+          "name": "is_verified",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "is_onboarded": {
+          "name": "is_onboarded",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "kyc_level": {
+          "name": "kyc_level",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": false,
+          "default": 0
+        },
+        "user_preferences": {
+          "name": "user_preferences",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "user_kyc_level_kyc_level_level_fk": {
+          "name": "user_kyc_level_kyc_level_level_fk",
+          "tableFrom": "user",
+          "tableTo": "kyc_level",
+          "columnsFrom": [
+            "kyc_level"
+          ],
+          "columnsTo": [
+            "level"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "user_email_unique": {
+          "name": "user_email_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "email"
+          ]
+        }
+      }
+    },
+    "public.user_session": {
+      "name": "user_session",
+      "schema": "",
+      "columns": {
+        "session_id": {
+          "name": "session_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "user_uid": {
+          "name": "user_uid",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ip_address": {
+          "name": "ip_address",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "expire_at": {
+          "name": "expire_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "last_active": {
+          "name": "last_active",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "system_user_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "access_tokens": {
+          "name": "access_tokens",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "additional_meta": {
+          "name": "additional_meta",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp (3)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "user_session_user_uid_user_uid_fk": {
+          "name": "user_session_user_uid_user_uid_fk",
+          "tableFrom": "user_session",
+          "tableTo": "user",
+          "columnsFrom": [
+            "user_uid"
+          ],
+          "columnsTo": [
+            "uid"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.audit_trail": {
+      "name": "audit_trail",
+      "schema": "",
+      "columns": {
+        "log_id": {
+          "name": "log_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "performed_by": {
+          "name": "performed_by",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "activity_data": {
+          "name": "activity_data",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "activity_name": {
+          "name": "activity_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp (3)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "additional_meta": {
+          "name": "additional_meta",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.customer_feedback": {
+      "name": "customer_feedback",
+      "schema": "",
+      "columns": {
+        "feedback_meta": {
+          "name": "feedback_meta",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "stars": {
+          "name": "stars",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "message": {
+          "name": "message",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.dashboard_analytics": {
+      "name": "dashboard_analytics",
+      "schema": "",
+      "columns": {
+        "string": {
+          "name": "string",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "analytics": {
+          "name": "analytics",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp (3)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.deleted_system_user_snapshot": {
+      "name": "deleted_system_user_snapshot",
+      "schema": "",
+      "columns": {
+        "system_uid": {
+          "name": "system_uid",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "snapshot": {
+          "name": "snapshot",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.deleted_user_snapshot": {
+      "name": "deleted_user_snapshot",
+      "schema": "",
+      "columns": {
+        "user_id": {
+          "name": "user_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "snapshot": {
+          "name": "snapshot",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.public_user_activity_trail": {
+      "name": "public_user_activity_trail",
+      "schema": "",
+      "columns": {
+        "log_id": {
+          "name": "log_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "performed_by": {
+          "name": "performed_by",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "activity_data": {
+          "name": "activity_data",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "activity_name": {
+          "name": "activity_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp (3)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "additional_meta": {
+          "name": "additional_meta",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.tracking_activity": {
+      "name": "tracking_activity",
+      "schema": "",
+      "columns": {
+        "activity_id": {
+          "name": "activity_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "activity_status": {
+          "name": "activity_status",
+          "type": "activity_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'in-progress'"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.tracking_logs": {
+      "name": "tracking_logs",
+      "schema": "",
+      "columns": {
+        "activity": {
+          "name": "activity",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "message": {
+          "name": "message",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "additional_meta": {
+          "name": "additional_meta",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "tracking_logs_activity_tracking_activity_activity_id_fk": {
+          "name": "tracking_logs_activity_tracking_activity_activity_id_fk",
+          "tableFrom": "tracking_logs",
+          "tableTo": "tracking_activity",
+          "columnsFrom": [
+            "activity"
+          ],
+          "columnsTo": [
+            "activity_id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.user_dashboard_analytics": {
+      "name": "user_dashboard_analytics",
+      "schema": "",
+      "columns": {
+        "string": {
+          "name": "string",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "analytics": {
+          "name": "analytics",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "user": {
+          "name": "user",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "user_dashboard_analytics_user_user_uid_fk": {
+          "name": "user_dashboard_analytics_user_user_uid_fk",
+          "tableFrom": "user_dashboard_analytics",
+          "tableTo": "user",
+          "columnsFrom": [
+            "user"
+          ],
+          "columnsTo": [
+            "uid"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.user_notifications": {
+      "name": "user_notifications",
+      "schema": "",
+      "columns": {
+        "priority": {
+          "name": "priority",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": false,
+          "default": 0
+        },
+        "subject": {
+          "name": "subject",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "body": {
+          "name": "body",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "target": {
+          "name": "target",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "notification_type": {
+          "name": "notification_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'default'"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "additional_meta": {
+          "name": "additional_meta",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "user_notifications_user_id_user_uid_fk": {
+          "name": "user_notifications_user_id_user_uid_fk",
+          "tableFrom": "user_notifications",
+          "tableTo": "user",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "uid"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.offer_suspensions": {
+      "name": "offer_suspensions",
+      "schema": "",
+      "columns": {
+        "offer_suspension_id": {
+          "name": "offer_suspension_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "gen_random_uuid()"
+        },
+        "on_suspension_audit_log": {
+          "name": "on_suspension_audit_log",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "suspension_released_activity_log": {
+          "name": "suspension_released_activity_log",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "suspension_remarks": {
+          "name": "suspension_remarks",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "release_at": {
+          "name": "release_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "suspension_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'active'"
+        },
+        "tracking_activity_id": {
+          "name": "tracking_activity_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp (3)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "additional_meta": {
+          "name": "additional_meta",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "offer_suspensions_on_suspension_audit_log_audit_trail_log_id_fk": {
+          "name": "offer_suspensions_on_suspension_audit_log_audit_trail_log_id_fk",
+          "tableFrom": "offer_suspensions",
+          "tableTo": "audit_trail",
+          "columnsFrom": [
+            "on_suspension_audit_log"
+          ],
+          "columnsTo": [
+            "log_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "offer_suspensions_suspension_released_activity_log_audit_trail_log_id_fk": {
+          "name": "offer_suspensions_suspension_released_activity_log_audit_trail_log_id_fk",
+          "tableFrom": "offer_suspensions",
+          "tableTo": "audit_trail",
+          "columnsFrom": [
+            "suspension_released_activity_log"
+          ],
+          "columnsTo": [
+            "log_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "offer_suspensions_user_id_sell_offer_offer_id_fk": {
+          "name": "offer_suspensions_user_id_sell_offer_offer_id_fk",
+          "tableFrom": "offer_suspensions",
+          "tableTo": "sell_offer",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "offer_id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "offer_suspensions_tracking_activity_id_tracking_activity_activity_id_fk": {
+          "name": "offer_suspensions_tracking_activity_id_tracking_activity_activity_id_fk",
+          "tableFrom": "offer_suspensions",
+          "tableTo": "tracking_activity",
+          "columnsFrom": [
+            "tracking_activity_id"
+          ],
+          "columnsTo": [
+            "activity_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.product_category": {
+      "name": "product_category",
+      "schema": "",
+      "columns": {
+        "category_name": {
+          "name": "category_name",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "parent_category": {
+          "name": "parent_category",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "audit_trail_logs": {
+          "name": "audit_trail_logs",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'[]'::jsonb"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "product_category_parent_category_product_category_category_name_fk": {
+          "name": "product_category_parent_category_product_category_category_name_fk",
+          "tableFrom": "product_category",
+          "tableTo": "product_category",
+          "columnsFrom": [
+            "parent_category"
+          ],
+          "columnsTo": [
+            "category_name"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.saved_offers": {
+      "name": "saved_offers",
+      "schema": "",
+      "columns": {
+        "user_id": {
+          "name": "user_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "offer_id": {
+          "name": "offer_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "saved_offers_user_id_user_profile_user_id_fk": {
+          "name": "saved_offers_user_id_user_profile_user_id_fk",
+          "tableFrom": "saved_offers",
+          "tableTo": "user_profile",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "user_id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "saved_offers_offer_id_sell_offer_offer_id_fk": {
+          "name": "saved_offers_offer_id_sell_offer_offer_id_fk",
+          "tableFrom": "saved_offers",
+          "tableTo": "sell_offer",
+          "columnsFrom": [
+            "offer_id"
+          ],
+          "columnsTo": [
+            "offer_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "saved_offers_offer_id_user_id_pk": {
+          "name": "saved_offers_offer_id_user_id_pk",
+          "columns": [
+            "offer_id",
+            "user_id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "public.sell_offer": {
+      "name": "sell_offer",
+      "schema": "",
+      "columns": {
+        "offer_id": {
+          "name": "offer_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "drafted_on": {
+          "name": "drafted_on",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "offer_status": {
+          "name": "offer_status",
+          "type": "offer_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'active'"
+        },
+        "seller_profile": {
+          "name": "seller_profile",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "price": {
+          "name": "price",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "slug": {
+          "name": "slug",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "category": {
+          "name": "category",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "viewed_count": {
+          "name": "viewed_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "thumbnail": {
+          "name": "thumbnail",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "attachments": {
+          "name": "attachments",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "short_description": {
+          "name": "short_description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp (3)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "additional_meta": {
+          "name": "additional_meta",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "sell_offer_seller_profile_user_profile_user_id_fk": {
+          "name": "sell_offer_seller_profile_user_profile_user_id_fk",
+          "tableFrom": "sell_offer",
+          "tableTo": "user_profile",
+          "columnsFrom": [
+            "seller_profile"
+          ],
+          "columnsTo": [
+            "user_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "sell_offer_category_product_category_category_name_fk": {
+          "name": "sell_offer_category_product_category_category_name_fk",
+          "tableFrom": "sell_offer",
+          "tableTo": "product_category",
+          "columnsFrom": [
+            "category"
+          ],
+          "columnsTo": [
+            "category_name"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.seller_reviews": {
+      "name": "seller_reviews",
+      "schema": "",
+      "columns": {
+        "review_id": {
+          "name": "review_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "profile_id": {
+          "name": "profile_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "reviewer": {
+          "name": "reviewer",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "review_on": {
+          "name": "review_on",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "stars": {
+          "name": "stars",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "feedback": {
+          "name": "feedback",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "seller_reviews_profile_id_user_profile_user_id_fk": {
+          "name": "seller_reviews_profile_id_user_profile_user_id_fk",
+          "tableFrom": "seller_reviews",
+          "tableTo": "user_profile",
+          "columnsFrom": [
+            "profile_id"
+          ],
+          "columnsTo": [
+            "user_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "seller_reviews_reviewer_user_profile_user_id_fk": {
+          "name": "seller_reviews_reviewer_user_profile_user_id_fk",
+          "tableFrom": "seller_reviews",
+          "tableTo": "user_profile",
+          "columnsFrom": [
+            "reviewer"
+          ],
+          "columnsTo": [
+            "user_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "seller_reviews_review_on_sell_offer_offer_id_fk": {
+          "name": "seller_reviews_review_on_sell_offer_offer_id_fk",
+          "tableFrom": "seller_reviews",
+          "tableTo": "sell_offer",
+          "columnsFrom": [
+            "review_on"
+          ],
+          "columnsTo": [
+            "offer_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.user_profile": {
+      "name": "user_profile",
+      "schema": "",
+      "columns": {
+        "user_id": {
+          "name": "user_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "display_name": {
+          "name": "display_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "transactions_completed": {
+          "name": "transactions_completed",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "total_ratings": {
+          "name": "total_ratings",
+          "type": "numeric(2, 1)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'0.00'"
+        },
+        "avatar": {
+          "name": "avatar",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "user_profile_status": {
+          "name": "user_profile_status",
+          "type": "user_profile_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'active'"
+        },
+        "profile_description": {
+          "name": "profile_description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "slug": {
+          "name": "slug",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "additional_meta": {
+          "name": "additional_meta",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "user_profile_user_id_user_uid_fk": {
+          "name": "user_profile_user_id_user_uid_fk",
+          "tableFrom": "user_profile",
+          "tableTo": "user",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "uid"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "user_profile_display_name_unique": {
+          "name": "user_profile_display_name_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "display_name"
+          ]
+        }
+      }
+    },
+    "public.user_suspension": {
+      "name": "user_suspension",
+      "schema": "",
+      "columns": {
+        "suspension_id": {
+          "name": "suspension_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "gen_random_uuid()"
+        },
+        "on_suspension_audit_log": {
+          "name": "on_suspension_audit_log",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "suspension_released_activity_log": {
+          "name": "suspension_released_activity_log",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "suspension_remarks": {
+          "name": "suspension_remarks",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "release_at": {
+          "name": "release_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "suspension_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'active'"
+        },
+        "tracking_activity_id": {
+          "name": "tracking_activity_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp (3)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "additional_meta": {
+          "name": "additional_meta",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "user_suspension_on_suspension_audit_log_audit_trail_log_id_fk": {
+          "name": "user_suspension_on_suspension_audit_log_audit_trail_log_id_fk",
+          "tableFrom": "user_suspension",
+          "tableTo": "audit_trail",
+          "columnsFrom": [
+            "on_suspension_audit_log"
+          ],
+          "columnsTo": [
+            "log_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "user_suspension_suspension_released_activity_log_audit_trail_log_id_fk": {
+          "name": "user_suspension_suspension_released_activity_log_audit_trail_log_id_fk",
+          "tableFrom": "user_suspension",
+          "tableTo": "audit_trail",
+          "columnsFrom": [
+            "suspension_released_activity_log"
+          ],
+          "columnsTo": [
+            "log_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "user_suspension_user_id_user_profile_user_id_fk": {
+          "name": "user_suspension_user_id_user_profile_user_id_fk",
+          "tableFrom": "user_suspension",
+          "tableTo": "user_profile",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "user_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "user_suspension_tracking_activity_id_tracking_activity_activity_id_fk": {
+          "name": "user_suspension_tracking_activity_id_tracking_activity_activity_id_fk",
+          "tableFrom": "user_suspension",
+          "tableTo": "tracking_activity",
+          "columnsFrom": [
+            "tracking_activity_id"
+          ],
+          "columnsTo": [
+            "activity_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.deposit": {
+      "name": "deposit",
+      "schema": "",
+      "columns": {
+        "deposit_id": {
+          "name": "deposit_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "wallet_id": {
+          "name": "wallet_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "deposit_amount": {
+          "name": "deposit_amount",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "deposit_src": {
+          "name": "deposit_src",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "deposit_details": {
+          "name": "deposit_details",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'{}'::jsonb"
+        },
+        "deposit_logs": {
+          "name": "deposit_logs",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'{}'::jsonb"
+        },
+        "deposit_verified_audit_log": {
+          "name": "deposit_verified_audit_log",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tracking_activity_id": {
+          "name": "tracking_activity_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp (3)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "deposit_wallet_id_wallet_wallet_id_fk": {
+          "name": "deposit_wallet_id_wallet_wallet_id_fk",
+          "tableFrom": "deposit",
+          "tableTo": "wallet",
+          "columnsFrom": [
+            "wallet_id"
+          ],
+          "columnsTo": [
+            "wallet_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "deposit_deposit_verified_audit_log_audit_trail_log_id_fk": {
+          "name": "deposit_deposit_verified_audit_log_audit_trail_log_id_fk",
+          "tableFrom": "deposit",
+          "tableTo": "audit_trail",
+          "columnsFrom": [
+            "deposit_verified_audit_log"
+          ],
+          "columnsTo": [
+            "log_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "deposit_tracking_activity_id_tracking_activity_activity_id_fk": {
+          "name": "deposit_tracking_activity_id_tracking_activity_activity_id_fk",
+          "tableFrom": "deposit",
+          "tableTo": "tracking_activity",
+          "columnsFrom": [
+            "tracking_activity_id"
+          ],
+          "columnsTo": [
+            "activity_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.transaction": {
+      "name": "transaction",
+      "schema": "",
+      "columns": {
+        "txn_id": {
+          "name": "txn_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "from_wallet": {
+          "name": "from_wallet",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "to_wallet": {
+          "name": "to_wallet",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "offer_id": {
+          "name": "offer_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "commision_amount": {
+          "name": "commision_amount",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "transaction_amount": {
+          "name": "transaction_amount",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "misc_charges": {
+          "name": "misc_charges",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "transaction_status": {
+          "name": "transaction_status",
+          "type": "transaction_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp (3)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tracking_activity_id": {
+          "name": "tracking_activity_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "additional_meta": {
+          "name": "additional_meta",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "transaction_from_wallet_wallet_wallet_id_fk": {
+          "name": "transaction_from_wallet_wallet_wallet_id_fk",
+          "tableFrom": "transaction",
+          "tableTo": "wallet",
+          "columnsFrom": [
+            "from_wallet"
+          ],
+          "columnsTo": [
+            "wallet_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "transaction_to_wallet_wallet_wallet_id_fk": {
+          "name": "transaction_to_wallet_wallet_wallet_id_fk",
+          "tableFrom": "transaction",
+          "tableTo": "wallet",
+          "columnsFrom": [
+            "to_wallet"
+          ],
+          "columnsTo": [
+            "wallet_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "transaction_offer_id_sell_offer_offer_id_fk": {
+          "name": "transaction_offer_id_sell_offer_offer_id_fk",
+          "tableFrom": "transaction",
+          "tableTo": "sell_offer",
+          "columnsFrom": [
+            "offer_id"
+          ],
+          "columnsTo": [
+            "offer_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "transaction_tracking_activity_id_tracking_activity_activity_id_fk": {
+          "name": "transaction_tracking_activity_id_tracking_activity_activity_id_fk",
+          "tableFrom": "transaction",
+          "tableTo": "tracking_activity",
+          "columnsFrom": [
+            "tracking_activity_id"
+          ],
+          "columnsTo": [
+            "activity_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.transaction_audit_trail": {
+      "name": "transaction_audit_trail",
+      "schema": "",
+      "columns": {
+        "log_id": {
+          "name": "log_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "txn_id": {
+          "name": "txn_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "transaction_snapshot": {
+          "name": "transaction_snapshot",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "diff_summary": {
+          "name": "diff_summary",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.wallet": {
+      "name": "wallet",
+      "schema": "",
+      "columns": {
+        "wallet_id": {
+          "name": "wallet_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "balance": {
+          "name": "balance",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "unrealized_balance": {
+          "name": "unrealized_balance",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "wallet_audit_status": {
+          "name": "wallet_audit_status",
+          "type": "wallet_audit_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'active'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "wallet_user_id_user_uid_fk": {
+          "name": "wallet_user_id_user_uid_fk",
+          "tableFrom": "wallet",
+          "tableTo": "user",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "uid"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.wallet_activity": {
+      "name": "wallet_activity",
+      "schema": "",
+      "columns": {
+        "activity_id": {
+          "name": "activity_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "wallet_id": {
+          "name": "wallet_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "activity_type": {
+          "name": "activity_type",
+          "type": "wallet_activity_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "activity_reference": {
+          "name": "activity_reference",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "amount": {
+          "name": "amount",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "activity_timestamp": {
+          "name": "activity_timestamp",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "activity_subject": {
+          "name": "activity_subject",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "activity_status": {
+          "name": "activity_status",
+          "type": "wallet_audit_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "wallet_activity_wallet_id_wallet_wallet_id_fk": {
+          "name": "wallet_activity_wallet_id_wallet_wallet_id_fk",
+          "tableFrom": "wallet_activity",
+          "tableTo": "wallet",
+          "columnsFrom": [
+            "wallet_id"
+          ],
+          "columnsTo": [
+            "wallet_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.wallet_audit_trail": {
+      "name": "wallet_audit_trail",
+      "schema": "",
+      "columns": {
+        "log_id": {
+          "name": "log_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "wallet_id": {
+          "name": "wallet_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "wallet_snapshot": {
+          "name": "wallet_snapshot",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.withdrawl": {
+      "name": "withdrawl",
+      "schema": "",
+      "columns": {
+        "withdrawl_id": {
+          "name": "withdrawl_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "wallet_id": {
+          "name": "wallet_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "withdrawl_amount": {
+          "name": "withdrawl_amount",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "withdrawl_status": {
+          "name": "withdrawl_status",
+          "type": "withdrawl_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'received'"
+        },
+        "withdrawl_logs": {
+          "name": "withdrawl_logs",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "withdraw_destination_details": {
+          "name": "withdraw_destination_details",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "withdraw_processed_audit_log": {
+          "name": "withdraw_processed_audit_log",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "tracking_activity_id": {
+          "name": "tracking_activity_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "withdrawl_wallet_id_wallet_wallet_id_fk": {
+          "name": "withdrawl_wallet_id_wallet_wallet_id_fk",
+          "tableFrom": "withdrawl",
+          "tableTo": "wallet",
+          "columnsFrom": [
+            "wallet_id"
+          ],
+          "columnsTo": [
+            "wallet_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "withdrawl_withdraw_processed_audit_log_audit_trail_log_id_fk": {
+          "name": "withdrawl_withdraw_processed_audit_log_audit_trail_log_id_fk",
+          "tableFrom": "withdrawl",
+          "tableTo": "audit_trail",
+          "columnsFrom": [
+            "withdraw_processed_audit_log"
+          ],
+          "columnsTo": [
+            "log_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "withdrawl_tracking_activity_id_tracking_activity_activity_id_fk": {
+          "name": "withdrawl_tracking_activity_id_tracking_activity_activity_id_fk",
+          "tableFrom": "withdrawl",
+          "tableTo": "tracking_activity",
+          "columnsFrom": [
+            "tracking_activity_id"
+          ],
+          "columnsTo": [
+            "activity_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.magiclinks": {
+      "name": "magiclinks",
+      "schema": "",
+      "columns": {
+        "magicstring": {
+          "name": "magicstring",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "expire_at": {
+          "name": "expire_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "NOW() + INTERVAL '10 minutes'"
+        },
+        "used": {
+          "name": "used",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.otp": {
+      "name": "otp",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "otp": {
+          "name": "otp",
+          "type": "varchar(6)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp (3)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.otp_ver": {
+      "name": "otp_ver",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "otp_id": {
+          "name": "otp_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "otps": {
+          "name": "otps",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'active'"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp (3)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "otp_ver_otp_id_otp_id_fk": {
+          "name": "otp_ver_otp_id_otp_id_fk",
+          "tableFrom": "otp_ver",
+          "tableTo": "otp",
+          "columnsFrom": [
+            "otp_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.chat_message": {
+      "name": "chat_message",
+      "schema": "",
+      "columns": {
+        "message_id": {
+          "name": "message_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "message": {
+          "name": "message",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sender": {
+          "name": "sender",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "thread_id": {
+          "name": "thread_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.chat_threads": {
+      "name": "chat_threads",
+      "schema": "",
+      "columns": {
+        "thread_id": {
+          "name": "thread_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.chat_thread_participant": {
+      "name": "chat_thread_participant",
+      "schema": "",
+      "columns": {
+        "user_uid": {
+          "name": "user_uid",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "thread_id": {
+          "name": "thread_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "chat_thread_participant_user_uid_user_uid_fk": {
+          "name": "chat_thread_participant_user_uid_user_uid_fk",
+          "tableFrom": "chat_thread_participant",
+          "tableTo": "user",
+          "columnsFrom": [
+            "user_uid"
+          ],
+          "columnsTo": [
+            "uid"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "chat_thread_participant_thread_id_chat_threads_thread_id_fk": {
+          "name": "chat_thread_participant_thread_id_chat_threads_thread_id_fk",
+          "tableFrom": "chat_thread_participant",
+          "tableTo": "chat_threads",
+          "columnsFrom": [
+            "thread_id"
+          ],
+          "columnsTo": [
+            "thread_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "chat_thread_participant_thread_id_user_uid_pk": {
+          "name": "chat_thread_participant_thread_id_user_uid_pk",
+          "columns": [
+            "thread_id",
+            "user_uid"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {
+    "public.system_user_status": {
+      "name": "system_user_status",
+      "schema": "public",
+      "values": [
+        "active",
+        "expired",
+        "logged_out"
+      ]
+    },
+    "public.deposit_status": {
+      "name": "deposit_status",
+      "schema": "public",
+      "values": [
+        "received",
+        "in-process",
+        "reversed",
+        "on-hold",
+        "credited"
+      ]
+    },
+    "public.dummy_triggerr_schema_generate_enum": {
+      "name": "dummy_triggerr_schema_generate_enum",
+      "schema": "public",
+      "values": [
+        "seeding role_group",
+        "seeding_kyc_levels"
+      ]
+    },
+    "public.kyc_submission_status": {
+      "name": "kyc_submission_status",
+      "schema": "public",
+      "values": [
+        "under-review",
+        "more-information-required",
+        "rejected",
+        "accepted"
+      ]
+    },
+    "public.offer_status": {
+      "name": "offer_status",
+      "schema": "public",
+      "values": [
+        "active",
+        "suspended",
+        "on-hold",
+        "completed",
+        "dealing"
+      ]
+    },
+    "public.suspension_status": {
+      "name": "suspension_status",
+      "schema": "public",
+      "values": [
+        "active",
+        "under-review",
+        "released"
+      ]
+    },
+    "public.activity_status": {
+      "name": "activity_status",
+      "schema": "public",
+      "values": [
+        "realized",
+        "unrealized",
+        "reversed"
+      ]
+    },
+    "public.transaction_status": {
+      "name": "transaction_status",
+      "schema": "public",
+      "values": [
+        "buyer_locked",
+        "waiting_for_buyer",
+        "waiting_for_seller_deliverable",
+        "seller_delivered / waiting_for_buyer_confirmation",
+        "buyer_confirmed / held_for_review",
+        "payment_released"
+      ]
+    },
+    "public.user_profile_status": {
+      "name": "user_profile_status",
+      "schema": "public",
+      "values": [
+        "suspended",
+        "active",
+        "deactivated",
+        "restricted"
+      ]
+    },
+    "public.wallet_activity_type": {
+      "name": "wallet_activity_type",
+      "schema": "public",
+      "values": [
+        "debit",
+        "credit"
+      ]
+    },
+    "public.wallet_audit_status": {
+      "name": "wallet_audit_status",
+      "schema": "public",
+      "values": [
+        "active",
+        "flagged",
+        "restricted"
+      ]
+    },
+    "public.withdrawl_status": {
+      "name": "withdrawl_status",
+      "schema": "public",
+      "values": [
+        "received",
+        "in-review",
+        "submitted",
+        "on-hold",
+        "rejected",
+        "completed"
+      ]
+    }
+  },
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

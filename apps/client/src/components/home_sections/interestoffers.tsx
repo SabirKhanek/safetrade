@@ -2,10 +2,10 @@ import { MockOffer } from "@/shared/constants/mock/offers";
 import { FadeInSection } from "../fadein_section";
 import { OfferCard, OfferCardProps } from "../offer_card";
 import { OfferSlide } from "./OfferSlide";
-import { fetchTrendingOffers } from "@/app/actions/fetchOffers";
+import { fetchOffers, fetchTrendingOffers } from "@/app/actions/fetchOffers";
 
 export async function InterestBasedOffers() {
-  const offers = await fetchTrendingOffers({});
+  const offers = await fetchOffers();
 
   return (
     <section className=" py-24">

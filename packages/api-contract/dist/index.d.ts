@@ -173,63 +173,63 @@ export declare const contract: {
                                 email: z.ZodString;
                                 avatar: z.ZodString;
                             }, "strip", z.ZodTypeAny, {
-                                name: string;
-                                avatar: string;
                                 email: string;
+                                avatar: string;
+                                name: string;
                             }, {
-                                name: string;
-                                avatar: string;
                                 email: string;
+                                avatar: string;
+                                name: string;
                             }>;
                         }, "strip", z.ZodTypeAny, {
-                            avatar: string;
                             first_name: string;
                             email: string;
                             last_name: string;
+                            avatar: string;
                             joined_on: Date;
                             creator: {
-                                name: string;
-                                avatar: string;
                                 email: string;
+                                avatar: string;
+                                name: string;
                             };
                         }, {
-                            avatar: string;
                             first_name: string;
                             email: string;
                             last_name: string;
+                            avatar: string;
                             joined_on: Date;
                             creator: {
-                                name: string;
-                                avatar: string;
                                 email: string;
+                                avatar: string;
+                                name: string;
                             };
                         }>, "many">;
                         total_available: z.ZodNumber;
                     }, "strip", z.ZodTypeAny, {
                         users: {
-                            avatar: string;
                             first_name: string;
                             email: string;
                             last_name: string;
+                            avatar: string;
                             joined_on: Date;
                             creator: {
-                                name: string;
-                                avatar: string;
                                 email: string;
+                                avatar: string;
+                                name: string;
                             };
                         }[];
                         total_available: number;
                     }, {
                         users: {
-                            avatar: string;
                             first_name: string;
                             email: string;
                             last_name: string;
+                            avatar: string;
                             joined_on: Date;
                             creator: {
-                                name: string;
-                                avatar: string;
                                 email: string;
+                                avatar: string;
+                                name: string;
                             };
                         }[];
                         total_available: number;
@@ -241,15 +241,15 @@ export declare const contract: {
                     success: boolean;
                     data: {
                         users: {
-                            avatar: string;
                             first_name: string;
                             email: string;
                             last_name: string;
+                            avatar: string;
                             joined_on: Date;
                             creator: {
-                                name: string;
-                                avatar: string;
                                 email: string;
+                                avatar: string;
+                                name: string;
                             };
                         }[];
                         total_available: number;
@@ -259,15 +259,15 @@ export declare const contract: {
                     success: boolean;
                     data: {
                         users: {
-                            avatar: string;
                             first_name: string;
                             email: string;
                             last_name: string;
+                            avatar: string;
                             joined_on: Date;
                             creator: {
-                                name: string;
-                                avatar: string;
                                 email: string;
+                                avatar: string;
+                                name: string;
                             };
                         }[];
                         total_available: number;
@@ -284,11 +284,11 @@ export declare const contract: {
                 email: z.ZodString;
                 password: z.ZodString;
             }, "strip", z.ZodTypeAny, {
-                email: string;
                 password: string;
+                email: string;
             }, {
-                email: string;
                 password: string;
+                email: string;
             }>;
             path: "/api/system/auth/";
             responses: {
@@ -467,16 +467,16 @@ export declare const contract: {
                             email: z.ZodString;
                             user_uid: z.ZodString;
                         }, "strip", z.ZodTypeAny, {
-                            avatar: string;
                             first_name: string;
                             email: string;
                             last_name: string;
+                            avatar: string;
                             user_uid: string;
                         }, {
-                            avatar: string;
                             first_name: string;
                             email: string;
                             last_name: string;
+                            avatar: string;
                             user_uid: string;
                         }>;
                         performed_at: z.ZodDate;
@@ -485,10 +485,10 @@ export declare const contract: {
                         trail_id: z.ZodString;
                     }, "strip", z.ZodTypeAny, {
                         performer: {
-                            avatar: string;
                             first_name: string;
                             email: string;
                             last_name: string;
+                            avatar: string;
                             user_uid: string;
                         };
                         performed_at: Date;
@@ -497,10 +497,10 @@ export declare const contract: {
                         metadata?: unknown;
                     }, {
                         performer: {
-                            avatar: string;
                             first_name: string;
                             email: string;
                             last_name: string;
+                            avatar: string;
                             user_uid: string;
                         };
                         performed_at: Date;
@@ -512,10 +512,10 @@ export declare const contract: {
                 }, "strip", z.ZodTypeAny, {
                     data: {
                         performer: {
-                            avatar: string;
                             first_name: string;
                             email: string;
                             last_name: string;
+                            avatar: string;
                             user_uid: string;
                         };
                         performed_at: Date;
@@ -527,10 +527,10 @@ export declare const contract: {
                 }, {
                     data: {
                         performer: {
-                            avatar: string;
                             first_name: string;
                             email: string;
                             last_name: string;
+                            avatar: string;
                             user_uid: string;
                         };
                         performed_at: Date;
@@ -587,12 +587,12 @@ export declare const contract: {
                     message: z.ZodString;
                 }, "strip", z.ZodTypeAny, {
                     message: string;
-                    thread_id: string;
                     success: boolean;
+                    thread_id: string;
                 }, {
                     message: string;
-                    thread_id: string;
                     success: boolean;
+                    thread_id: string;
                 }>;
             };
             strictStatusCodes: false;
@@ -894,20 +894,23 @@ export declare const contract: {
                 category: z.ZodString;
                 title: z.ZodString;
                 description: z.ZodString;
+                price: z.ZodString;
                 short_description: z.ZodString;
-                attachments: z.ZodOptional<z.ZodType<File, z.ZodTypeDef, File>>;
+                attachments: z.ZodType<File, z.ZodTypeDef, File>;
             }, "strip", z.ZodTypeAny, {
                 description: string;
                 title: string;
                 category: string;
+                price: string;
                 short_description: string;
-                attachments?: File | undefined;
+                attachments: File;
             }, {
                 description: string;
                 title: string;
                 category: string;
+                price: string;
                 short_description: string;
-                attachments?: File | undefined;
+                attachments: File;
             }>;
             path: "/api/marketplace/offer";
             responses: {
@@ -1241,14 +1244,14 @@ export declare const contract: {
                 dob: z.ZodString;
                 password: z.ZodString;
             }, "strip", z.ZodTypeAny, {
-                email: string;
                 password: string;
+                email: string;
                 f_name: string;
                 l_name: string;
                 dob: string;
             }, {
-                email: string;
                 password: string;
+                email: string;
                 f_name: string;
                 l_name: string;
                 dob: string;
@@ -1345,11 +1348,11 @@ export declare const contract: {
                 email: z.ZodString;
                 password: z.ZodString;
             }, "strip", z.ZodTypeAny, {
-                email: string;
                 password: string;
+                email: string;
             }, {
-                email: string;
                 password: string;
+                email: string;
             }>;
             path: "/api/auth/basic";
             responses: {

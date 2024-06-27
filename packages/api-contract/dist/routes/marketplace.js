@@ -13,10 +13,10 @@ exports.marketplace = c.router({
             category: zod_1.z.string(),
             title: zod_1.z.string(),
             description: zod_1.z.string(),
+            price: zod_1.z.string(),
             short_description: zod_1.z.string(),
             attachments: zod_1.z
                 .custom()
-                .optional()
                 .openapi({ format: "binary", type: "string" }),
         }),
         responses: { 200: zod_1.z.object({ success: zod_1.z.boolean() }) },

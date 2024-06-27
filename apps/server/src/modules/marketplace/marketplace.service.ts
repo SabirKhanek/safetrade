@@ -19,6 +19,7 @@ export class MarketplaceService {
       description,
       short_description,
       title,
+      price,
     }: ServerInferRequest<typeof contract.marketplace.createOffer>['body'],
     attachments: File,
     user_uid: string,
@@ -38,7 +39,11 @@ export class MarketplaceService {
         .insert(schema.sell_offer)
         .values({
           category: category,
+          description: description,
           title: title,
+          price: parseInt(price),
+          slug: title.toLowerCase() + `_${generateRandomString(5)}`,
+          seller_profile: user_uid,
           attachments: [uri],
           short_description: short_description,
         })
@@ -46,4 +51,15 @@ export class MarketplaceService {
       return sell_offer;
     });
   }
+}
+
+function generateRandomString(length: number) {
+  const characters =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let result = '';
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
 }

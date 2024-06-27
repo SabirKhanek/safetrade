@@ -7,20 +7,23 @@ export declare const marketplace: {
             category: z.ZodString;
             title: z.ZodString;
             description: z.ZodString;
+            price: z.ZodString;
             short_description: z.ZodString;
-            attachments: z.ZodOptional<z.ZodType<File, z.ZodTypeDef, File>>;
+            attachments: z.ZodType<File, z.ZodTypeDef, File>;
         }, "strip", z.ZodTypeAny, {
             description: string;
             title: string;
             category: string;
+            price: string;
             short_description: string;
-            attachments?: File | undefined;
+            attachments: File;
         }, {
             description: string;
             title: string;
             category: string;
+            price: string;
             short_description: string;
-            attachments?: File | undefined;
+            attachments: File;
         }>;
         path: "/marketplace/offer";
         responses: {

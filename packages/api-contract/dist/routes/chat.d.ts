@@ -17,12 +17,12 @@ export declare const chat: {
                 message: z.ZodString;
             }, "strip", z.ZodTypeAny, {
                 message: string;
-                thread_id: string;
                 success: boolean;
+                thread_id: string;
             }, {
                 message: string;
-                thread_id: string;
                 success: boolean;
+                thread_id: string;
             }>;
         };
     };

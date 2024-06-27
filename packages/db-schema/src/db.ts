@@ -29,8 +29,10 @@ export async function getConnection({
 
 export async function getPoolConnection({
   logging,
+  timeout
 }: {
   logging?: boolean | Logger;
+  timeout?: number
 }) {
   const pool = new Pool({
     host: PGHOST!,
@@ -38,6 +40,7 @@ export async function getPoolConnection({
     user: PGUSER!,
     password: PGPASSWORD!,
     ssl: false,
+    idleTimeoutMillis: timeout,
   });
   const client = await pool.connect();
   const db = drizzle(client, { schema, logger: logging });

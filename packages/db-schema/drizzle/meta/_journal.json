@@ -141,6 +141,13 @@
       "when": 1719421712455,
       "tag": "0019_free_weapon_omega",
       "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "7",
+      "when": 1719445818629,
+      "tag": "0020_worried_ser_duncan",
+      "breakpoints": true
     }
   ]
 }

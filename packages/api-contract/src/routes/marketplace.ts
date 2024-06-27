@@ -13,10 +13,10 @@ export const marketplace = c.router(
         category: z.string(),
         title: z.string(),
         description: z.string(),
+        price: z.string(),
         short_description: z.string(),
         attachments: z
           .custom<File>()
-          .optional()
           .openapi({ format: "binary", type: "string" }),
       }),
       responses: { 200: z.object({ success: z.boolean() }) },
