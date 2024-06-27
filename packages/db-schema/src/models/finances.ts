@@ -88,21 +88,19 @@ export const withdrawl = pgTable(
 
 export const deposit = pgTable(
   "deposit",
-  withTimestamps(
-    withTrackingActivity({
-      deposit_id: uuid("deposit_id").primaryKey().defaultRandom(),
-      wallet_id: uuid("wallet_id")
-        .references(() => wallet.wallet_id)
-        .notNull(),
-      deposit_amount: bigint("deposit_amount", { mode: "number" }).notNull(),
-      deposit_src: text("deposit_src").notNull(),
-      deposit_details: jsonb("deposit_details").notNull().default({}),
-      deposit_logs: jsonb("deposit_logs").notNull().default({}),
-      deposit_verified_audit_log: uuid("deposit_verified_audit_log").references(
-        () => audit_trail.log_id
-      ),
-    })
-  )
+  withTimestamps({
+    deposit_id: uuid("deposit_id").primaryKey().defaultRandom(),
+    wallet_id: uuid("wallet_id")
+      .references(() => wallet.wallet_id)
+      .notNull(),
+    deposit_amount: bigint("deposit_amount", { mode: "number" }).notNull(),
+    deposit_src: text("deposit_src").notNull(),
+    deposit_details: jsonb("deposit_details").notNull().default({}),
+    deposit_logs: jsonb("deposit_logs").notNull().default({}),
+    deposit_verified_audit_log: uuid("deposit_verified_audit_log").references(
+      () => audit_trail.log_id
+    ),
+  })
 );
 
 // implement trigger to disable visibility of an offer

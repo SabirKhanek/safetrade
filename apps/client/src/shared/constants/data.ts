@@ -13,12 +13,12 @@ export const navItems: NavItemWithOptionalChildren[] = [
     icon: "wallet",
     label: "user",
     items: [
-      {
-        title: "Deposits",
-        href: "/dashboard/wallet/deposits",
-        label: "deposits",
-      },
-      { title: "Transactions", href: "/transactions", label: "transactions" },
+      // {
+      //   title: "Deposits",
+      //   href: "/dashboard/wallet/deposits",
+      //   label: "deposits",
+      // },
+      // { title: "Transactions", href: "/transactions", label: "transactions" },
     ],
   },
   {

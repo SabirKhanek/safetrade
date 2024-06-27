@@ -114,7 +114,7 @@ export function withTrackingActivity<T>(schema: T, nullable = false) {
     () => tracking_activity.activity_id
   );
   if (!nullable) {
-    chain = chain.notNull();
+    chain = chain;
   }
   const props = {
     tracking_activity_id: chain,
