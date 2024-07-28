@@ -84,8 +84,7 @@ export default function OffersPage() {
     </>
   );
 }
-
-export function OffersTable({ data }: { data: OfferTableData[] }) {
+function OffersTable({ data }: { data: OfferTableData[] }) {
   return (
     <div className="">
       <DataTable columns={offerColumns} data={data}></DataTable>
@@ -200,7 +199,7 @@ function AddSellOffer({
       formData.append("description", description);
       formData.append("short_description", short_description);
       formData.append("title", title);
-      formData.append("price", price?.toString() ||"");
+      formData.append("price", price?.toString() || "");
       formData.append("attachments", attachments!);
 
       const response = await apiClient.marketplace.createOffer({
