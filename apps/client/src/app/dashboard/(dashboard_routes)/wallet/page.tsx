@@ -97,7 +97,7 @@ export default function WalletPage() {
   );
 }
 
-export function Deposit() {
+ function Deposit() {
   const [value, setValue] = useState("");
   const [loading, setIsLoading] = useState(false);
   const authState = useAuthState();
